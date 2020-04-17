@@ -11,7 +11,7 @@ def root():
 @app.route('/api/hello')
 @cross_origin()
 def hello_world():
-    return 'Hey, we have Flask in a Docker container!'
+    return 'UFO signal connected -_-'
 
 
 if __name__ == '__main__':

@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Button , Slider , Input} from 'antd';
 import "antd/dist/antd.css";
+import ConnectAPI from './ConnectAPI'
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <p>
           Dog Recommender
         </p>
+        <ConnectAPI />
         <a
           className="App-link"
           href="https://reactjs.org"

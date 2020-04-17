@@ -30,7 +30,7 @@ $ pip install -r requirements.txt
 
 ### Updating Build
 
-If you are working on the `frontend`, after updating the app, run the following commands to update the build:
+If you are working on the `frontend`, after updating the app, run the following commands to update the build (*note that sometimes you would have to remove `front/build` and then start the following*):
 ```
 # assuming you are in the root directory
 $ cd front
@@ -64,5 +64,5 @@ $ git commit -m "update"
 $ git push
 $ git push heroku master
 ```
-Then, your update should be live at `https://logtheanalogdog.herokuapp.com/`. Note that your browser caches sometimes, so if you do not see your update, try opening the webpage on incognito.
+Then, your update should be live at `https://logtheanalogdogtest.herokuapp.com/`. Note that your browser caches sometimes, so if you do not see your update, try opening the webpage on incognito.
 
