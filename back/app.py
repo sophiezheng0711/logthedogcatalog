@@ -4,7 +4,7 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route('/hello')
+@app.route('/api/hello')
 @cross_origin()
 def hello_world():
     return 'Hey, we have Flask in a Docker container!'
