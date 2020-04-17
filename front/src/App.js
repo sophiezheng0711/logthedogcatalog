@@ -1,61 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Button, Slider , Input} from 'antd';
-import "antd/dist/antd.css";
-import ConnectAPI from './ConnectAPI';
+import Home from './Home';
+import { HashRouter, Route } from 'react-router-dom';
 import Navbar from './NavBar';
-import { Container } from 'react-bootstrap'
+import {Container} from 'react-bootstrap';
+import TextBox from './Textbox';
 
+
+function HomePage() {
+  return (<Home/>);
+}
+
+function AboutPage() {
+  return (
+    <Container>
+      <TextBox title="About Logtheanalogdog" text="Sophie Zheng (sz374), Matthew Xu (mx68), Neil Sethi (ns784),
+       Jakob Kaminsky (jk989), Yihe Zhang (yz2434)// TODO replace" />
+    </Container>
+  );
+}
 
 function App() {
   return (
     <>
-    
-    <div className="App" >
-      <Container fluid>
-        <Navbar />
-      </Container>
-      <header className="App-header">
-        
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Dog Recommender
-        </p>
-        <ConnectAPI />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Input your expectations
-        </a>
-        <div>
-          <Slider min={0} max={100} step={1} defaultValue={30} disabled={false}></Slider>
-          <Input placeholder={"input"} type={"text"} style={{}}></Input>
-          <Button type="primary" style={{ marginLeft: 8 }}>
-            Search
-          </Button>
-        </div>
-      </header>
-      <div className="MarkdownEditor">
-        <h3>Input</h3>
-        <label htmlFor="markdown-content">
-          Enter words
-        </label>
-        <textarea
-          id="markdown-content"
-        />
-        <h3>Output</h3>
-        <div
-          className="content"
-        />
+    <HashRouter hashHistory>
+      <div className='App'>
+        <Container fluid>
+          <Navbar />
+        </Container>
+        <Route exact path='/' component={HomePage} />
+        <Route path='/home' component={HomePage} />
+        <Route  path='/about' component={AboutPage} />
       </div>
-
-
-
-    </div>
+    </HashRouter>
 
     </>
   );
