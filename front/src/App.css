@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -15,6 +16,14 @@
 
 .App-header {
   background-color: #282c34;
+  background-image: url(./background.jpg);
+  background-size: cover;
+  /* Full height */
+  height: 100%;
+
+/* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
