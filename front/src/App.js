@@ -1,15 +1,23 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Button , Slider , Input} from 'antd';
+import { Button, Slider , Input} from 'antd';
 import "antd/dist/antd.css";
-import ConnectAPI from './ConnectAPI'
+import ConnectAPI from './ConnectAPI';
+import Navbar from './NavBar';
+import { Container } from 'react-bootstrap'
 
 
 function App() {
   return (
+    <>
+    
     <div className="App" >
+      <Container fluid>
+        <Navbar />
+      </Container>
       <header className="App-header">
+        
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Dog Recommender
@@ -49,7 +57,7 @@ function App() {
 
     </div>
 
-
+    </>
   );
 }
 
