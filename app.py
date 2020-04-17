@@ -1,5 +1,11 @@
 from flask import Flask
 from flask_cors import CORS, cross_origin
+from sklearn.manifold import spectral_embedding
+import pandas as pd
+import re
+import numpy as np
+import json
+
 app = Flask(__name__, static_url_path='', static_folder='front/build')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -13,19 +19,9 @@ def root():
 def hello_world():
     return 'UFO signal connected -_-'
 
-
-
-
-#####
-
-from sklearn.manifold import spectral_embedding
-import pandas as pd
-import re
-import numpy as np
-import json
-
+@app.route('/api/search')
+@cross_origin()
 def ir(name):
-    
     df = pd.read_excel("data.xlsx")
     names = list(df["Name"])
     names = [name.lower().strip() for name in names]
