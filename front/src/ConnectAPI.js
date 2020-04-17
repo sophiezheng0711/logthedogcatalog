@@ -10,7 +10,7 @@ class ConnectAPI extends Component {
     }
 
     componentWillMount() {
-        axios.get('/api/hello')
+        axios.get('api/hello')
             .then((response) => {
                 this.setState(() => {
                     return { result: response.data }
