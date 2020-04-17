@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+
+#############################
+#    Setup python server
+#############################
+  server:
+    build: ./back
+    expose:
+      - ${APP_SERVER_PORT}
+    environment:
+      APP_SERVER_PORT: ${APP_SERVER_PORT}
+    ports:
+      - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
+    # volumes:
+    #   - ./back:/srv/app/server
+    command: python app.py
+
+#############################
+#    Setup react client
+#############################
+  client:
+    stdin_open: true
+    build: ./front
+    environment:
+      - REACT_APP_PORT=${REACT_APP_PORT}
+    expose:
+      - ${REACT_APP_PORT}
+    ports:
+      - ${REACT_APP_PORT}:${REACT_APP_PORT}
+    # volumes:
+    #   - ./front/src:/srv/app/client/src
+    #   - ./front/public:/srv/app/client/public
+    links:
+      - server
+    command: npm run start
