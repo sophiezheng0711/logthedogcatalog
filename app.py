@@ -19,10 +19,11 @@ def root():
 def hello_world():
     return 'UFO signal connected -_-'
 
-@app.route('/api/search')
+@app.route('/api/search', methods=['GET'])
 @cross_origin()
-def ir(name):
+def ir():
     name = request.args.get('name')
+    print("***"+name)
     df = pd.read_excel("data.xlsx")
     names = list(df["Name"])
     names = [name.lower().strip() for name in names]
@@ -30,7 +31,7 @@ def ir(name):
     
     for ind in range(len(names)):
         namez = names[ind]
-        namez = name.strip()
+        namez = name.lower().strip()
         namez = re.sub(' ', '-', namez)
         names[ind] = namez
 
