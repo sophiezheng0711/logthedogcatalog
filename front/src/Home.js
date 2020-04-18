@@ -22,8 +22,8 @@ class App extends React.Component {
 
       search() {
         const n = this.state.name;
-        // axios.get('http://localhost:5000/api/search?name=' + n)
         this.setState({ loading: true }, () => {
+        // axios.get('http://localhost:5000/api/search?name=' + n)
         axios.get('/api/search?name=' + n)
             .then((response) => {
             this.setState(() => {
