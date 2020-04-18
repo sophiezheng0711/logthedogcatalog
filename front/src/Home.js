@@ -5,12 +5,10 @@ import axios from 'axios';
 import items from './items';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import LoadingOverlay from 'react-loading-overlay';
-import PacmanLoader from 'react-spinners/PacmanLoader';
-
+import Loader from './Loader';
 
 class App extends React.Component {
-    
+
     constructor(props) {
         super(props);
         this.search = this.search.bind(this);
@@ -21,18 +19,18 @@ class App extends React.Component {
             loading: false
         };
       }
-    
+
       search() {
         const n = this.state.name;
-        this.setState({loading: true});
         // axios.get('http://localhost:5000/api/search?name=' + n)
+        this.setState({ loading: true }, () => {
         axios.get('/api/search?name=' + n)
             .then((response) => {
             this.setState(() => {
                 return {
                     name: "",
                     result: [],
-                    loading: false
+                    loading: false,
                 }
             });
             if (response.data.length === 0) {
@@ -45,7 +43,10 @@ class App extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
-      }
+        })
+    }
+
+
 
       update = (event,value) => {
         this.setState({
@@ -53,14 +54,15 @@ class App extends React.Component {
         });
         console.log(this.state.name);
       };
-
       render() {
-        
+
+        if(this.state.loading){
+            return <Loader /> 
+        }
+
         return (
-            <LoadingOverlay active={this.state.loading} spinner={<PacmanLoader color='white'/>} text={<h3 style={{marginTop: '2em', fontFamily: '"Courier New",Courier,"Lucida Sans Typewriter","Lucida Typewriter",monospace', fontWeight:'bold'}}>Woof-woof...</h3>}>
-            
+            <>
               <header className="App-header">
-              
               <Container>
                 <Row className="justify-content-md-center">
                 <p style={{color:'black', fontFamily: '"Courier New",Courier,"Lucida Sans Typewriter","Lucida Typewriter",monospace', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)', fontWeight:'bold'}}>&nbsp; Logtheanalogdog &nbsp;</p>
@@ -79,7 +81,7 @@ class App extends React.Component {
                 </Row>
                 </Container>
               </header>
-              </LoadingOverlay>
+            </>
         );
       }
 }
