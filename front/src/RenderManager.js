@@ -8,7 +8,7 @@ class App extends React.Component {
     render() {
         const q = window.location.hash;
         const rstList = JSON.parse(decodeURI(q.substring(9, q.length)));
-        console.log(rstList.data);
+        // console.log(rstList.data);
         return (
             <>
             

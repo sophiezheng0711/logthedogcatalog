@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.532445a1.chunk.css",
-    "main.js": "/static/js/main.705176e9.chunk.js",
-    "main.js.map": "/static/js/main.705176e9.chunk.js.map",
+    "main.js": "/static/js/main.432bf995.chunk.js",
+    "main.js.map": "/static/js/main.432bf995.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.95a77404.js",
     "runtime-main.js.map": "/static/js/runtime-main.95a77404.js.map",
     "static/css/2.6d1408ce.chunk.css": "/static/css/2.6d1408ce.chunk.css",
-    "static/js/2.49bddd79.chunk.js": "/static/js/2.49bddd79.chunk.js",
-    "static/js/2.49bddd79.chunk.js.map": "/static/js/2.49bddd79.chunk.js.map",
+    "static/js/2.0da544dd.chunk.js": "/static/js/2.0da544dd.chunk.js",
+    "static/js/2.0da544dd.chunk.js.map": "/static/js/2.0da544dd.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.1b2c0e3ac584d646ae2aef4f9f099758.js": "/precache-manifest.1b2c0e3ac584d646ae2aef4f9f099758.js",
+    "precache-manifest.9cb72a95d90e16f0cac727235dd0ab6a.js": "/precache-manifest.9cb72a95d90e16f0cac727235dd0ab6a.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.6d1408ce.chunk.css.map": "/static/css/2.6d1408ce.chunk.css.map",
     "static/css/main.532445a1.chunk.css.map": "/static/css/main.532445a1.chunk.css.map",
-    "static/js/2.49bddd79.chunk.js.LICENSE.txt": "/static/js/2.49bddd79.chunk.js.LICENSE.txt",
+    "static/js/2.0da544dd.chunk.js.LICENSE.txt": "/static/js/2.0da544dd.chunk.js.LICENSE.txt",
     "static/media/affenpinscher.jpg": "/static/media/affenpinscher.71a984d6.jpg",
     "static/media/afghan-hound.jpg": "/static/media/afghan-hound.ac642c31.jpg",
     "static/media/airedale-terrier.jpg": "/static/media/airedale-terrier.6e64322a.jpg",
@@ -233,6 +233,7 @@
     "static/media/romanian-mioritic-shepherd-dog.jpg": "/static/media/romanian-mioritic-shepherd-dog.e119c332.jpg",
     "static/media/rottweiler.jpg": "/static/media/rottweiler.31c0eb60.jpg",
     "static/media/russell-terrier.jpg": "/static/media/russell-terrier.e119c332.jpg",
+    "static/media/russian-toy.jpg": "/static/media/russian-toy.1afeda76.jpg",
     "static/media/russian-tsvetnaya-bolonka.jpg": "/static/media/russian-tsvetnaya-bolonka.e119c332.jpg",
     "static/media/saint-bernard.jpg": "/static/media/saint-bernard.d49e5c36.jpg",
     "static/media/saluki.jpg": "/static/media/saluki.0234f097.jpg",
@@ -296,8 +297,8 @@
   "entrypoints": [
     "static/js/runtime-main.95a77404.js",
     "static/css/2.6d1408ce.chunk.css",
-    "static/js/2.49bddd79.chunk.js",
+    "static/js/2.0da544dd.chunk.js",
     "static/css/main.532445a1.chunk.css",
-    "static/js/main.705176e9.chunk.js"
+    "static/js/main.432bf995.chunk.js"
   ]
 }
