@@ -18,7 +18,8 @@ class App extends React.Component {
       }
     
       search() {
-        axios.get('/api/search?name=' + this.state.name)
+        const n = this.state.name;
+        axios.get('/api/search?name=' + n)
             .then((response) => {
             this.setState(() => {
                 return {
@@ -26,7 +27,7 @@ class App extends React.Component {
                     result: [],
                 }
             });
-            window.location.replace(window.location.origin + "/#/search?" + JSON.stringify(response.data));
+            window.location.replace(window.location.origin + "/#/search?" + JSON.stringify({dog: n, data: response.data}));
             })
             .catch(function (error) {
                 console.log(error);
@@ -42,9 +43,7 @@ class App extends React.Component {
             <>
               <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  Dog Recommender
-                </p>
+                <p style={{color:'black', fontFamily: '"Courier New",Courier,"Lucida Sans Typewriter","Lucida Typewriter",monospace', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)', fontWeight:'bold'}}>&nbsp; Logtheanalogdog &nbsp;</p>
                 <a
                   className="App-link"
                   href="https://reactjs.org"
@@ -61,19 +60,6 @@ class App extends React.Component {
                   </Button>
                 </div>
               </header>
-              <div className="MarkdownEditor">
-                <h3>Input</h3>
-                <label htmlFor="markdown-content">
-                  Enter words
-                </label>
-                <textarea
-                  id="markdown-content"
-                />
-                <h3>Output</h3>
-                <div
-                  className="content"
-                />
-              </div>
             </>
         );
       }
