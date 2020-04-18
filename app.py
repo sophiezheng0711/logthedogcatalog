@@ -48,8 +48,7 @@ def ir():
         for y in range(len(sim)):
             if namez in sim[y].lower():
                 adj_mat[x,y] += 1
-    print(sum(adj_mat))      
-    print(name)
+
     embedding = spectral_embedding(adj_mat)
     
     pnt = embedding[names.index(name.lower())]
