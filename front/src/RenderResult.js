@@ -1,6 +1,5 @@
 import React from 'react';
 import {Card, Button} from "react-bootstrap";
-import img from "./dummy.png";
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css'
 
@@ -48,7 +47,7 @@ class App extends React.Component {
           };
         return (
             <Card style={{ width: '18rem', flex: '1', size: 'cover'}}>
-                <Card.Img variant="top" src={img} height='180px' />
+                <Card.Img variant="top" src={require('./dogpics/' + this.props.name + '.jpg')} height='180px' style={{objectFit: 'cover'}} />
                 <Card.Body>
                     <Card.Title>{this.props.rank + ". " + this.formatName(this.props.name)}</Card.Title>
                     <RadarChart captions={captions} data={data} size={200}/>
