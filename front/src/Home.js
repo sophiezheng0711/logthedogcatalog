@@ -28,7 +28,12 @@ class App extends React.Component {
                     result: [],
                 }
             });
-            window.location.replace(window.location.origin + "/#/search?" + JSON.stringify({dog: n, data: response.data}));
+            if (response.data.length === 0) {
+              window.location.replace(window.location.origin + "/#/notfound");
+            }
+            else {
+              window.location.replace(window.location.origin + "/#/search?" + JSON.stringify({dog: n, data: response.data}));
+            }
             })
             .catch(function (error) {
                 console.log(error);

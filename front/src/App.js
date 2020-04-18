@@ -5,6 +5,7 @@ import Navbar from './NavBar';
 import {Container} from 'react-bootstrap';
 import TextBox from './Textbox';
 import RenderResult from './RenderManager';
+import NotFound from './NotFoundPage';
 
 
 function HomePage() {
@@ -26,6 +27,12 @@ function ResultsPage() {
   );
 }
 
+function NotFoundPage() {
+  return (
+    <NotFound />
+  );
+}
+
 function App() {
   return (
     <>
@@ -39,6 +46,7 @@ function App() {
         <Route path='/home' component={HomePage} />
         <Route  path='/about' component={AboutPage} />
         <Route path='/search' component={ResultsPage} />
+        <Route path='/notfound' component={NotFoundPage} />
         {/* </Switch> */}
       </div>
     </HashRouter>

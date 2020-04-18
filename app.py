@@ -51,8 +51,10 @@ def ir():
 
     adj_mat = adj_mat + adj_mat.T
     embedding = spectral_embedding(adj_mat)
-    
-    pnt = embedding[names.index(name.lower())]
+    try:
+        pnt = embedding[names.index(name.lower())]
+    except ValueError:
+        return json.dumps([]), 200
     vals = []
     for x in embedding:
         vals += [np.linalg.norm(pnt - x)]
@@ -61,7 +63,7 @@ def ir():
     for x in inds[:10]:
         to_return += [[names[x],1 - vals[x]]]
         
-    return json.dumps(to_return)
+    return json.dumps(to_return), 200
 
 
 
