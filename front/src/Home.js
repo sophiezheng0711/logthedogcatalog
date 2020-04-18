@@ -3,10 +3,40 @@ import logo from './logo.svg';
 import './App.css';
 import { Button, Slider , Input} from 'antd';
 import "antd/dist/antd.css";
-import ConnectAPI from './ConnectAPI';
-
+import axios from 'axios';
 
 class App extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        this.search = this.search.bind(this);
+        this.update = this.update.bind(this);
+        this.state = {
+            name: null,
+            result: [],
+        };
+      }
+    
+      search() {
+        axios.get('/api/search', { name: this.state.name })
+            .then((response) => {
+            this.setState(() => {
+                return {
+                    name: null,
+                    result: [],
+                }
+            });
+            window.location.replace(window.location.origin + "/#/search?" + JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+      }
+
+      update = (event) => {
+        this.setState({name:event.target.value});
+      }
+
       render() {
         return (
             <>
@@ -15,7 +45,6 @@ class App extends React.Component {
                 <p>
                   Dog Recommender
                 </p>
-                <ConnectAPI />
                 <a
                   className="App-link"
                   href="https://reactjs.org"
@@ -26,8 +55,8 @@ class App extends React.Component {
                 </a>
                 <div>
                   <Slider min={0} max={100} step={1} defaultValue={30} disabled={false}></Slider>
-                  <Input placeholder={"input"} type={"text"} style={{}}></Input>
-                  <Button type="primary" style={{ marginLeft: 8 }}>
+                  <Input placeholder={"input"} type={"text"} style={{}} onChange={this.update}></Input>
+                  <Button type="primary" style={{ marginLeft: 8 }} onClick={this.search}>
                     Search
                   </Button>
                 </div>

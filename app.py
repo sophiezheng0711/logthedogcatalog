@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS, cross_origin
 from sklearn.manifold import spectral_embedding
 import pandas as pd
@@ -21,7 +21,8 @@ def hello_world():
 
 @app.route('/api/search')
 @cross_origin()
-def ir(name):
+def ir():
+    name = request.args.get('name')
     df = pd.read_excel("data.xlsx")
     names = list(df["Name"])
     names = [name.lower().strip() for name in names]

@@ -4,6 +4,7 @@ import { HashRouter, Route } from 'react-router-dom';
 import Navbar from './NavBar';
 import {Container} from 'react-bootstrap';
 import TextBox from './Textbox';
+import RenderResult from './RenderManager';
 
 
 function HomePage() {
@@ -19,6 +20,12 @@ function AboutPage() {
   );
 }
 
+function ResultsPage() {
+  return (
+    <RenderResult/>
+  );
+}
+
 function App() {
   return (
     <>
@@ -27,9 +34,12 @@ function App() {
         <Container fluid>
           <Navbar />
         </Container>
+        {/* <Switch> */}
         <Route exact path='/' component={HomePage} />
         <Route path='/home' component={HomePage} />
         <Route  path='/about' component={AboutPage} />
+        <Route path='/search' component={ResultsPage} />
+        {/* </Switch> */}
       </div>
     </HashRouter>
 

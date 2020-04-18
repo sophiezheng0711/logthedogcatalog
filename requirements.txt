@@ -9,6 +9,7 @@ decorator==4.2.1
 entrypoints==0.2.3
 Flask==1.1.1
 Flask-Cors==3.0.8
+get==2019.4.13
 gunicorn==20.0.4
 html5lib==1.0.1
 ipykernel==4.8.0
@@ -41,8 +42,10 @@ pandocfilters==1.4.2
 parso==0.1.1
 pexpect==4.3.1
 pickleshare==0.7.4
+post==2019.4.13
 prompt-toolkit==1.0.15
 ptyprocess==0.5.2
+public==2019.4.13
 Pygments==2.2.0
 pylint==2.4.4
 pyparsing==2.2.0
@@ -51,6 +54,8 @@ python-Levenshtein==0.12.0
 pytz==2017.3
 pyzmq==18.1.0
 qtconsole==4.3.1
+query-string==2019.4.13
+request==2019.4.13
 rope==0.16.0
 scikit-learn==0.22.1
 scipy==1.4.1
@@ -68,3 +73,4 @@ webencodings==0.5.1
 Werkzeug==1.0.1
 widgetsnbextension==3.1.0
 wrapt==1.11.2
+xlrd==1.2.0
