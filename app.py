@@ -21,7 +21,7 @@ def hello_world():
 
 @app.route('/api/search')
 @cross_origin()
-def ir():
+def ir(name):
     name = request.args.get('name')
     df = pd.read_excel("data.xlsx")
     names = list(df["Name"])
