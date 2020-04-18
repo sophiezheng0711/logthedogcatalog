@@ -1,9 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Button, Slider , Input} from 'antd';
-import "antd/dist/antd.css";
+import { Button, Container, Row } from 'react-bootstrap';
 import axios from 'axios';
+import items from './items';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+
 
 class App extends React.Component {
     
@@ -13,7 +15,7 @@ class App extends React.Component {
         this.update = this.update.bind(this);
         this.state = {
             name: null,
-            result: [],
+            result: []
         };
       }
     
@@ -24,7 +26,7 @@ class App extends React.Component {
             .then((response) => {
             this.setState(() => {
                 return {
-                    name: null,
+                    name: "",
                     result: [],
                 }
             });
@@ -40,31 +42,34 @@ class App extends React.Component {
             });
       }
 
-      update = (event) => {
-        this.setState({name:event.target.value});
-      }
-
+      update = (event,value) => {
+        this.setState({
+            name: value
+        });
+        console.log(this.state.name);
+      };
       render() {
+        
         return (
             <>
               <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
+              <Container>
+                <Row className="justify-content-md-center">
                 <p style={{color:'black', fontFamily: '"Courier New",Courier,"Lucida Sans Typewriter","Lucida Typewriter",monospace', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)', fontWeight:'bold'}}>&nbsp; Logtheanalogdog &nbsp;</p>
-                <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Input your expectations
-                </a>
-                <div>
-                  <Slider min={0} max={100} step={1} defaultValue={30} disabled={false}></Slider>
-                  <Input placeholder={"input"} type={"text"} style={{}} onChange={this.update}></Input>
-                  <Button type="primary" style={{ marginLeft: 8 }} onClick={this.search}>
-                    Search
-                  </Button>
-                </div>
+                </Row>
+                <Row className="justify-content-md-center">
+                  <Autocomplete
+                    id="combo-box-demo"
+                    options={items}
+                    getOptionLabel={(option) => option.label}
+                    style={{ width: 600 }}
+                    renderInput={(params) => <TextField {...params} label="Doggo" variant="standard" />}
+                    onInputChange={this.update}
+                  />
+                  &nbsp; &nbsp; &nbsp; &nbsp;
+                  <Button variant="info" onClick={this.search} style={{backgroundColor: '#93C3C1', color:'#384D57', fontFamily: '"Courier New",Courier,"Lucida Sans Typewriter","Lucida Typewriter",monospace', fontWeight:'bold'}}>Search</Button>
+                </Row>
+                </Container>
               </header>
             </>
         );

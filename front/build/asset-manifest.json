@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.532445a1.chunk.css",
-    "main.js": "/static/js/main.37d8590c.chunk.js",
-    "main.js.map": "/static/js/main.37d8590c.chunk.js.map",
+    "main.css": "/static/css/main.90e0bc89.chunk.css",
+    "main.js": "/static/js/main.7c17e504.chunk.js",
+    "main.js.map": "/static/js/main.7c17e504.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.95a77404.js",
     "runtime-main.js.map": "/static/js/runtime-main.95a77404.js.map",
-    "static/css/2.6d1408ce.chunk.css": "/static/css/2.6d1408ce.chunk.css",
-    "static/js/2.82525d0c.chunk.js": "/static/js/2.82525d0c.chunk.js",
-    "static/js/2.82525d0c.chunk.js.map": "/static/js/2.82525d0c.chunk.js.map",
+    "static/css/2.301005e7.chunk.css": "/static/css/2.301005e7.chunk.css",
+    "static/js/2.58d3c8c3.chunk.js": "/static/js/2.58d3c8c3.chunk.js",
+    "static/js/2.58d3c8c3.chunk.js.map": "/static/js/2.58d3c8c3.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.3e7f8ab7b1c0d06b127c3d8a99748248.js": "/precache-manifest.3e7f8ab7b1c0d06b127c3d8a99748248.js",
+    "precache-manifest.ebd0924409d1d35cd8245f239828b488.js": "/precache-manifest.ebd0924409d1d35cd8245f239828b488.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.6d1408ce.chunk.css.map": "/static/css/2.6d1408ce.chunk.css.map",
-    "static/css/main.532445a1.chunk.css.map": "/static/css/main.532445a1.chunk.css.map",
-    "static/js/2.82525d0c.chunk.js.LICENSE.txt": "/static/js/2.82525d0c.chunk.js.LICENSE.txt",
+    "static/css/2.301005e7.chunk.css.map": "/static/css/2.301005e7.chunk.css.map",
+    "static/css/main.90e0bc89.chunk.css.map": "/static/css/main.90e0bc89.chunk.css.map",
+    "static/js/2.58d3c8c3.chunk.js.LICENSE.txt": "/static/js/2.58d3c8c3.chunk.js.LICENSE.txt",
     "static/media/affenpinscher.jpg": "/static/media/affenpinscher.71a984d6.jpg",
     "static/media/afghan-hound.jpg": "/static/media/afghan-hound.ac642c31.jpg",
     "static/media/airedale-terrier.jpg": "/static/media/airedale-terrier.6e64322a.jpg",
@@ -175,7 +175,6 @@
     "static/media/lapponian-herder.jpg": "/static/media/lapponian-herder.e119c332.jpg",
     "static/media/leonberger.jpg": "/static/media/leonberger.ac712d44.jpg",
     "static/media/lhasa-apso.jpg": "/static/media/lhasa-apso.af3fbdad.jpg",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg",
     "static/media/lwchen.jpg": "/static/media/lwchen.e119c332.jpg",
     "static/media/maltese.jpg": "/static/media/maltese.2ca380bd.jpg",
     "static/media/manchester-terrier-standard.jpg": "/static/media/manchester-terrier-standard.aa112c6a.jpg",
@@ -296,9 +295,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.95a77404.js",
-    "static/css/2.6d1408ce.chunk.css",
-    "static/js/2.82525d0c.chunk.js",
-    "static/css/main.532445a1.chunk.css",
-    "static/js/main.37d8590c.chunk.js"
+    "static/css/2.301005e7.chunk.css",
+    "static/js/2.58d3c8c3.chunk.js",
+    "static/css/main.90e0bc89.chunk.css",
+    "static/js/main.7c17e504.chunk.js"
   ]
 }
