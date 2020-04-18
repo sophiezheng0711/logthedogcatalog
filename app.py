@@ -23,6 +23,7 @@ def hello_world():
 @cross_origin()
 def ir():
     name = request.args.get('name')
+    name = re.sub(' ', '-', name).lower()
     print("***"+name)
     df = pd.read_excel("data.xlsx")
     names = list(df["Name"])
@@ -50,7 +51,7 @@ def ir():
     for x in range(len(names)):
         name = names[x]
         for y in range(len(sim)):
-            if name in sim[y]:
+            if name in sim[y].lower():
                 adj_mat[x,y] += 1
                 
     embedding = spectral_embedding(adj_mat)
