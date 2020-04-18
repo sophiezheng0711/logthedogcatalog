@@ -24,10 +24,9 @@ def hello_world():
 def ir():
     name = request.args.get('name')
     name = re.sub(' ', '-', name).lower()
-    print("***"+name)
-    df = pd.read_excel("data.xlsx")
+    df = pd.read_excel("test3.xlsx")
     names = list(df["Name"])
-    names = [name.lower().strip() for name in names]
+    names = [namez.lower().strip() for namez in names]
     sim = df["Similar breeds"]
     
     for ind in range(len(names)):
@@ -41,19 +40,16 @@ def ir():
         arr = string.split(",")
         for ind in range(len(arr)):
             arr[ind] = re.sub('[^a-zA-Z-]+', '', arr[ind])
-            if arr[ind] in names:
-                pass
-            else:
-                print(arr[ind])
         sims += arr
-        
+
     adj_mat = np.zeros([len(names), len(names)])
     for x in range(len(names)):
-        name = names[x]
+        namez = names[x]
         for y in range(len(sim)):
-            if name in sim[y].lower():
+            if namez in sim[y].lower():
                 adj_mat[x,y] += 1
-                
+    print(sum(adj_mat))      
+    print(name)
     embedding = spectral_embedding(adj_mat)
     
     pnt = embedding[names.index(name.lower())]
