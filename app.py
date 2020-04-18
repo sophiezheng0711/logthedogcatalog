@@ -32,10 +32,10 @@ def ir(name):
     sim = df["Similar breeds"]
     
     for ind in range(len(names)):
-        name = names[ind]
-        name = name.strip()
-        name = re.sub(' ', '-', name)
-        names[ind] = name
+        namez = names[ind]
+        namez = name.strip()
+        namez = re.sub(' ', '-', namez)
+        names[ind] = namez
 
     sims = []
     for string in sim:
