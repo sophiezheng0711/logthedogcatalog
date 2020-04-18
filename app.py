@@ -24,7 +24,7 @@ def hello_world():
 def ir():
     name = request.args.get('name')
     name = re.sub(' ', '-', name).lower()
-    df = pd.read_excel("test3.xlsx")
+    df = pd.read_excel("data.xlsx")
     names = list(df["Name"])
     names = [namez.lower().strip() for namez in names]
     sim = df["Similar breeds"]
@@ -49,6 +49,7 @@ def ir():
             if namez in sim[y].lower():
                 adj_mat[x,y] += 1
 
+    adj_mat = adj_mat + adj_mat.T
     embedding = spectral_embedding(adj_mat)
     
     pnt = embedding[names.index(name.lower())]
