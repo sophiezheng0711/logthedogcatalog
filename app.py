@@ -31,7 +31,7 @@ def ir():
     
     for ind in range(len(names)):
         namez = names[ind]
-        namez = name.lower().strip()
+        namez = namez.lower().strip()
         namez = re.sub(' ', '-', namez)
         names[ind] = namez
 
