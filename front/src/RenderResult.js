@@ -31,12 +31,12 @@ class App extends React.Component {
                 breed: 0.5,
                 sociability: 0.5,
                 size: 0.5
-                
+
               },
               meta: { color: 'aqua' }
             }
           ];
-       
+
       const captions = {
             // columns
             energy: 'Energy Match',
@@ -46,12 +46,12 @@ class App extends React.Component {
             size: 'Size Match'
           };
         return (
-            <Card style={{ width: '18rem', flex: '1', size: 'cover'}}>
+            <Card style={{ width: '18rem', flex: '1', size: 'cover', color:'#1B4F72', fontFamily: 'Comic Sans MS'}}>
                 <Card.Img variant="top" src={require('./dogpics/' + this.props.name + '.jpg')} height='180px' style={{objectFit: 'cover'}} />
                 <Card.Body>
                     <Card.Title>{this.props.rank + ". " + this.formatName(this.props.name)}</Card.Title>
                     <RadarChart captions={captions} data={data} size={200}/>
-                    <Button variant="secondary">Learn More</Button>
+                    <Button variant="info">Learn More</Button>
                 </Card.Body>
             </Card>
         );

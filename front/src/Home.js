@@ -57,7 +57,7 @@ class App extends React.Component {
       render() {
 
         if(this.state.loading){
-            return <Loader /> 
+            return <Loader />
         }
 
         return (
@@ -65,7 +65,7 @@ class App extends React.Component {
               <header className="App-header">
               <Container>
                 <Row className="justify-content-md-center">
-                <p style={{color:'black', fontFamily: '"Courier New",Courier,"Lucida Sans Typewriter","Lucida Typewriter",monospace', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)', fontWeight:'bold'}}>&nbsp; Logtheanalogdog &nbsp;</p>
+                <p style={{color:'#1B4F72', fontFamily: 'Comic Sans MS', fontSize:'60px', backgroundColor: 'transparent', fontWeight:'bold'}}>&nbsp; Logtheanalogdog &nbsp;</p>
                 </Row>
                 <Row className="justify-content-md-center">
                   <Autocomplete
@@ -77,7 +77,7 @@ class App extends React.Component {
                     onInputChange={this.update}
                   />
                   &nbsp; &nbsp; &nbsp; &nbsp;
-                  <Button variant="info" onClick={this.search} style={{backgroundColor: '#93C3C1', color:'#384D57', fontFamily: '"Courier New",Courier,"Lucida Sans Typewriter","Lucida Typewriter",monospace', fontWeight:'bold'}}>Search</Button>
+                  <Button onClick={this.search} style={{backgroundColor: '#AED6F1', color:'#3498DB', fontFamily: 'Comic Sans MS', fontWeight:'bold'}}>Search</Button>
                 </Row>
                 </Container>
               </header>

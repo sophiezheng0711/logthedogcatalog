@@ -4,16 +4,16 @@ import RenderResult from "./RenderResult";
 import Textbox from "./Textbox";
 
 class App extends React.Component {
-    
+
     render() {
         const q = window.location.hash;
         const rstList = JSON.parse(decodeURI(q.substring(9, q.length)));
         // console.log(rstList.data);
         return (
             <>
-            
+
             <Container>
-                <Textbox title={rstList.dog.toUpperCase()}/>
+                <Textbox title={rstList.dog.toUpperCase()} style={{color:'#1B4F72', fontFamily: 'Comic Sans MS'}}/>
                 <CardColumns fluid="xs">
                 {rstList.data.map((value, index) => (
                     <>
