@@ -39,11 +39,11 @@ class App extends React.Component {
 
       const captions = {
             // columns
-            energy: 'Energy Match',
-            utility: 'Utility Match',
-            breed: 'Breed Match',
-            sociability: 'Sociability Match',
-            size: 'Size Match'
+            energy: 'Energy',
+            utility: 'Utility',
+            breed: 'Breed',
+            sociability: 'Sociability',
+            size: 'Size'
           };
         return (
             <Card style={{ width: '18rem', flex: '1', size: 'cover', color:'#1B4F72', fontFamily: 'Loki'}}>
