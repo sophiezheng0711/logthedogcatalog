@@ -51,7 +51,8 @@ class App extends React.Component {
                 <Card.Body>
                     <Card.Title>{this.props.rank + ". " + this.formatName(this.props.name)}</Card.Title>
                     <RadarChart captions={captions} data={data} size={200}/>
-                    <Button variant="info">Learn More</Button>
+                    <Button style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
+                  border: '2px solid black', borderRadius: '3px', color: 'black'}}>Learn More</Button>
                 </Card.Body>
             </Card>
         );

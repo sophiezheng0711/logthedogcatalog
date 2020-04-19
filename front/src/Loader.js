@@ -18,7 +18,7 @@ const Loader = () => {
           logoSrc='./loader.gif'
           text={<h3 style={{fontFamily:'Cubes', marginTop: '1em'}}>Woof...</h3>}
           >
-
+            <></>
         </LoadingScreen>
     );
 }
