@@ -6,7 +6,7 @@ class App extends React.Component {
         return (
             <Jumbotron fluid {...this.props}>
                 <Container>
-                <h1>{this.props.title}</h1>
+                <h1 style={{fontFamily: 'Anders', marginBottom: '1em'}}>{this.props.title}</h1>
                 <p>
                 {this.props.text}
                 </p>

@@ -65,7 +65,7 @@ class App extends React.Component {
               <header className="App-header">
               <Container>
                 <Row className="justify-content-md-center">
-                <p style={{color:'#1B4F72', fontFamily: 'Comic Sans MS', fontSize:'60px', backgroundColor: 'transparent', fontWeight:'bold'}}>&nbsp; Logtheanalogdog &nbsp;</p>
+                <p style={{color:'black', fontFamily: 'Anders', fontSize:'80px', backgroundColor: 'rgba(204, 204, 204, 0.2)'}}>&nbsp; Logtheanalogdog &nbsp;</p>
                 </Row>
                 <Row className="justify-content-md-center">
                   <Autocomplete
@@ -77,7 +77,7 @@ class App extends React.Component {
                     onInputChange={this.update}
                   />
                   &nbsp; &nbsp; &nbsp; &nbsp;
-                  <Button onClick={this.search} style={{backgroundColor: '#AED6F1', color:'#3498DB', fontFamily: 'Comic Sans MS', fontWeight:'bold'}}>Search</Button>
+                  <Button onClick={this.search} variant='secondary' style={{fontFamily: 'Loki', fontWeight:'bold'}}>Search</Button>
                 </Row>
                 </Container>
               </header>

@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Loki';
+  src: local('Loki'), url(./fonts/Loki-Regular.otf\ 00-27-44-923.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Anders';
+  src: local('Anders'), url(./fonts/Anders.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Cubes';
+  src: local('Cubes'), url(./fonts/Cute\ Notes.ttf) format('truetype');
+}

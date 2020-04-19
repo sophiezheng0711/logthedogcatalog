@@ -46,7 +46,7 @@ class App extends React.Component {
             size: 'Size Match'
           };
         return (
-            <Card style={{ width: '18rem', flex: '1', size: 'cover', color:'#1B4F72', fontFamily: 'Comic Sans MS'}}>
+            <Card style={{ width: '18rem', flex: '1', size: 'cover', color:'#1B4F72', fontFamily: 'Loki'}}>
                 <Card.Img variant="top" src={require('./dogpics/' + this.props.name + '.jpg')} height='180px' style={{objectFit: 'cover'}} />
                 <Card.Body>
                     <Card.Title>{this.props.rank + ". " + this.formatName(this.props.name)}</Card.Title>

@@ -1,7 +1,6 @@
 import React from 'react';
 import {CardColumns, Container} from "react-bootstrap";
 import RenderResult from "./RenderResult";
-import Textbox from "./Textbox";
 
 class App extends React.Component {
 
@@ -13,7 +12,8 @@ class App extends React.Component {
             <>
 
             <Container>
-                <Textbox title={rstList.dog.toUpperCase()} style={{color:'#1B4F72', fontFamily: 'Comic Sans MS'}}/>
+                <p style={{color:'#1B4F72', fontFamily: 'Anders', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)'}}>&nbsp; {rstList.dog.toUpperCase()} &nbsp;</p>
+                {/* <Textbox title={rstList.dog.toUpperCase()} style={{color:'#1B4F72', fontFamily: 'Anders'}}/> */}
                 <CardColumns fluid="xs">
                 {rstList.data.map((value, index) => (
                     <>
