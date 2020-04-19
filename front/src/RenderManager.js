@@ -1,8 +1,9 @@
 import React from 'react';
-import {CardColumns, Container} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import RenderResult from "./RenderResult";
 import axios from 'axios';
 import Loader from './Loader';
+import { MDBRow } from "mdbreact";
 
 class App extends React.Component {
 
@@ -43,14 +44,19 @@ class App extends React.Component {
         return (
             <>
             <Container>
-                <p style={{color:'#1B4F72', fontFamily: 'Anders', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)'}}>&nbsp; {this.state.name.toUpperCase()} &nbsp;</p>
-                <CardColumns fluid="xs">
+                <p style={{marginBottom: '1em', color:'black', fontFamily: 'Anders', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)'}}>&nbsp; {this.state.name.toUpperCase()} &nbsp;</p>
+                <MDBRow style={{display: 'flex', flexWrap: 'wrap'}}>
                 {rstList.map((value, index) => (
-                    <>
+                    <div style={{
+                        lineHeight: '150px',
+                        marginLeft: '2em',
+                        flex: '1 0 auto',
+                        overflow: 'auto'
+                    }}>
                         <RenderResult rank={index+1} name={value[0]} similarity={value[1]} />
-                    </>
+                    </div>
                 ))}
-                </CardColumns>
+                </MDBRow>
             </Container>
             </>
         );
