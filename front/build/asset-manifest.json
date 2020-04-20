@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.1416dee9.chunk.css",
-    "main.js": "/static/js/main.f714c67e.chunk.js",
-    "main.js.map": "/static/js/main.f714c67e.chunk.js.map",
+    "main.js": "/static/js/main.f149009a.chunk.js",
+    "main.js.map": "/static/js/main.f149009a.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.95a77404.js",
     "runtime-main.js.map": "/static/js/runtime-main.95a77404.js.map",
     "static/css/2.28992177.chunk.css": "/static/css/2.28992177.chunk.css",
     "static/js/2.3ccc4dcf.chunk.js": "/static/js/2.3ccc4dcf.chunk.js",
     "static/js/2.3ccc4dcf.chunk.js.map": "/static/js/2.3ccc4dcf.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.0d023602b8a2b797cd5b03970f34811e.js": "/precache-manifest.0d023602b8a2b797cd5b03970f34811e.js",
+    "precache-manifest.6b4b633424fc648a8c9641dc2e7bae92.js": "/precache-manifest.6b4b633424fc648a8c9641dc2e7bae92.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.28992177.chunk.css.map": "/static/css/2.28992177.chunk.css.map",
     "static/css/main.1416dee9.chunk.css.map": "/static/css/main.1416dee9.chunk.css.map",
@@ -173,7 +173,7 @@
     "static/media/lagotto-romagnolo.jpg": "/static/media/lagotto-romagnolo.e119c332.jpg",
     "static/media/lakeland-terrier.jpg": "/static/media/lakeland-terrier.0f62008d.jpg",
     "static/media/lancashire-heeler.jpg": "/static/media/lancashire-heeler.956933df.jpg",
-    "static/media/lapponian-herder.jpg": "/static/media/lapponian-herder.e119c332.jpg",
+    "static/media/lapponian-herder.jpg": "/static/media/lapponian-herder.58fd4eb0.jpg",
     "static/media/leonberger.jpg": "/static/media/leonberger.ac712d44.jpg",
     "static/media/lhasa-apso.jpg": "/static/media/lhasa-apso.af3fbdad.jpg",
     "static/media/lwchen.jpg": "/static/media/lwchen.e119c332.jpg",
@@ -265,7 +265,7 @@
     "static/media/staffordshire-bull-terrier.jpg": "/static/media/staffordshire-bull-terrier.0577ac8d.jpg",
     "static/media/standard-schnauzer.jpg": "/static/media/standard-schnauzer.58e2679a.jpg",
     "static/media/sussex-spaniel.jpg": "/static/media/sussex-spaniel.85d25e90.jpg",
-    "static/media/swedish-lapphund.jpg": "/static/media/swedish-lapphund.e119c332.jpg",
+    "static/media/swedish-lapphund.jpg": "/static/media/swedish-lapphund.12de8c59.jpg",
     "static/media/swedish-vallhund.jpg": "/static/media/swedish-vallhund.d51b5ec3.jpg",
     "static/media/taiwan-dog.jpg": "/static/media/taiwan-dog.e119c332.jpg",
     "static/media/teddy-roosevelt-terrier.jpg": "/static/media/teddy-roosevelt-terrier.e119c332.jpg",
@@ -291,7 +291,7 @@
     "static/media/wirehaired-vizsla.jpg": "/static/media/wirehaired-vizsla.f179e4ec.jpg",
     "static/media/working-kelpie.jpg": "/static/media/working-kelpie.e119c332.jpg",
     "static/media/xoloitzcuintli.jpg": "/static/media/xoloitzcuintli.e119c332.jpg",
-    "static/media/yakutian-laika.jpg": "/static/media/yakutian-laika.e119c332.jpg",
+    "static/media/yakutian-laika.jpg": "/static/media/yakutian-laika.a7e237fd.jpg",
     "static/media/yorkshire-terrier.jpg": "/static/media/yorkshire-terrier.04d20cb0.jpg"
   },
   "entrypoints": [
@@ -299,6 +299,6 @@
     "static/css/2.28992177.chunk.css",
     "static/js/2.3ccc4dcf.chunk.js",
     "static/css/main.1416dee9.chunk.css",
-    "static/js/main.f714c67e.chunk.js"
+    "static/js/main.f149009a.chunk.js"
   ]
 }

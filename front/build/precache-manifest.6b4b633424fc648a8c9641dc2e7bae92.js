@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ea7c43523b07e570ad3a70092c720870",
+    "revision": "618e54f93c0432ecf0698d7bfcc89701",
     "url": "/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/2.28992177.chunk.css"
   },
   {
-    "revision": "7cf5905643c84abcf9ae",
+    "revision": "d27559d2c18fbcdccfa2",
     "url": "/static/css/main.1416dee9.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.3ccc4dcf.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7cf5905643c84abcf9ae",
-    "url": "/static/js/main.f714c67e.chunk.js"
+    "revision": "d27559d2c18fbcdccfa2",
+    "url": "/static/js/main.f149009a.chunk.js"
   },
   {
     "revision": "cd5cc0b019c8434d78aa",
@@ -672,8 +672,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/lancashire-heeler.956933df.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/lapponian-herder.e119c332.jpg"
+    "revision": "58fd4eb02ff8049b163782c0f7857fdd",
+    "url": "/static/media/lapponian-herder.58fd4eb0.jpg"
   },
   {
     "revision": "ac712d44567512ffdff4ed32c8072e4b",
@@ -1040,8 +1040,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/sussex-spaniel.85d25e90.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/swedish-lapphund.e119c332.jpg"
+    "revision": "12de8c59e79ad56141fb64cc0317fc0b",
+    "url": "/static/media/swedish-lapphund.12de8c59.jpg"
   },
   {
     "revision": "d51b5ec33f113a39571f33bd459cafa6",
@@ -1144,8 +1144,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/xoloitzcuintli.e119c332.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/yakutian-laika.e119c332.jpg"
+    "revision": "a7e237fd31dbdd98a0b9ad3f81fe5d73",
+    "url": "/static/media/yakutian-laika.a7e237fd.jpg"
   },
   {
     "revision": "04d20cb096fb319f9aba4e1582144d14",
