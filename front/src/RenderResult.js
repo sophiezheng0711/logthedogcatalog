@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Button, Container, Row, Col} from "react-bootstrap";
+import {Card, Button, Container, Row, Col, OverlayTrigger, Tooltip} from "react-bootstrap";
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css';
 import AboutWindow from './AboutWindow';
@@ -14,6 +14,7 @@ class App extends React.Component {
         this.openAbout = this.openAbout.bind(this);
         this.closeAbout = this.closeAbout.bind(this);
         this.linkSearch = this.linkSearch.bind(this);
+        this.renderTooltip = this.renderTooltip.bind(this);
     }
 
     formatName(name) {
@@ -41,6 +42,14 @@ class App extends React.Component {
       const c = this.props.params;
       window.location.replace(window.location.origin + "/#/search?name=" + encodeURI(this.props.name+'&breed='+c[1]+'&height='+c[2]+'&weight='+c[3]+'&pop='+c[4]));
       window.location.reload(true)
+    }
+
+    renderTooltip(props) {
+      return (
+        <Tooltip id="button-tooltip" {...props}>
+          Search with the same settings as before!
+        </Tooltip>
+      );
     }
 
     render() {
@@ -87,8 +96,15 @@ class App extends React.Component {
                         border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '1em', marginBottom: '2em'}}>Learn More</Button>
                       </Col>
                       <Col sm={2}>
+                      <OverlayTrigger
+                        placement="top"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={this.renderTooltip}
+                      >
                         <Button onClick={this.linkSearch} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
                         border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '1em', marginBottom: '2em'}}>Search Me</Button>
+                      </OverlayTrigger>
+                        
                       </Col>
                     </Row>
                   </Container>
