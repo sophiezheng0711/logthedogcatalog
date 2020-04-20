@@ -6,18 +6,9 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { Switch } from 'antd';
 import "antd/dist/antd.css";
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: 400 + theme.spacing(3) * 2,
-  },
-  margin: {
-    height: theme.spacing(3),
-  },
-}));
 
 const PrettoSlider = withStyles({
   root: {
@@ -49,58 +40,6 @@ const PrettoSlider = withStyles({
   },
 })(Slider);
 
-function AdvancedInterface() {
-  const classes = useStyles();
-  return(
-      <Container style={{marginTop: '3em'}}>
-          <Row>
-              <Col className={classes.root}>
-                  <Row>
-                      <Col sm={3}>
-                          <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Breed</div>
-                      </Col>
-                      <Col>
-                          <PrettoSlider step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" defaultValue={20} />
-                      </Col>
-                  </Row>
-              </Col>
-              <Col className={classes.root} sm={{offset:1}}>
-                  <Row>
-                      <Col sm={3}>
-                          <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Height</div>
-                      </Col>
-                      <Col>
-                          <PrettoSlider step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" defaultValue={20} />
-                      </Col>
-                  </Row>
-              </Col>
-          </Row>
-          <Row>
-              <Col className={classes.root}>
-                  <Row>
-                      <Col sm={3}>
-                          <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Weight</div>
-                      </Col>
-                      <Col>
-                          <PrettoSlider step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" defaultValue={20} />
-                      </Col>
-                  </Row>
-              </Col>
-              <Col className={classes.root} sm={{offset:1}}>
-                  <Row>
-                      <Col sm={3}>
-                          <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Popularity</div>
-                      </Col>
-                      <Col sm={{span:7, offset: 2}}>
-                          <PrettoSlider step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" defaultValue={20} />
-                      </Col>
-                  </Row>
-              </Col>
-          </Row>
-      </Container>
-  );
-}
-
 class App extends React.Component {
 
     constructor(props) {
@@ -108,17 +47,26 @@ class App extends React.Component {
         this.search = this.search.bind(this);
         this.update = this.update.bind(this);
         this.onToggle = this.onToggle.bind(this);
+        this.changeBreed = this.changeBreed.bind(this);
+        this.changeHeight = this.changeHeight.bind(this);
+        this.changeWeight = this.changeWeight.bind(this);
+        this.changePop = this.changePop.bind(this);
         this.state = {
             name: null,
             advanceSwitch: false,
             toggleBackColor: 'black',
-            toggleTextColor: 'black'
+            toggleTextColor: 'black',
+            breed: 10,
+            height: 5,
+            weight: 5,
+            pop: 3
         };
+        
       }
 
       search() {
-        const n = this.state.name;
-        window.location.replace(window.location.origin + "/#/search?" + encodeURI(n));
+        const n = this.state.name+'&breed='+this.state.breed+'&height='+this.state.height+'&weight='+this.state.weight+'&pop='+this.state.pop;
+        window.location.replace(window.location.origin + "/#/search?name=" + encodeURI(n));
       }
 
       onToggle(checked) {
@@ -135,7 +83,26 @@ class App extends React.Component {
             name: value
         });
       };
+
+      changeBreed(_,value) {
+        console.log(value);
+        this.setState({breed: value});
+      }
+
+      changeHeight(_,value) {
+        this.setState({height: value});
+      }
+
+      changeWeight(_,value) {
+        this.setState({weight: value});
+      }
+
+      changePop(_,value) {
+        this.setState({pop: value});
+      }
+
       render() {
+        const classes = this.props;
         return (
             <>
               <header className="App-header">
@@ -173,7 +140,52 @@ class App extends React.Component {
                 </Row>
                 {this.state.advanceSwitch &&
                   <Row className="justify-content-md-center">
-                    <AdvancedInterface />
+                    <Container style={{marginTop: '3em'}}>
+                      <Row>
+                          <Col className={classes.root}>
+                              <Row>
+                                  <Col sm={3}>
+                                      <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Breed</div>
+                                  </Col>
+                                  <Col>
+                                      <PrettoSlider defaultValue={this.state.breed} onChangeCommitted={this.changeBreed} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
+                                  </Col>
+                              </Row>
+                          </Col>
+                          <Col className={classes.root} sm={{offset:1}}>
+                              <Row>
+                                  <Col sm={3}>
+                                      <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Height</div>
+                                  </Col>
+                                  <Col>
+                                      <PrettoSlider defaultValue={this.state.height} onChangeCommitted={this.changeHeight} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
+                                  </Col>
+                              </Row>
+                          </Col>
+                      </Row>
+                      <Row>
+                          <Col className={classes.root}>
+                              <Row>
+                                  <Col sm={3}>
+                                      <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Weight</div>
+                                  </Col>
+                                  <Col>
+                                      <PrettoSlider defaultValue={this.state.weight} onChangeCommitted={this.changeWeight} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
+                                  </Col>
+                              </Row>
+                          </Col>
+                          <Col className={classes.root} sm={{offset:1}}>
+                              <Row>
+                                  <Col sm={3}>
+                                      <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Popularity</div>
+                                  </Col>
+                                  <Col sm={{span:7, offset: 2}}>
+                                      <PrettoSlider defaultValue={this.state.pop} onChangeCommitted={this.changePop} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
+                                  </Col>
+                              </Row>
+                          </Col>
+                      </Row>
+                  </Container>
                   </Row>
                 }
                 </Container>

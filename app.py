@@ -26,14 +26,18 @@ def root():
 def hello_world():
     return 'UFO signal connected -_-'
 
-def computeRank(x):
+def computeRank(x, c_breed, c_height, c_weight, c_pop):
     y = json.loads(x)
-    return y['sim'] + y['pop'] + y['height'] + y['weight']
+    return float(c_breed)*y['sim'] + float(c_pop)*y['pop'] + float(c_height)*y['height'] + float(c_weight)*y['weight']
 
 @app.route('/api/search', methods=['GET'])
 @cross_origin()
 def ir():
     name = request.args.get('name')
+    c_breed = request.args.get('breed')
+    c_height = request.args.get('height')
+    c_weight = request.args.get('weight')
+    c_pop = request.args.get('pop')
     name = re.sub(' ', '-', name).lower()
     names = list(df["Name"])
     names = [namez.lower().strip() for namez in names]
@@ -86,7 +90,7 @@ def ir():
         to_return += [json.dumps({"name": names[x], "sim": 1-vals[x], "pop": pops[x], "about": abouts[x], "height" : heightSim, "weight" : weightSim})]
 
     to_be_sorted = to_return[1:]    
-    to_be_sorted.sort(key=(computeRank), reverse=True)
+    to_be_sorted.sort(key=(lambda x: computeRank(x, c_breed, c_height, c_weight, c_pop)), reverse=True)
     return json.dumps([to_return[0]] + to_be_sorted[:9]), 200
 
 

@@ -38,7 +38,8 @@ class App extends React.Component {
     }
 
     linkSearch() {
-      window.location.replace(window.location.origin + "/#/search?" + encodeURI(this.props.name));
+      const c = this.props.params;
+      window.location.replace(window.location.origin + "/#/search?name=" + encodeURI(this.props.name+'&breed='+c[1]+'&height='+c[2]+'&weight='+c[3]+'&pop='+c[4]));
       window.location.reload(true)
     }
 

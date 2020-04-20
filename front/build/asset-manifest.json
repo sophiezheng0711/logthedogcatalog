@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.1416dee9.chunk.css",
-    "main.js": "/static/js/main.06c3af5e.chunk.js",
-    "main.js.map": "/static/js/main.06c3af5e.chunk.js.map",
+    "main.css": "/static/css/main.fa281354.chunk.css",
+    "main.js": "/static/js/main.0514e928.chunk.js",
+    "main.js.map": "/static/js/main.0514e928.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.95a77404.js",
     "runtime-main.js.map": "/static/js/runtime-main.95a77404.js.map",
-    "static/css/2.28992177.chunk.css": "/static/css/2.28992177.chunk.css",
-    "static/js/2.cb2cb9be.chunk.js": "/static/js/2.cb2cb9be.chunk.js",
-    "static/js/2.cb2cb9be.chunk.js.map": "/static/js/2.cb2cb9be.chunk.js.map",
+    "static/css/2.bb622eaf.chunk.css": "/static/css/2.bb622eaf.chunk.css",
+    "static/js/2.944952e0.chunk.js": "/static/js/2.944952e0.chunk.js",
+    "static/js/2.944952e0.chunk.js.map": "/static/js/2.944952e0.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.2bcb833bbe748854319471afbfa73778.js": "/precache-manifest.2bcb833bbe748854319471afbfa73778.js",
+    "precache-manifest.e22ad62c1d8e9babc8abda4b74215487.js": "/precache-manifest.e22ad62c1d8e9babc8abda4b74215487.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.28992177.chunk.css.map": "/static/css/2.28992177.chunk.css.map",
-    "static/css/main.1416dee9.chunk.css.map": "/static/css/main.1416dee9.chunk.css.map",
-    "static/js/2.cb2cb9be.chunk.js.LICENSE.txt": "/static/js/2.cb2cb9be.chunk.js.LICENSE.txt",
+    "static/css/2.bb622eaf.chunk.css.map": "/static/css/2.bb622eaf.chunk.css.map",
+    "static/css/main.fa281354.chunk.css.map": "/static/css/main.fa281354.chunk.css.map",
+    "static/js/2.944952e0.chunk.js.LICENSE.txt": "/static/js/2.944952e0.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/Loki-Regular.otf 00-27-44-923.b8276354.otf",
     "static/media/affenpinscher.jpg": "/static/media/affenpinscher.71a984d6.jpg",
     "static/media/afghan-hound.jpg": "/static/media/afghan-hound.ac642c31.jpg",
@@ -296,9 +296,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.95a77404.js",
-    "static/css/2.28992177.chunk.css",
-    "static/js/2.cb2cb9be.chunk.js",
-    "static/css/main.1416dee9.chunk.css",
-    "static/js/main.06c3af5e.chunk.js"
+    "static/css/2.bb622eaf.chunk.css",
+    "static/js/2.944952e0.chunk.js",
+    "static/css/main.fa281354.chunk.css",
+    "static/js/main.0514e928.chunk.js"
   ]
 }

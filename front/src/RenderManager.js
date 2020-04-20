@@ -11,7 +11,7 @@ class App extends React.Component {
         super(props);
         this.search = this.search.bind(this);
         this.state = {
-            name: null,
+            params: [], // params in the order of breed, height, weight, pop
             result: [],
             loading: true,
         };
@@ -20,15 +20,20 @@ class App extends React.Component {
       search() {
         const q = window.location.hash;
         const n = q.substring(9, q.length);
-        axios.get('http://localhost:5000/api/search?name=' + n)
-        // axios.get('/api/search?name=' + n)
+        const temp = n.split("&");
+        var tempLst = []
+        temp.map((value) => (
+            tempLst.push(value.split("=")[1])
+        ));
+        // axios.get('http://localhost:5000/api/search?' + n)
+        axios.get('/api/search?' + n)
             .then((response) => {
                 console.log(response.data);
             if (response.data.length === 0) {
               window.location.replace(window.location.origin + "/#/notfound");
             }
             else {
-              this.setState({loading: false, result:response.data, name: decodeURI(n)});
+              this.setState({loading: false, result:response.data, params:tempLst});
             }
             })
             .catch(function (error) {
@@ -50,7 +55,7 @@ class App extends React.Component {
         return (
             <>
             <Container>
-                <p style={{color:'black', fontFamily: 'Anders', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)'}}>&nbsp; {this.state.name.toUpperCase()} &nbsp;</p>
+                <p style={{color:'black', fontFamily: 'Anders', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)'}}>&nbsp; {jsons[0].name} &nbsp;</p>
                 <Container style={{backgroundColor: 'rgba(204, 204, 204, 0.5)', marginBottom: '2em'}}>
                     <Row>
                         <Col>
@@ -74,7 +79,7 @@ class App extends React.Component {
                         overflow: 'auto'
                     }}>
                         <RenderResult rank={index+1} name={value.name} similarity={value.sim} popularity={value.pop} about={value.about} height={value.height}
-                        weight={value.weight} />
+                        weight={value.weight} params={this.state.params} />
                     </div>
                 ))}
                 </MDBRow>
