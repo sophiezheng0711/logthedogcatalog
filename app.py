@@ -85,7 +85,7 @@ def ir():
     queryMaxWeight = float(maxWeights[inds[0]])
 
     to_return = []
-    for x in inds[1:10]:
+    for x in inds[:10]:
         heightSim = rangeSim(queryMinHeight, queryMaxHeight, minHeights[x], maxHeights[x])
         weightSim = rangeSim(queryMinWeight, queryMaxWeight, minWeights[x], maxWeights[x])
         to_return += [json.dumps({"name": names[x], "sim": 1-vals[x], "pop": pops[x], "about": abouts[x], "height" : heightSim, "weight" : weightSim})]

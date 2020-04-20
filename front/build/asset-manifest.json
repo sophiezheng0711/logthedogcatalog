@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.1416dee9.chunk.css",
-    "main.js": "/static/js/main.b59842da.chunk.js",
-    "main.js.map": "/static/js/main.b59842da.chunk.js.map",
+    "main.js": "/static/js/main.db64be31.chunk.js",
+    "main.js.map": "/static/js/main.db64be31.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.95a77404.js",
     "runtime-main.js.map": "/static/js/runtime-main.95a77404.js.map",
     "static/css/2.28992177.chunk.css": "/static/css/2.28992177.chunk.css",
-    "static/js/2.9216780d.chunk.js": "/static/js/2.9216780d.chunk.js",
-    "static/js/2.9216780d.chunk.js.map": "/static/js/2.9216780d.chunk.js.map",
+    "static/js/2.cb2cb9be.chunk.js": "/static/js/2.cb2cb9be.chunk.js",
+    "static/js/2.cb2cb9be.chunk.js.map": "/static/js/2.cb2cb9be.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.7973d6a344d2d5b51d3a336b2ed0bce9.js": "/precache-manifest.7973d6a344d2d5b51d3a336b2ed0bce9.js",
+    "precache-manifest.91ea89f00004b94e8d723f91ed4cddd5.js": "/precache-manifest.91ea89f00004b94e8d723f91ed4cddd5.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.28992177.chunk.css.map": "/static/css/2.28992177.chunk.css.map",
     "static/css/main.1416dee9.chunk.css.map": "/static/css/main.1416dee9.chunk.css.map",
-    "static/js/2.9216780d.chunk.js.LICENSE.txt": "/static/js/2.9216780d.chunk.js.LICENSE.txt",
+    "static/js/2.cb2cb9be.chunk.js.LICENSE.txt": "/static/js/2.cb2cb9be.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/Loki-Regular.otf 00-27-44-923.b8276354.otf",
     "static/media/affenpinscher.jpg": "/static/media/affenpinscher.71a984d6.jpg",
     "static/media/afghan-hound.jpg": "/static/media/afghan-hound.ac642c31.jpg",
@@ -297,8 +297,8 @@
   "entrypoints": [
     "static/js/runtime-main.95a77404.js",
     "static/css/2.28992177.chunk.css",
-    "static/js/2.9216780d.chunk.js",
+    "static/js/2.cb2cb9be.chunk.js",
     "static/css/main.1416dee9.chunk.css",
-    "static/js/main.b59842da.chunk.js"
+    "static/js/main.db64be31.chunk.js"
   ]
 }

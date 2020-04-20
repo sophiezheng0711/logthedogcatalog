@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container} from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 import RenderResult from "./RenderResult";
 import axios from 'axios';
 import Loader from './Loader';
@@ -46,12 +46,27 @@ class App extends React.Component {
         rstList.map((value) => (
             jsons.push(JSON.parse(value))
         ));
+        const fin = jsons.slice(1, jsons.length);
         return (
             <>
             <Container>
-                <p style={{marginBottom: '1em', color:'black', fontFamily: 'Anders', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)'}}>&nbsp; {this.state.name.toUpperCase()} &nbsp;</p>
+                <p style={{color:'black', fontFamily: 'Anders', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)'}}>&nbsp; {this.state.name.toUpperCase()} &nbsp;</p>
+                <Container style={{backgroundColor: 'rgba(204, 204, 204, 0.5)', marginBottom: '2em'}}>
+                    <Row>
+                        <Col>
+                            <img src={require('./dogpics/' + jsons[0].name + '.jpg')} height='300px' style={{objectFit: 'cover'}} alt='' />
+                        </Col>
+                        <Col style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}>
+                            <p>{jsons[0].about}</p>
+                        </Col>
+                    </Row>
+                </Container>
                 <MDBRow style={{display: 'flex', flexWrap: 'wrap'}}>
-                {jsons.map((value, index) => (
+                {fin.map((value, index) => (
                     <div style={{
                         lineHeight: '150px',
                         marginLeft: '2em',
