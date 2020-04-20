@@ -50,7 +50,8 @@ class App extends React.Component {
                 utility: 0.5,
                 breed: 0.5,
                 sociability: 0.5,
-                size: 0.5,
+                height: this.props.height,
+                weight: this.props.weight,
                 popularity: this.props.popularity,
               },
               meta: { color: 'aqua' }
@@ -63,7 +64,8 @@ class App extends React.Component {
             utility: 'Utility',
             breed: 'Breed',
             sociability: 'Sociability',
-            size: 'Size',
+            height: 'Height',
+            weight: 'Weight',
             popularity: 'Popularity'
           };
         return (

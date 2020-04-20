@@ -58,7 +58,8 @@ class App extends React.Component {
                         flex: '1 0 auto',
                         overflow: 'auto'
                     }}>
-                        <RenderResult rank={index+1} name={value.name} similarity={value.sim} popularity={value.pop} about={value.about} />
+                        <RenderResult rank={index+1} name={value.name} similarity={value.sim} popularity={value.pop} about={value.about} height={value.height}
+                        weight={value.weight} />
                     </div>
                 ))}
                 </MDBRow>
