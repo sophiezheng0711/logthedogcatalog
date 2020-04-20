@@ -44,6 +44,10 @@ class App extends React.Component {
                     style={{ width: 600 }}
                     renderInput={(params) => <TextField {...params} label="Doggo" variant="standard" />}
                     onInputChange={this.update}
+                    onKeyUp={(event) => {
+                      if (event.key === 'Enter')
+                          this.search()
+                  }}
                   />
                   &nbsp; &nbsp; &nbsp; &nbsp;
                   <Button onClick={this.search} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
