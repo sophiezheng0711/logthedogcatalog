@@ -16,7 +16,7 @@ const Loader = () => {
           spinnerColor='#9ee5f8'
           textColor='#d35400'
           logoSrc='./loader.gif'
-          text={<h3 style={{fontFamily:'Cubes', marginTop: '1em'}}>Woof...</h3>}
+          text={<h3 style={{fontFamily:'Cubes', marginTop: '1em', color: '#d35400'}}>Woof...</h3>}
           >
             <></>
         </LoadingScreen>

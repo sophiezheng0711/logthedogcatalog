@@ -20,11 +20,6 @@ class App extends React.Component {
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
-                    {/* {unreadMessages.length > 0 &&
-                      <h2>
-                        You have {unreadMessages.length} unread messages.
-                      </h2>
-                    } */}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
