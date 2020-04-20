@@ -13,7 +13,7 @@ class App extends React.Component {
         this.state = {
             name: null,
             result: [],
-            loading: true
+            loading: true,
         };
       }
 
@@ -23,6 +23,7 @@ class App extends React.Component {
         // axios.get('http://localhost:5000/api/search?name=' + n)
         axios.get('/api/search?name=' + n)
             .then((response) => {
+                console.log(response.data);
             if (response.data.length === 0) {
               window.location.replace(window.location.origin + "/#/notfound");
             }
@@ -41,19 +42,23 @@ class App extends React.Component {
             return <Loader />;
         }
         const rstList = this.state.result;
+        var jsons = [];
+        rstList.map((value) => (
+            jsons.push(JSON.parse(value))
+        ));
         return (
             <>
             <Container>
                 <p style={{marginBottom: '1em', color:'black', fontFamily: 'Anders', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)'}}>&nbsp; {this.state.name.toUpperCase()} &nbsp;</p>
                 <MDBRow style={{display: 'flex', flexWrap: 'wrap'}}>
-                {rstList.map((value, index) => (
+                {jsons.map((value, index) => (
                     <div style={{
                         lineHeight: '150px',
                         marginLeft: '2em',
                         flex: '1 0 auto',
                         overflow: 'auto'
                     }}>
-                        <RenderResult rank={index+1} name={value[0]} similarity={value[1]} popularity={value[2]} />
+                        <RenderResult rank={index+1} name={value.name} similarity={value.sim} popularity={value.pop} about={value.about} />
                     </div>
                 ))}
                 </MDBRow>

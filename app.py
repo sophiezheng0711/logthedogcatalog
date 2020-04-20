@@ -29,6 +29,7 @@ def ir():
     names = [namez.lower().strip() for namez in names]
     pops = list(df["Popularity"])
     sim = df["Similar breeds"]
+    abouts = list(df['About'])
     
     for ind in range(len(names)):
         namez = names[ind]
@@ -62,7 +63,8 @@ def ir():
     inds = np.argsort(vals)
     to_return = []
     for x in inds[:10]:
-        to_return += [[names[x], 1 - vals[x], pops[x]]]
+        to_return += [json.dumps({"name": names[x], "sim": 1-vals[x], "pop": pops[x], "about": abouts[x]})]
+        # to_return += [[names[x], 1 - vals[x], pops[x], abouts[x]]]
         
     return json.dumps(to_return), 200
 
