@@ -1,21 +1,20 @@
 {
   "files": {
     "main.css": "/static/css/main.1416dee9.chunk.css",
-    "main.js": "/static/js/main.bf9836ef.chunk.js",
-    "main.js.map": "/static/js/main.bf9836ef.chunk.js.map",
+    "main.js": "/static/js/main.d8c9d856.chunk.js",
+    "main.js.map": "/static/js/main.d8c9d856.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.95a77404.js",
     "runtime-main.js.map": "/static/js/runtime-main.95a77404.js.map",
     "static/css/2.28992177.chunk.css": "/static/css/2.28992177.chunk.css",
     "static/js/2.9216780d.chunk.js": "/static/js/2.9216780d.chunk.js",
     "static/js/2.9216780d.chunk.js.map": "/static/js/2.9216780d.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.d95c202b270da5ee0ad2a6e6ee7ed6f4.js": "/precache-manifest.d95c202b270da5ee0ad2a6e6ee7ed6f4.js",
+    "precache-manifest.74080acd878b380f08790285e1d0a4cb.js": "/precache-manifest.74080acd878b380f08790285e1d0a4cb.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.28992177.chunk.css.map": "/static/css/2.28992177.chunk.css.map",
     "static/css/main.1416dee9.chunk.css.map": "/static/css/main.1416dee9.chunk.css.map",
     "static/js/2.9216780d.chunk.js.LICENSE.txt": "/static/js/2.9216780d.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/Loki-Regular.otf 00-27-44-923.b8276354.otf",
-    "static/media/Spanish-water-dog.jpg": "/static/media/Spanish-water-dog.2cfddd6a.jpg",
     "static/media/affenpinscher.jpg": "/static/media/affenpinscher.71a984d6.jpg",
     "static/media/afghan-hound.jpg": "/static/media/afghan-hound.ac642c31.jpg",
     "static/media/airedale-terrier.jpg": "/static/media/airedale-terrier.6e64322a.jpg",
@@ -260,6 +259,7 @@
     "static/media/smooth-fox-terrier.jpg": "/static/media/smooth-fox-terrier.2d77628d.jpg",
     "static/media/soft-coated-wheaten-terrier.jpg": "/static/media/soft-coated-wheaten-terrier.c6b4b4ac.jpg",
     "static/media/spanish-mastiff.jpg": "/static/media/spanish-mastiff.610c96ed.jpg",
+    "static/media/spanish-water-dog.jpg": "/static/media/spanish-water-dog.2cfddd6a.jpg",
     "static/media/spinone-italiano.jpg": "/static/media/spinone-italiano.e119c332.jpg",
     "static/media/stabyhoun.jpg": "/static/media/stabyhoun.e119c332.jpg",
     "static/media/staffordshire-bull-terrier.jpg": "/static/media/staffordshire-bull-terrier.0577ac8d.jpg",
@@ -299,6 +299,6 @@
     "static/css/2.28992177.chunk.css",
     "static/js/2.9216780d.chunk.js",
     "static/css/main.1416dee9.chunk.css",
-    "static/js/main.bf9836ef.chunk.js"
+    "static/js/main.d8c9d856.chunk.js"
   ]
 }
