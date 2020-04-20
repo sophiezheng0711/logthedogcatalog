@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e33904392f89a6ab3672fec1d25768b5",
+    "revision": "a6d13a755295a92d56fef5ac5002bc84",
     "url": "/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/2.28992177.chunk.css"
   },
   {
-    "revision": "b1dedb059854b8c5a294",
+    "revision": "1e3660210048bd43afea",
     "url": "/static/css/main.1416dee9.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.9216780d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b1dedb059854b8c5a294",
-    "url": "/static/js/main.b6c0aeda.chunk.js"
+    "revision": "1e3660210048bd43afea",
+    "url": "/static/js/main.bf9836ef.chunk.js"
   },
   {
     "revision": "cd5cc0b019c8434d78aa",
@@ -38,6 +38,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "b82763545ef120f1b6fc2cf35821c4c7",
     "url": "/static/media/Loki-Regular.otf 00-27-44-923.b8276354.otf"
+  },
+  {
+    "revision": "2cfddd6afc1a2b7e4ca910166b2ed458",
+    "url": "/static/media/Spanish-water-dog.2cfddd6a.jpg"
   },
   {
     "revision": "71a984d6fa60dac298c10a4470d73e51",
@@ -88,8 +92,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/american-staffordshire-terrier.0229bcf5.jpg"
   },
   {
-    "revision": "1afeda7680a285017f290a77f0873ad1",
-    "url": "/static/media/american-water-spaniel.1afeda76.jpg"
+    "revision": "cbce2e98712cdb368ee2807bcffed37b",
+    "url": "/static/media/american-water-spaniel.cbce2e98.jpg"
   },
   {
     "revision": "b5fb87d3f20191fc640f7010e91387cd",
@@ -1014,10 +1018,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "610c96ed5679ef2c7f4f8c53af657e14",
     "url": "/static/media/spanish-mastiff.610c96ed.jpg"
-  },
-  {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/spanish-water-dog.e119c332.jpg"
   },
   {
     "revision": "e119c3327245ff06b4cc82365c948b48",
