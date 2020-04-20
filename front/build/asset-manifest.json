@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.1416dee9.chunk.css",
-    "main.js": "/static/js/main.d8c9d856.chunk.js",
-    "main.js.map": "/static/js/main.d8c9d856.chunk.js.map",
+    "main.js": "/static/js/main.08be1554.chunk.js",
+    "main.js.map": "/static/js/main.08be1554.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.95a77404.js",
     "runtime-main.js.map": "/static/js/runtime-main.95a77404.js.map",
     "static/css/2.28992177.chunk.css": "/static/css/2.28992177.chunk.css",
     "static/js/2.9216780d.chunk.js": "/static/js/2.9216780d.chunk.js",
     "static/js/2.9216780d.chunk.js.map": "/static/js/2.9216780d.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.74080acd878b380f08790285e1d0a4cb.js": "/precache-manifest.74080acd878b380f08790285e1d0a4cb.js",
+    "precache-manifest.4307f2ebf8fef1c941aedb59c42cf091.js": "/precache-manifest.4307f2ebf8fef1c941aedb59c42cf091.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.28992177.chunk.css.map": "/static/css/2.28992177.chunk.css.map",
     "static/css/main.1416dee9.chunk.css.map": "/static/css/main.1416dee9.chunk.css.map",
@@ -259,7 +259,7 @@
     "static/media/smooth-fox-terrier.jpg": "/static/media/smooth-fox-terrier.2d77628d.jpg",
     "static/media/soft-coated-wheaten-terrier.jpg": "/static/media/soft-coated-wheaten-terrier.c6b4b4ac.jpg",
     "static/media/spanish-mastiff.jpg": "/static/media/spanish-mastiff.610c96ed.jpg",
-    "static/media/spanish-water-dog.jpg": "/static/media/spanish-water-dog.2cfddd6a.jpg",
+    "static/media/spanish-water-dog.jpg": "/static/media/spanish-water-dog.92ee60f4.jpg",
     "static/media/spinone-italiano.jpg": "/static/media/spinone-italiano.e119c332.jpg",
     "static/media/stabyhoun.jpg": "/static/media/stabyhoun.e119c332.jpg",
     "static/media/staffordshire-bull-terrier.jpg": "/static/media/staffordshire-bull-terrier.0577ac8d.jpg",
@@ -299,6 +299,6 @@
     "static/css/2.28992177.chunk.css",
     "static/js/2.9216780d.chunk.js",
     "static/css/main.1416dee9.chunk.css",
-    "static/js/main.d8c9d856.chunk.js"
+    "static/js/main.08be1554.chunk.js"
   ]
 }
