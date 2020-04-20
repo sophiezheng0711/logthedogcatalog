@@ -113,7 +113,7 @@ def ir():
 
     to_be_sorted = to_return[1:]    
     to_be_sorted.sort(key=(computeRank), reverse=True)
-    return json.dumps([to_return[0]] + to_be_sorted), 200
+    return json.dumps([to_return[0]] + to_be_sorted[:9]), 200
 
 
 
