@@ -9,6 +9,7 @@ import json
 app = Flask(__name__, static_url_path='', static_folder='front/build')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+df = pd.read_excel("data.xlsx")
 
 @app.route('/')
 def root():
@@ -24,9 +25,9 @@ def hello_world():
 def ir():
     name = request.args.get('name')
     name = re.sub(' ', '-', name).lower()
-    df = pd.read_excel("data.xlsx")
     names = list(df["Name"])
     names = [namez.lower().strip() for namez in names]
+    pops = list(df["Popularity"])
     sim = df["Similar breeds"]
     
     for ind in range(len(names)):
@@ -61,7 +62,7 @@ def ir():
     inds = np.argsort(vals)
     to_return = []
     for x in inds[:10]:
-        to_return += [[names[x],1 - vals[x]]]
+        to_return += [[names[x], 1 - vals[x], pops[x]]]
         
     return json.dumps(to_return), 200
 
