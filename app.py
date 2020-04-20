@@ -10,6 +10,20 @@ app = Flask(__name__, static_url_path='', static_folder='front/build')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 df = pd.read_excel("data.xlsx")
+heights = []
+for i, x in enumerate(df["Height"]):
+    temp = re.findall(r'\d*\.?\d+', x)
+    res = list(map(float, temp))
+    heights += [np.average(res)]
+max_height = np.amax(heights)
+min_height = np.amin(heights)
+weights = []
+for i, x in enumerate(df["Weight"]):
+    temp = re.findall(r'\d*\.?\d+', x)
+    res = list(map(float, temp))
+    weights += [np.average(res)]
+max_weight = np.amax(weights)
+min_weight = np.amin(weights)
 
 @app.route('/')
 def root():
@@ -46,10 +60,10 @@ def ir():
     pops = list(df["Popularity"])
     sim = df["Similar breeds"]
     abouts = list(df['About'])
-    minHeights = list(df['minHeight'])
-    maxHeights = list(df['maxHeight'])
-    minWeights = list(df['minWeight'])
-    maxWeights = list(df['maxWeight'])
+    # minHeights = list(df['minHeight'])
+    # maxHeights = list(df['maxHeight'])
+    # minWeights = list(df['minWeight'])
+    # maxWeights = list(df['maxWeight'])
     
     for ind in range(len(names)):
         namez = names[ind]
@@ -83,19 +97,23 @@ def ir():
     inds = np.argsort(vals)
 
     # for range calculations
-    queryMinHeight = float(minHeights[inds[0]])
-    queryMaxHeight = float(maxHeights[inds[0]])
-    queryMinWeight = float(minWeights[inds[0]])
-    queryMaxWeight = float(maxWeights[inds[0]])
+    queryHeight = float(heights[inds[0]])
+    # queryMaxHeight = float(maxHeights[inds[0]])
+    queryWeight = float(weights[inds[0]])
+    # queryMaxWeight = float(maxWeights[inds[0]])
 
     to_return = []
     for x in inds:
-        heightSim = rangeSim(queryMinHeight, queryMaxHeight, minHeights[x], maxHeights[x])
-        weightSim = rangeSim(queryMinWeight, queryMaxWeight, minWeights[x], maxWeights[x])
+        # heightSim = rangeSim(queryMinHeight, queryMaxHeight, minHeights[x], maxHeights[x])
+        heightSim = 1 - abs((queryHeight - heights[x])/(max(queryHeight - max_height, queryHeight - min_height)))
+        heightSim = min(max(heightSim, 0), 1)
+        weightSim = 1 - abs((queryWeight - weights[x])/(max(queryWeight - max_weight, queryWeight - min_weight)))
+        weightSim = min(max(weightSim, 0), 1)
         to_return += [json.dumps({"name": names[x], "sim": 1-vals[x], "pop": pops[x], "about": abouts[x], "height" : heightSim, "weight" : weightSim})]
-        
-    to_return.sort(key=(computeRank), reverse=True)
-    return json.dumps(to_return[:10]), 200
+
+    to_be_sorted = to_return[1:]    
+    to_be_sorted.sort(key=(computeRank), reverse=True)
+    return json.dumps([to_return[0]] + to_be_sorted), 200
 
 
 
