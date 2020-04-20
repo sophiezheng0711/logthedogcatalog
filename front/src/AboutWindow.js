@@ -3,9 +3,6 @@ import {Modal} from 'react-bootstrap';
 
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-      }
     
       render() {
         return (
@@ -23,7 +20,7 @@ class App extends React.Component {
               </Modal.Header>
               <Modal.Body>
               <img src={require('./dogpics/' + this.props.name + '.jpg')} height='300px' style={{objectFit: 'cover', display: 'block', 
-                marginLeft: 'auto', marginRight: 'auto'}} />
+                marginLeft: 'auto', marginRight: 'auto'}} alt='' />
                 <p style={{marginTop: '1em'}}>
                   {this.props.body}
                 </p>

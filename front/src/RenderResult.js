@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Button, Container, Row} from "react-bootstrap";
+import {Card, Button, Container, Row, Col} from "react-bootstrap";
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css';
 import AboutWindow from './AboutWindow';
@@ -13,6 +13,7 @@ class App extends React.Component {
         };
         this.openAbout = this.openAbout.bind(this);
         this.closeAbout = this.closeAbout.bind(this);
+        this.linkSearch = this.linkSearch.bind(this);
     }
 
     formatName(name) {
@@ -34,6 +35,11 @@ class App extends React.Component {
 
     closeAbout() {
       this.setState({aboutShow: false});
+    }
+
+    linkSearch() {
+      window.location.replace(window.location.origin + "/#/search?" + encodeURI(this.props.name));
+      window.location.reload(true)
     }
 
     render() {
@@ -72,9 +78,15 @@ class App extends React.Component {
                     <Row className="justify-content-md-center">
                       <RadarChart captions={captions} data={data} size={250}/>
                     </Row>
-                    <Row className="justify-content-md-center">
-                      <Button onClick={this.openAbout} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
-                      border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '1em', marginBottom: '2em'}}>Learn More</Button>
+                    <Row>
+                      <Col sm={0}>
+                        <Button onClick={this.openAbout} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
+                        border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '1em', marginBottom: '2em'}}>Learn More</Button>
+                      </Col>
+                      <Col sm={2}>
+                        <Button onClick={this.linkSearch} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
+                        border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '1em', marginBottom: '2em'}}>Search Me</Button>
+                      </Col>
                     </Row>
                   </Container>
                 </Card.Body>
