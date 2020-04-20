@@ -105,9 +105,9 @@ def ir():
     to_return = []
     for x in inds:
         # heightSim = rangeSim(queryMinHeight, queryMaxHeight, minHeights[x], maxHeights[x])
-        heightSim = 1 - abs((queryHeight - heights[x])/(max(queryHeight - max_height, queryHeight - min_height)))
+        heightSim = 1 - abs((queryHeight - heights[x])/(max(abs(queryHeight - max_height), abs(queryHeight - min_height))))
         heightSim = min(max(heightSim, 0), 1)
-        weightSim = 1 - abs((queryWeight - weights[x])/(max(queryWeight - max_weight, queryWeight - min_weight)))
+        weightSim = 1 - abs((queryWeight - weights[x])/(max(abs(queryWeight - max_weight), abs(queryWeight - min_weight))))
         weightSim = min(max(weightSim, 0), 1)
         to_return += [json.dumps({"name": names[x], "sim": 1-vals[x], "pop": pops[x], "about": abouts[x], "height" : heightSim, "weight" : weightSim})]
 

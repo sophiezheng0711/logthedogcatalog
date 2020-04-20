@@ -20,8 +20,8 @@ class App extends React.Component {
       search() {
         const q = window.location.hash;
         const n = q.substring(9, q.length);
-        // axios.get('http://localhost:5000/api/search?name=' + n)
-        axios.get('/api/search?name=' + n)
+        axios.get('http://localhost:5000/api/search?name=' + n)
+        // axios.get('/api/search?name=' + n)
             .then((response) => {
                 console.log(response.data);
             if (response.data.length === 0) {
