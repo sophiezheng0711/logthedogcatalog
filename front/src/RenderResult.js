@@ -30,8 +30,8 @@ class App extends React.Component {
                 utility: 0.5,
                 breed: 0.5,
                 sociability: 0.5,
-                size: 0.5
-
+                size: 0.5,
+                popularity: this.props.popularity,
               },
               meta: { color: 'aqua' }
             }
@@ -43,7 +43,8 @@ class App extends React.Component {
             utility: 'Utility',
             breed: 'Breed',
             sociability: 'Sociability',
-            size: 'Size'
+            size: 'Size',
+            popularity: 'Popularity'
           };
         return (
             <Card border='dark' style={{ boxShadow:'3px 3px 3px 3px rgba(50,50,50,0.24)', width: '20rem', flex: '1', size: 'cover', color:'#1B4F72', fontFamily: 'Loki', marginBottom: '2em'}}>
