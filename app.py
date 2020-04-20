@@ -20,6 +20,18 @@ def root():
 def hello_world():
     return 'UFO signal connected -_-'
 
+def rangeSim(min1, max1, min2, max2):
+    """
+    helper for range calculations
+    """
+    overlap = min(max1, max2) - max(min1, min2)
+    overlap = 0 if overlap < 0 else overlap
+    total = max(max1, max2) - min(min1, min2)
+    if total == 0:
+        return 1
+    else:
+        return overlap / total
+
 @app.route('/api/search', methods=['GET'])
 @cross_origin()
 def ir():
@@ -30,6 +42,10 @@ def ir():
     pops = list(df["Popularity"])
     sim = df["Similar breeds"]
     abouts = list(df['About'])
+    minHeights = list(df['minHeight'])
+    maxHeights = list(df['maxHeight'])
+    minWeights = list(df['minWeight'])
+    maxWeights = list(df['maxWeight'])
     
     for ind in range(len(names)):
         namez = names[ind]
@@ -61,9 +77,18 @@ def ir():
     for x in embedding:
         vals += [np.linalg.norm(pnt - x)]
     inds = np.argsort(vals)
+
+    # for range calculations
+    queryMinHeight = float(minHeights[inds[0]])
+    queryMaxHeight = float(maxHeights[inds[0]])
+    queryMinWeight = float(minWeights[inds[0]])
+    queryMaxWeight = float(maxWeights[inds[0]])
+
     to_return = []
     for x in inds[:10]:
-        to_return += [json.dumps({"name": names[x], "sim": 1-vals[x], "pop": pops[x], "about": abouts[x]})]
+        heightSim = rangeSim(queryMinHeight, queryMaxHeight, minHeights[x], maxHeights[x])
+        weightSim = rangeSim(queryMinWeight, queryMaxWeight, minWeights[x], maxWeights[x])
+        to_return += [json.dumps({"name": names[x], "sim": 1-vals[x], "pop": pops[x], "about": abouts[x], "height" : heightSim, "weight" : weightSim})]
         # to_return += [[names[x], 1 - vals[x], pops[x], abouts[x]]]
         
     return json.dumps(to_return), 200
