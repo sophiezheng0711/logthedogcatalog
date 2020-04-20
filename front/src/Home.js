@@ -42,7 +42,7 @@ class App extends React.Component {
                     options={items}
                     getOptionLabel={(option) => option.label}
                     style={{ width: 600 }}
-                    renderInput={(params) => <TextField {...params} label="Doggo" variant="standard" />}
+                    renderInput={(params) => <TextField {...params} label="Doggo" variant="filled" />}
                     onInputChange={this.update}
                     onKeyUp={(event) => {
                       if (event.key === 'Enter')

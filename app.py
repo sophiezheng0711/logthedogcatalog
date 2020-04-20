@@ -32,6 +32,10 @@ def rangeSim(min1, max1, min2, max2):
     else:
         return overlap / total
 
+def computeRank(x):
+    y = json.loads(x)
+    return y['sim'] + y['pop'] + y['height'] + y['weight']
+
 @app.route('/api/search', methods=['GET'])
 @cross_origin()
 def ir():
@@ -90,6 +94,7 @@ def ir():
         weightSim = rangeSim(queryMinWeight, queryMaxWeight, minWeights[x], maxWeights[x])
         to_return += [json.dumps({"name": names[x], "sim": 1-vals[x], "pop": pops[x], "about": abouts[x], "height" : heightSim, "weight" : weightSim})]
         
+    to_return.sort(key=(computeRank), reverse=True)
     return json.dumps(to_return), 200
 
 
