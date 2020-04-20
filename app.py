@@ -10,18 +10,10 @@ app = Flask(__name__, static_url_path='', static_folder='front/build')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 df = pd.read_excel("data.xlsx")
-heights = []
-for i, x in enumerate(df["Height"]):
-    temp = re.findall(r'\d*\.?\d+', x)
-    res = list(map(float, temp))
-    heights += [np.average(res)]
+heights = df['avgHeight']
 max_height = np.amax(heights)
 min_height = np.amin(heights)
-weights = []
-for i, x in enumerate(df["Weight"]):
-    temp = re.findall(r'\d*\.?\d+', x)
-    res = list(map(float, temp))
-    weights += [np.average(res)]
+weights = df['avgWeight']
 max_weight = np.amax(weights)
 min_weight = np.amin(weights)
 
@@ -33,18 +25,6 @@ def root():
 @cross_origin()
 def hello_world():
     return 'UFO signal connected -_-'
-
-def rangeSim(min1, max1, min2, max2):
-    """
-    helper for range calculations
-    """
-    overlap = min(max1, max2) - max(min1, min2)
-    overlap = 0 if overlap < 0 else overlap
-    total = max(max1, max2) - min(min1, min2)
-    if total == 0:
-        return 1
-    else:
-        return overlap / total
 
 def computeRank(x):
     y = json.loads(x)
@@ -60,10 +40,6 @@ def ir():
     pops = list(df["Popularity"])
     sim = df["Similar breeds"]
     abouts = list(df['About'])
-    # minHeights = list(df['minHeight'])
-    # maxHeights = list(df['maxHeight'])
-    # minWeights = list(df['minWeight'])
-    # maxWeights = list(df['maxWeight'])
     
     for ind in range(len(names)):
         namez = names[ind]
@@ -98,9 +74,7 @@ def ir():
 
     # for range calculations
     queryHeight = float(heights[inds[0]])
-    # queryMaxHeight = float(maxHeights[inds[0]])
     queryWeight = float(weights[inds[0]])
-    # queryMaxWeight = float(maxWeights[inds[0]])
 
     to_return = []
     for x in inds:
