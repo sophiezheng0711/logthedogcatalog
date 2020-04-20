@@ -1,32 +1,22 @@
 import re
 import pandas as pd
-
+import numpy as np
 df = pd.read_excel("data.xlsx")
 
-def parse(col):
-    """
-    Parses the dataframe and gets a list of minimum and maximums
-    for the column. Only looks for floats with digits
-    """
-    minLst = []
-    maxLst = []
-    for index, row in df.iterrows():
-        string = row[col]
-        lst = re.findall(r'[0-9]+\.[0-9]+|[0-9]+', string)
-        lst = list(map(float, lst))
-        minLst.append(min(lst))
-        maxLst.append(max(lst))
-    return (minLst, maxLst)
+heights = []
+for i, x in enumerate(df["Height"]):
+    temp = re.findall(r'\d*\.?\d+', x)
+    res = list(map(float, temp))
+    heights += [np.average(res)]
 
-height = parse('Height')
-df['minHeight'] = height[0]
-df['maxHeight'] = height[1]
+df['avgHeight'] = heights
 
-weight = parse('Weight')
-df['minWeight'] = weight[0]
-df['maxWeight'] = weight[1]
+weights = []
+for i, x in enumerate(df["Weight"]):
+    temp = re.findall(r'\d*\.?\d+', x)
+    res = list(map(float, temp))
+    weights += [np.average(res)]
+
+df['avgWeight'] = weights
 
 df.to_excel('data.xlsx')
-
-
-    

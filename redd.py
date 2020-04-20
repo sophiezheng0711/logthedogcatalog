@@ -9,7 +9,7 @@ reddit = praw.Reddit(client_id = '8yE9T9IWth1Bdg',
                     password = 'password', 
                     user_agent = 'Corgi')
 
-reddAll = reddit.subreddit('all')
+reddAll = reddit.subreddit('aww')
 df = pd.read_excel('data.xlsx')
 dogs = list(df['Name'])
 
