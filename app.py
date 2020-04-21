@@ -5,6 +5,7 @@ import pandas as pd
 import re
 import numpy as np
 import json
+from scipy import stats
 
 app = Flask(__name__, static_url_path='', static_folder='front/build')
 cors = CORS(app)
@@ -75,6 +76,10 @@ def ir():
     for x in embedding:
         vals += [np.linalg.norm(pnt - x)]
     inds = np.argsort(vals)
+
+    temp = [stats.percentileofscore(vals, val, 'rank') for val in vals]
+
+    percentile = np.array(vals) / 100
 
     # for range calculations
     queryHeight = float(heights[inds[0]])
