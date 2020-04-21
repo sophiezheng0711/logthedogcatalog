@@ -14,10 +14,10 @@ class App extends React.Component {
                     <Nav.Link href="#home">Home</Nav.Link>
                     <Nav.Link href="#about">About</Nav.Link>
                     <NavDropdown title="Actions" id="basic-nav-dropdown" style={{fontFamily: 'Loki' , fontWeight:'bold'}} >
-                        <NavDropdown.Item href="#home">Give Us A</NavDropdown.Item>
-                        <NavDropdown.Item href="#home">Give Us A+</NavDropdown.Item>
+                        <NavDropdown.Item disabled={true} href="#home">Give Us A</NavDropdown.Item>
+                        <NavDropdown.Item disabled={true} href="#home">Give Us A+</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#home">A+ and Hall of Fame</NavDropdown.Item>
+                        <NavDropdown.Item disabled={true} href="#home">A+ and Hall of Fame</NavDropdown.Item>
                     </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

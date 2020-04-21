@@ -56,10 +56,9 @@ class App extends React.Component {
         const data = [
             {
               data: {
-                energy: this.props.similarity,
-                utility: 0.5,
-                breed: 0.5,
-                sociability: 0.5,
+                breed: this.props.similarity,
+                todo1: 0.5,
+                todo2: 0.5,
                 height: this.props.height,
                 weight: this.props.weight,
                 popularity: this.props.popularity,
@@ -70,12 +69,11 @@ class App extends React.Component {
 
       const captions = {
             // columns
-            energy: 'Energy',
-            utility: 'Utility',
-            breed: 'Breed',
-            sociability: 'Sociability',
-            height: 'Height',
-            weight: 'Weight',
+            breed: 'Breed Sim',
+            todo1: 'UFO Affinity',
+            todo2: 'UFO Affinity',
+            height: 'Height Sim',
+            weight: 'Weight Sim',
             popularity: 'Popularity'
           };
         return (

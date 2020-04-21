@@ -57,9 +57,9 @@ class App extends React.Component {
             toggleBackColor: 'black',
             toggleTextColor: 'black',
             breed: 10,
-            height: 5,
-            weight: 5,
-            pop: 3
+            height: 0,
+            weight: 0,
+            pop: 0
         };
         
       }
