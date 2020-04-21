@@ -87,7 +87,7 @@ def ir():
         heightSim = min(max(heightSim, 0), 1)
         weightSim = 1 - abs((queryWeight - weights[x])/(max(abs(queryWeight - max_weight), abs(queryWeight - min_weight))))
         weightSim = min(max(weightSim, 0), 1)
-        to_return += [json.dumps({"name": names[x], "sim": 1-x/(len(inds)), "pop": pops[x], "about": abouts[x], "height" : heightSim, "weight" : weightSim})]
+        to_return += [json.dumps({"name": names[x], "sim": 1-vals[x], "pop": pops[x], "about": abouts[x], "height" : heightSim, "weight" : weightSim})]
 
     to_be_sorted = to_return[1:]    
     to_be_sorted.sort(key=(lambda x: computeRank(x, c_breed, c_height, c_weight, c_pop)), reverse=True)
