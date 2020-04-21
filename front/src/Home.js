@@ -108,7 +108,10 @@ class App extends React.Component {
               <header className="App-header">
               <Container>
                 <Row className="justify-content-md-center">
-                <p style={{color:'black', fontFamily: 'Anders', fontSize:'70px', backgroundColor: 'rgba(204, 204, 204, 0.2)'}}>&nbsp; Log the Analog Dog &nbsp;</p>
+                <p style={{color:'black', fontFamily: 'Anders', fontSize:'70px', backgroundColor: 'rgba(204, 204, 204, 0.2)'}}>&nbsp; Log&#183;the&#183;Analog&#183;Dog &nbsp;</p>
+                </Row>
+                <Row className="justify-content-md-center" style={{marginTop: '-2.5em'}}>
+                  <p style={{color:'#2F2F2F', fontFamily: 'Loki', fontSize: '20px', fontWeight: 'bold'}}>Your personalized dog breed recommender</p>
                 </Row>
                 <Row className="justify-content-md-center" style={{marginBottom: '2em'}}>
                   <Autocomplete
