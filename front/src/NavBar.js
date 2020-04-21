@@ -7,7 +7,7 @@ class App extends React.Component {
         return (
           <>
             <Navbar bg="transparent" variant='light' expand="lg" style={{fontFamily: 'Loki' , fontWeight:'bold'}}>
-                <Navbar.Brand href="#home">Log&#183;the&#183;Analog&#183;Dog</Navbar.Brand>
+                <Navbar.Brand href="#home">Log&#183;the&#183;Dog&#183;Catalog</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto" style={{fontFamily: 'Loki' , fontWeight:'bold'}} >
