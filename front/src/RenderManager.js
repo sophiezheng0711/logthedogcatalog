@@ -11,7 +11,7 @@ class App extends React.Component {
         super(props);
         this.search = this.search.bind(this);
         this.state = {
-            params: [], // params in the order of breed, height, weight, pop
+            params: [], // params in the order of version, name, breed, height, weight, pop
             result: [],
             loading: true,
         };
@@ -25,8 +25,8 @@ class App extends React.Component {
         temp.map((value) => (
             tempLst.push(value.split("=")[1])
         ));
-        // axios.get('http://localhost:5000/api/search?' + n)
-        axios.get('/api/search?' + n)
+        // axios.get('http://localhost:5000/api/search?' + 'ver=' + tempLst[0] + '&' + n )
+        axios.get('/api/search?' + 'ver=' + tempLst[0] + '&' + n )
             .then((response) => {
                 console.log(response.data);
             if (response.data.length === 0) {

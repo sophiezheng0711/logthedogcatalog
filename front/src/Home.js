@@ -66,7 +66,8 @@ class App extends React.Component {
 
       search() {
         const n = this.state.name+'&breed='+this.state.breed+'&height='+this.state.height+'&weight='+this.state.weight+'&pop='+this.state.pop;
-        window.location.replace(window.location.origin + "/#/search?name=" + encodeURI(n));
+        console.log(this.props.ver);
+        window.location.replace(window.location.origin + "/#/search?" + encodeURI("ver=" + this.props.ver + "&name=" + n));
       }
 
       onToggle(checked) {
@@ -136,7 +137,7 @@ class App extends React.Component {
                 <Switch style={{backgroundColor: this.state.toggleBackColor}} 
                 defaultChecked={this.state.advanceSwitch} onChange={this.onToggle}/>
                 </Col>
-                <Col className="justify-content-md-center" style={{color: this.state.toggleTextColor, fontFamily: 'Anders', fontWeight: 'bold', fontSize: '25px'}}>
+                <Col className="justify-content-md-center" style={{color: this.state.toggleTextColor, fontFamily: 'Anders', fontWeight: 'bold', fontSize: '25px', padding: '0.3em'}}>
                 Advanced
                 </Col>
                 </div>

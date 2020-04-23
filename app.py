@@ -39,6 +39,69 @@ def ir():
     c_height = request.args.get('height')
     c_weight = request.args.get('weight')
     c_pop = request.args.get('pop')
+    version = request.args.get('ver')
+
+    # Prototype 2 is set to default, so if version is not specified, defaults to Prototype 2.
+    # TODO Prototype 2 has not been implemented yet
+    if version != "1":
+        name = re.sub(' ', '-', name).lower()
+        names = list(df["Name"])
+        names = [namez.lower().strip() for namez in names]
+        pops = list(df["Popularity"])
+        sim = df["Similar breeds"]
+        abouts = list(df['About'])
+        
+        for ind in range(len(names)):
+            namez = names[ind]
+            namez = namez.lower().strip()
+            namez = re.sub(' ', '-', namez)
+            names[ind] = namez
+
+        sims = []
+        for string in sim:
+            arr = string.split(",")
+            for ind in range(len(arr)):
+                arr[ind] = re.sub('[^a-zA-Z-]+', '', arr[ind])
+            sims += arr
+
+        adj_mat = np.zeros([len(names), len(names)])
+        for x in range(len(names)):
+            namez = names[x]
+            for y in range(len(sim)):
+                if namez in sim[y].lower():
+                    adj_mat[x,y] += 1
+
+        adj_mat = adj_mat + adj_mat.T
+        embedding = spectral_embedding(adj_mat)
+        try:
+            pnt = embedding[names.index(name.lower())]
+        except ValueError:
+            return json.dumps([]), 200
+        vals = []
+        for x in embedding:
+            vals += [np.linalg.norm(pnt - x)]
+        inds = np.argsort(vals)
+
+        # for range calculations
+        queryHeight = float(heights[inds[0]])
+        queryWeight = float(weights[inds[0]])
+
+        to_return = []
+        for x in inds:
+            heightSim = 1 - abs((queryHeight - heights[x])/(max(abs(queryHeight - max_height), abs(queryHeight - min_height))))
+            heightSim = min(max(heightSim, 0), 1)
+            weightSim = 1 - abs((queryWeight - weights[x])/(max(abs(queryWeight - max_weight), abs(queryWeight - min_weight))))
+            weightSim = min(max(weightSim, 0), 1)
+            to_return += [json.dumps({"name": names[x], "sim": 1-vals[x], "pop": pops[x], "about": abouts[x], "height" : heightSim, "weight" : weightSim})]
+
+        to_be_sorted = to_return[1:]    
+        to_be_sorted.sort(key=(lambda x: computeRank(x, c_breed, c_height, c_weight, c_pop)), reverse=True)
+        return json.dumps([to_return[0]] + to_be_sorted[:9]), 200
+    
+
+    ################################################################
+    ###    Version 1 Legacy Code DO NOT TOUCH
+    ################################################################
     name = re.sub(' ', '-', name).lower()
     names = list(df["Name"])
     names = [namez.lower().strip() for namez in names]
@@ -77,17 +140,12 @@ def ir():
         vals += [np.linalg.norm(pnt - x)]
     inds = np.argsort(vals)
 
-    # temp = [stats.percentileofscore(vals, val, 'rank') for val in vals]
-
-    # percentile = np.array(vals) / 100
-
     # for range calculations
     queryHeight = float(heights[inds[0]])
     queryWeight = float(weights[inds[0]])
 
     to_return = []
     for x in inds:
-        # heightSim = rangeSim(queryMinHeight, queryMaxHeight, minHeights[x], maxHeights[x])
         heightSim = 1 - abs((queryHeight - heights[x])/(max(abs(queryHeight - max_height), abs(queryHeight - min_height))))
         heightSim = min(max(heightSim, 0), 1)
         weightSim = 1 - abs((queryWeight - weights[x])/(max(abs(queryWeight - max_weight), abs(queryWeight - min_weight))))

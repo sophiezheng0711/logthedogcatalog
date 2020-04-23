@@ -7,11 +7,6 @@ import TextBox from './Textbox';
 import RenderResult from './RenderManager';
 import NotFound from './NotFoundPage';
 
-
-function HomePage() {
-  return (<Home/>);
-}
-
 function AboutPage() {
   return (
     <Container>
@@ -40,26 +35,44 @@ function NotFoundPage() {
   );
 }
 
-function App() {
-  return (
-    <>
-    <HashRouter hashHistory>
-      <div className='App'>
-        <Container fluid>
-          <Navbar />
-        </Container>
-        {/* <Switch> */}
-        <Route exact path='/' component={HomePage} />
-        <Route path='/home' component={HomePage} />
-        <Route  path='/about' component={AboutPage} />
-        <Route path='/search' component={ResultsPage} />
-        <Route path='/notfound' component={NotFoundPage} />
-        {/* </Switch> */}
-      </div>
-    </HashRouter>
 
-    </>
-  );
+
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {ver: 2};
+    this.switchToV1 = this.switchToV1.bind(this);
+    this.switchToV2 = this.switchToV2.bind(this);
+  }
+
+  switchToV1() {
+    this.setState({ver: 1});
+  }
+
+  switchToV2() {
+    this.setState({ver: 2});
+  }
+
+  render() {
+    return (
+      <>
+      <HashRouter hashHistory>
+        <div className='App'>
+          <Container fluid>
+            <Navbar switchToV1={this.switchToV1} switchToV2={this.switchToV2} version={this.state.ver} />
+          </Container>
+          <Route exact path='/' render={(props) => <Home {...props} ver={this.state.ver}/>} />
+          <Route path='/home' render={(props) => <Home {...props} ver={this.state.ver}/>} />
+          <Route path='/about' component={AboutPage} />
+          <Route path='/search' component={ResultsPage} />
+          <Route path='/notfound' component={NotFoundPage} />
+        </div>
+      </HashRouter>
+
+      </>
+    );
+  }
 }
 
 
