@@ -2,9 +2,9 @@
 
 # Architecture
 
-Logtheanalogdog is a full stack application constructed by a React frontend and a Python Flask backend. General breakdown is shown as follows:
+Logthedogcatalog is a full stack application constructed by a React frontend and a Python Flask backend. General breakdown is shown as follows:
 ```
-+-- logtheanalogdog # Root directory
++-- logthedogcatalog # Root directory
 |   +-- front # React frontend
 |   +-- app.py # Flask backend
 |   +-- requirements.txt
@@ -64,5 +64,5 @@ $ git commit -m "update"
 $ git push
 $ git push heroku master
 ```
-Then, your update should be live at `https://logtheanalogdogtest.herokuapp.com/`. Note that your browser caches sometimes, so if you do not see your update, try opening the webpage on incognito.
+Then, your update should be live at `https://logthedogcatalog.herokuapp.com/`. Note that your browser caches sometimes, so if you do not see your update, try opening the webpage on incognito, or reloading it.
 
