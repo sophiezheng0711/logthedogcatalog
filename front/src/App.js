@@ -23,11 +23,11 @@ function AboutPage() {
   );
 }
 
-function ResultsPage() {
-  return (
-    <RenderResult/>
-  );
-}
+// function ResultsPage() {
+//   return (
+//     <RenderResult/>
+//   );
+// }
 
 function NotFoundPage() {
   return (
@@ -65,7 +65,7 @@ class App extends React.Component {
           <Route exact path='/' render={(props) => <Home {...props} ver={this.state.ver}/>} />
           <Route path='/home' render={(props) => <Home {...props} ver={this.state.ver}/>} />
           <Route path='/about' component={AboutPage} />
-          <Route path='/search' component={ResultsPage} />
+          <Route path='/search' render={(props) => <RenderResult {...props} ver={this.state.ver}/>} />
           <Route path='/notfound' component={NotFoundPage} />
         </div>
       </HashRouter>

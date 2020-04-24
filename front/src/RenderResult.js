@@ -40,7 +40,7 @@ class App extends React.Component {
 
     linkSearch() {
       const c = this.props.params;
-      window.location.replace(window.location.origin + "/#/search?" + encodeURI("ver=" + c[0] + "&name=" + this.props.name+'&breed='+c[2]+'&height='+c[3]+'&weight='+c[4]+'&pop='+c[5]));
+      window.location.replace(window.location.origin + "/#/search?" + encodeURI("ver=" + this.props.version + "&name=" + this.props.name+'&breed='+c[2]+'&height='+c[3]+'&weight='+c[4]+'&pop='+c[5]));
       window.location.reload(true)
     }
 
@@ -57,8 +57,8 @@ class App extends React.Component {
             {
               data: {
                 breed: this.props.similarity,
+                personality: ((this.props.version>1)? this.props.similarity : 0),
                 todo1: 0.5,
-                todo2: 0.5,
                 height: this.props.height,
                 weight: this.props.weight,
                 popularity: this.props.popularity,
@@ -70,8 +70,8 @@ class App extends React.Component {
       const captions = {
             // columns
             breed: 'Breed Sim',
+            personality: 'Personality Sim',
             todo1: 'UFO Affinity',
-            todo2: 'UFO Affinity',
             height: 'Height Sim',
             weight: 'Weight Sim',
             popularity: 'Popularity'

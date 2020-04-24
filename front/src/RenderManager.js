@@ -25,8 +25,8 @@ class App extends React.Component {
         temp.map((value) => (
             tempLst.push(value.split("=")[1])
         ));
-        // axios.get('http://localhost:5000/api/search?' + 'ver=' + tempLst[0] + '&' + n )
-        axios.get('/api/search?' + 'ver=' + tempLst[0] + '&' + n )
+        // axios.get('http://localhost:5000/api/search?' + 'ver=' + this.props.ver + '&' + n )
+        axios.get('/api/search?' + 'ver=' + this.props.ver + '&' + n )
             .then((response) => {
                 console.log(response.data);
             if (response.data.length === 0) {
@@ -79,7 +79,7 @@ class App extends React.Component {
                         overflow: 'auto'
                     }}>
                         <RenderResult rank={index+1} name={value.name} similarity={value.sim} popularity={value.pop} about={value.about} height={value.height}
-                        weight={value.weight} params={this.state.params} />
+                        weight={value.weight} params={this.state.params} personality={value.personality} version={this.props.ver} />
                     </div>
                 ))}
                 </MDBRow>
