@@ -48,10 +48,22 @@ def ir():
         
    
         # bad code alert
-    
+        
+        import nltk
+        nltk.download('wordnet')
+        from nltk.corpus import wordnet
+        
+        def get_syn(word):
+            synonyms = []
+            for syn in wordnet.synsets(word):
+                for l in syn.lemmas():
+                    synonyms.append(l.name())
+            
+            return set(synonyms)
+        
         df = pd.read_excel("data.xlsx") # CHANGE TO data.xlsx
         names = list(df["Name"])
-        names = [str(name).lower().strip() for name in names]
+        breeds = [str(name).lower().strip() for name in names]
         sim = df["Similar breeds"]
         
         trait_dic = {}
