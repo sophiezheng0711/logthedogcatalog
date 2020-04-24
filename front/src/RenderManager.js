@@ -11,7 +11,7 @@ class App extends React.Component {
         super(props);
         this.search = this.search.bind(this);
         this.state = {
-            params: [], // params in the order of version, name, breed, height, weight, pop
+            params: [], // params in the order of version, name, breed, height, weight, pop, personality
             result: [],
             loading: true,
         };

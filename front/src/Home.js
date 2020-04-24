@@ -51,6 +51,7 @@ class App extends React.Component {
         this.changeHeight = this.changeHeight.bind(this);
         this.changeWeight = this.changeWeight.bind(this);
         this.changePop = this.changePop.bind(this);
+        this.changePersonality = this.changePersonality.bind(this);
         this.state = {
             name: null,
             advanceSwitch: false,
@@ -59,13 +60,15 @@ class App extends React.Component {
             breed: 10,
             height: 0,
             weight: 0,
-            pop: 0
+            pop: 0,
+            personality: 0,
         };
         
       }
 
       search() {
-        const n = this.state.name+'&breed='+this.state.breed+'&height='+this.state.height+'&weight='+this.state.weight+'&pop='+this.state.pop;
+        const n = this.state.name+'&breed='+this.state.breed+'&height='+this.state.height+'&weight='
+        +this.state.weight+'&pop='+this.state.pop+'&personality='+this.state.personality;
         console.log(this.props.ver);
         window.location.replace(window.location.origin + "/#/search?" + encodeURI("ver=" + this.props.ver + "&name=" + n));
       }
@@ -100,6 +103,10 @@ class App extends React.Component {
 
       changePop(_,value) {
         this.setState({pop: value});
+      }
+
+      changePersonality(_,value) {
+        this.setState({personality: value});
       }
 
       render() {
@@ -185,6 +192,18 @@ class App extends React.Component {
                                   </Col>
                                   <Col sm={{span:7, offset: 2}}>
                                       <PrettoSlider defaultValue={this.state.pop} onChangeCommitted={this.changePop} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
+                                  </Col>
+                              </Row>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className={classes.root} sm={{offset:1}}>
+                              <Row>
+                                  <Col sm={{offset:-2}}>
+                                      <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Personality</div>
+                                  </Col>
+                                  <Col sm={{span:7, offset: -2}}>
+                                      <PrettoSlider defaultValue={this.state.personality} onChangeCommitted={this.changePersonality} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
                                   </Col>
                               </Row>
                           </Col>

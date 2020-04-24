@@ -33,9 +33,9 @@ def root():
     return app.send_static_file('index.html')
 
 
-def computeRank(x, c_breed, c_height, c_weight, c_pop):
+def computeRank(x, c_breed, c_height, c_weight, c_pop, c_personality=0):
     y = json.loads(x)
-    return float(c_breed)*y['sim'] + float(c_pop)*y['pop'] + float(c_height)*y['height'] + float(c_weight)*y['weight']
+    return float(c_breed)*y['sim'] + float(c_pop)*y['pop'] + float(c_height)*y['height'] + float(c_weight)*y['weight'] + float(c_personality)*y['personality']
 
 def get_syn(word):
         synonyms = []
@@ -64,6 +64,7 @@ def ir():
     c_height = request.args.get('height')
     c_weight = request.args.get('weight')
     c_pop = request.args.get('pop')
+    c_personality = request.args.get('personality')
     version = request.args.get('ver')
 
     # Prototype 2 is set to default, so if version is not specified, defaults to Prototype 2.
@@ -131,7 +132,7 @@ def ir():
         # bad code alert end
             
         to_be_sorted2.sort(key=(lambda x: computeRank(
-            x, c_breed, c_height, c_weight, c_pop)), reverse=True)
+            x, c_breed, c_height, c_weight, c_pop, c_personality)), reverse=True)
         return json.dumps([breed] + to_be_sorted2[:9]), 200
 
     ################################################################
