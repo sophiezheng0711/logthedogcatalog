@@ -6,6 +6,7 @@ import {Container} from 'react-bootstrap';
 import TextBox from './Textbox';
 import RenderResult from './RenderManager';
 import NotFound from './NotFoundPage';
+import RenderResult2 from './RenderPersManager';
 
 function AboutPage() {
   return (
@@ -66,6 +67,7 @@ class App extends React.Component {
           <Route path='/home' render={(props) => <Home {...props} ver={this.state.ver}/>} />
           <Route path='/about' component={AboutPage} />
           <Route path='/search' render={(props) => <RenderResult {...props} ver={this.state.ver}/>} />
+          <Route path='/personality' render={(props) => <RenderResult2 {...props} ver={this.state.ver}/>} />
           <Route path='/notfound' component={NotFoundPage} />
         </div>
       </HashRouter>

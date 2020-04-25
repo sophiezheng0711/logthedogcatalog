@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import { Button, Container, Row, Col } from 'react-bootstrap';
+import { Button, Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import items from './items';
+import adjs from './adjs';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { Switch } from 'antd';
@@ -52,6 +53,8 @@ class App extends React.Component {
         this.changeWeight = this.changeWeight.bind(this);
         this.changePop = this.changePop.bind(this);
         this.changePersonality = this.changePersonality.bind(this);
+        this.updatePersonality = this.updatePersonality.bind(this);
+        this.personalitySearch = this.personalitySearch.bind(this);
         this.state = {
             name: null,
             advanceSwitch: false,
@@ -62,6 +65,9 @@ class App extends React.Component {
             weight: 0,
             pop: 0,
             personality: 0,
+            tab: 'regular',
+            lstPer: [],
+            per: "",
         };
         
       }
@@ -69,8 +75,14 @@ class App extends React.Component {
       search() {
         const n = this.state.name+'&breed='+this.state.breed+'&height='+this.state.height+'&weight='
         +this.state.weight+'&pop='+this.state.pop+'&personality='+this.state.personality;
-        console.log(this.props.ver);
+        // console.log(this.props.ver);
         window.location.replace(window.location.origin + "/#/search?" + encodeURI("ver=" + this.props.ver + "&name=" + n));
+      }
+
+      personalitySearch() {
+        const n = '&plist=' + this.state.lstPer
+        console.log(n);
+        window.location.replace(window.location.origin + "/#/personality?" + encodeURI("ver=" + this.props.ver + n));
       }
 
       onToggle(checked) {
@@ -86,6 +98,18 @@ class App extends React.Component {
         this.setState({
             name: value
         });
+      };
+
+      updatePersonality = (_,value) => {
+        console.log(this.state.lstPer);
+        if (value === "" && this.state.per !== "") {
+          const temp = this.state.lstPer;
+          temp.push(this.state.per);
+          this.setState({lstPer: temp, per: value});
+        }
+        else {
+          this.setState({per: value});
+        }
       };
 
       changeBreed(_,value) {
@@ -121,7 +145,11 @@ class App extends React.Component {
                 <Row className="justify-content-md-center" style={{marginTop: '-2.5em'}}>
                   <p style={{color:'#2F2F2F', fontFamily: 'Loki', fontSize: '20px', fontWeight: 'bold'}}>Your personalized dog breed recommender</p>
                 </Row>
-                <Row className="justify-content-md-center" style={{marginBottom: '2em'}}>
+                <Tabs variant='pills' className='myClass' style={{backgroundColor:'rgba(50, 50, 50, 0.3)'}}
+                activeKey={this.state.tab} onSelect={(k) => this.setState({tab: k})}>
+                  <Tab eventKey="regular" title={<p style={{fontWeight: 'bold', color: 'white',
+                  fontFamily: 'Loki', fontSize:'16px', marginTop: '0.4em', marginBottom: '-0.1em'}}>Breed Match</p>}>
+                <Row className="justify-content-md-center" style={{marginBottom: '2em', marginTop: '2em'}}>
                   <Autocomplete
                     id="combo-box-demo"
                     options={items}
@@ -211,6 +239,37 @@ class App extends React.Component {
                   </Container>
                   </Row>
                 }
+                </Tab>
+                {this.props.ver === 2 &&
+                
+                <Tab eventKey="personality" title={<p style={{fontWeight: 'bold', color: 'white', 
+                  fontFamily: 'Loki', fontSize:'16px', marginTop: '0.4em', marginBottom: '-0.1em'}}>Personality Match</p>}>
+                    <Row className="justify-content-md-center" style={{marginBottom: '2em', marginTop: '2em'}}>
+                      <Autocomplete size="small" style={{width: 600}}
+                        multiple
+                        id="tags-outlined"
+                        options={adjs}
+                        getOptionLabel={(option) => option.label}
+                        filterSelectedOptions
+                        onInputChange={this.updatePersonality}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            variant="filled"
+                            label="filterSelectedOptions"
+                            placeholder="Favorites"
+                          />
+                        )}
+                      />
+                      &nbsp; &nbsp; &nbsp; &nbsp;
+                      <Button onClick={this.personalitySearch} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
+                      border: '2px solid black', borderRadius: '3px', color: 'black', height: '3.5em'}}>Search</Button>
+                    </Row>
+                    
+                </Tab>
+                }
+                </Tabs>
+                
                 </Container>
               </header>
             </>

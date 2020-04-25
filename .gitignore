@@ -2,3 +2,4 @@ front/node_modules/*
 __pycache__/*
 .DS_Store
 venv/*
+node_modules/*

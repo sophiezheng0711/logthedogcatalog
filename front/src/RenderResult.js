@@ -54,6 +54,9 @@ class App extends React.Component {
     }
 
     render() {
+        if (this.props.tab2) {
+          return(<>Uhhh</>);
+        }
         const data = [
             {
               data: {
