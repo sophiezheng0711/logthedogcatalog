@@ -25,18 +25,7 @@ def computeRank(x, c_breed, c_height, c_weight, c_pop, c_personality=0):
     y = json.loads(x)
     return float(c_breed)*y['sim'] + float(c_pop)*y['pop'] + float(c_height)*y['height'] + float(c_weight)*y['weight'] + float(c_personality)*y['personality']
 
-trait_dic = {}
-for i, x in enumerate(df["Traits"]):
-    for word in x.split(","):
-        word = word.strip()
-        if " " in word:
-            word = word[word.index(' ') + 1:]
-        syns = list(get_syn(word))
 
-        if i in trait_dic:
-            trait_dic[i] += syns
-        else:
-            trait_dic[i] = syns
 
 @app.route('/api/search', methods=['GET'])
 @cross_origin()
@@ -132,6 +121,21 @@ def personalityQuiz():
     # [plist] should be a string of adjectives separated by ', '
     plist = request.args.get('plist')
     name = 'custom'
+
+
+    trait_dic = {}
+    for i, x in enumerate(df["Traits"]):
+        for word in x.split(","):
+            word = word.strip()
+            if " " in word:
+                word = word[word.index(' ') + 1:]
+            syns = list(get_syn(word))
+
+            if i in trait_dic:
+                trait_dic[i] += syns
+            else:
+                trait_dic[i] = syns
+
     trait_dic_p = trait_dic
 
     i = len(trait_dic_p)
@@ -146,15 +150,25 @@ def personalityQuiz():
         else:
             trait_dic_p[i] = syns
     
+    print(trait_dic_p[i])
+
     names = list(df["Name"])
+    abouts = list(df['About'])
+
     breeds = [re.sub(' ', '-', namez.lower().strip()) for namez in names]
     breeds += ([name])
 
+    names_to_inds = {}
+    for j in range(len(breeds)):
+        names_to_inds[breeds[j]] = j
+
     matrix = np.zeros([len(breeds), len(breeds)])
-    for i, x in enumerate(breeds):
-        matrix[i] += get_sim(breeds, trait_dic_p, breeds[i])
+    for j, x in enumerate(breeds):
+        matrix[j] += get_sim(breeds, trait_dic_p, breeds[j])
+    # embedding = np.zeros([len(breeds), len(breeds)])
     embedding = spectral_embedding(matrix)
-    pnt = embedding[breeds.index(name.lower())]
+    print(embedding.shape)
+    pnt = embedding[i]
     
     vals = []
 
@@ -169,7 +183,8 @@ def personalityQuiz():
 
     for key in to_return:
         if key != name:
-            ans += [{'name': key, 'val': to_return[key]}]
+            about = abouts[names_to_inds[key]]
+            ans += [{'name': key, 'val': to_return[key], 'about': about, 'traits': df['Traits'][names_to_inds[key]]}]
     return json.dumps(ans[:10]), 200
 
 if __name__ == '__main__':

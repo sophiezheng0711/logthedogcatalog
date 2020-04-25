@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import RenderResult from "./RenderResult";
 import axios from 'axios';
 import Loader from './Loader';
@@ -11,9 +11,10 @@ class App extends React.Component {
         super(props);
         this.search = this.search.bind(this);
         this.state = {
-            params: [], // params in the order of version, name, breed, height, weight, pop, personality
+            // params: [], // params in the order of version, plist
             result: [],
             loading: true,
+            chars: []
         };
       }
 
@@ -21,11 +22,11 @@ class App extends React.Component {
         const q = window.location.hash;
         
         const n = q.substring(14, q.length);
-        const temp = n.split("&");
-        var tempLst = []
-        temp.map((value) => (
-            tempLst.push(value.split("=")[1])
-        ));
+        const temp = n.split("&")[1].split("=")[1].split(",");
+        // var tempLst = []
+        // temp.map((value) => (
+        //     tempLst.push(value.split("=")[1])
+        // ));
         // axios.get('http://localhost:5000/api/personalityQuiz?' + n )
         axios.get('/api/personalityQuiz?' + n )
             .then((response) => {
@@ -34,7 +35,7 @@ class App extends React.Component {
               window.location.replace(window.location.origin + "/#/notfound");
             }
             else {
-              this.setState({loading: false, result:response.data, params:tempLst});
+              this.setState({loading: false, result:response.data, chars:temp});
             }
             })
             .catch(function (error) {
@@ -79,7 +80,7 @@ class App extends React.Component {
                         flex: '1 0 auto',
                         overflow: 'auto'
                     }}>
-                        <RenderResult rank={index+1} name={value.name} sim={value.val} version={this.props.ver} tab2={true} />
+                        <RenderResult chars={this.state.chars} rank={index+1} name={value.name} sim={value.val} about={value.about} traits={value.traits} version={this.props.ver} tab2={true} />
                     </div>
                 ))}
                 </MDBRow>

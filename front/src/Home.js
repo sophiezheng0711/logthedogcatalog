@@ -2,13 +2,14 @@ import React from 'react';
 import './App.css';
 import { Button, Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import items from './items';
-import adjs from './adjs';
+// import adjs from './adjs';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { Switch } from 'antd';
 import "antd/dist/antd.css";
 import { withStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
+import ChipInput from 'material-ui-chip-input'
 
 
 const PrettoSlider = withStyles({
@@ -53,8 +54,9 @@ class App extends React.Component {
         this.changeWeight = this.changeWeight.bind(this);
         this.changePop = this.changePop.bind(this);
         this.changePersonality = this.changePersonality.bind(this);
-        this.updatePersonality = this.updatePersonality.bind(this);
         this.personalitySearch = this.personalitySearch.bind(this);
+        this.handleAddChip = this.handleAddChip.bind(this);
+        this.handleDeleteChip = this.handleDeleteChip.bind(this);
         this.state = {
             name: null,
             advanceSwitch: false,
@@ -80,9 +82,27 @@ class App extends React.Component {
       }
 
       personalitySearch() {
-        const n = '&plist=' + this.state.lstPer
-        console.log(n);
+        var temp = "";
+        this.state.lstPer.forEach((value) => {
+          temp += value + ',';
+        });
+        const n = '&plist=' + temp.substring(0, temp.length-1);
+        // console.log(n);
         window.location.replace(window.location.origin + "/#/personality?" + encodeURI("ver=" + this.props.ver + n));
+      }
+
+      handleAddChip(chip) {
+        const temp = this.state.lstPer;
+        temp.push(chip);
+        this.setState({lstPer: temp});
+        // console.log(this.state.lstPer);
+      }
+
+      handleDeleteChip(_, index) {
+        const temp = this.state.lstPer;
+        temp.splice(index, 1);
+        this.setState({lstPer: temp});
+        // console.log(this.state.lstPer);
       }
 
       onToggle(checked) {
@@ -98,18 +118,6 @@ class App extends React.Component {
         this.setState({
             name: value
         });
-      };
-
-      updatePersonality = (_,value) => {
-        console.log(this.state.lstPer);
-        if (value === "" && this.state.per !== "") {
-          const temp = this.state.lstPer;
-          temp.push(this.state.per);
-          this.setState({lstPer: temp, per: value});
-        }
-        else {
-          this.setState({per: value});
-        }
       };
 
       changeBreed(_,value) {
@@ -245,21 +253,13 @@ class App extends React.Component {
                 <Tab eventKey="personality" title={<p style={{fontWeight: 'bold', color: 'white', 
                   fontFamily: 'Loki', fontSize:'16px', marginTop: '0.4em', marginBottom: '-0.1em'}}>Personality Match</p>}>
                     <Row className="justify-content-md-center" style={{marginBottom: '2em', marginTop: '2em'}}>
-                      <Autocomplete size="small" style={{width: 600}}
-                        multiple
-                        id="tags-outlined"
-                        options={adjs}
-                        getOptionLabel={(option) => option.label}
-                        filterSelectedOptions
-                        onInputChange={this.updatePersonality}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            variant="filled"
-                            label="filterSelectedOptions"
-                            placeholder="Favorites"
-                          />
-                        )}
+                      <ChipInput
+                        // {...params}
+                        value={this.state.lstPer}
+                        onAdd={(chip) => this.handleAddChip(chip)}
+                        onDelete={(chip, index) => this.handleDeleteChip(chip, index)}
+                        style={{width: 600}}
+                        // dataSource={adjs2}
                       />
                       &nbsp; &nbsp; &nbsp; &nbsp;
                       <Button onClick={this.personalitySearch} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 

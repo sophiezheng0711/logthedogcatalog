@@ -39,7 +39,8 @@ for x in df["Traits"]:
 
 thing = "["
 for synset in traits:
-    thing += "{ label: \"" + str(synset) +  "\" },\n"
+#    thing += "{ label: \"" + str(synset) +  "\" },\n"
+     thing += "\""+str(synset) + "\",\n"
 
 thing += "]"
 print(thing)
