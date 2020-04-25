@@ -68,7 +68,7 @@ class App extends React.Component {
             pop: 0,
             personality: 0,
             tab: 'regular',
-            lstPer: [],
+            lstPer: ['cute'],
             per: "",
         };
         
@@ -258,8 +258,10 @@ class App extends React.Component {
                         value={this.state.lstPer}
                         onAdd={(chip) => this.handleAddChip(chip)}
                         onDelete={(chip, index) => this.handleDeleteChip(chip, index)}
-                        style={{width: 600}}
-                        // dataSource={adjs2}
+                        style={{width: 600, backgroundColor: 'rgba(204, 204, 204, 0.2)', paddingTop: '0.5em', paddingLeft: '1em'}}
+                        placeholder="     Your Personality! (e.g. cute, smart, confident)"
+                        defaultValue={this.state.lstPer}
+                        alwaysShowPlaceholder={true}
                       />
                       &nbsp; &nbsp; &nbsp; &nbsp;
                       <Button onClick={this.personalitySearch} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
