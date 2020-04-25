@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
 import json
-from emb_map_script import get_syn, df, get_sim
+from emb_map_script import get_syn, df, get_sim, min_height, max_height, max_weight, min_weight, heights, weights
 from sklearn.manifold import spectral_embedding
 import pandas as pd
 import re
