@@ -1,29 +1,17 @@
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
+import json
+from emb_map_script import get_syn, df, get_sim
 from sklearn.manifold import spectral_embedding
 import pandas as pd
 import re
 import numpy as np
 import json
-from scipy import stats
-import nltk
-# import ssl
-import os 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-nltk.data.path.append(dir_path)
-from nltk.corpus import wordnet
 
-print("here")
 app = Flask(__name__, static_url_path='', static_folder='front/build')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-df = pd.read_excel("data.xlsx")
-heights = df['avgHeight']
-max_height = np.amax(heights)
-min_height = np.amin(heights)
-weights = df['avgWeight']
-max_weight = np.amax(weights)
-min_weight = np.amin(weights)
+
 with open('breedB.txt') as json_file:
     data = json.load(json_file)
 
@@ -37,22 +25,18 @@ def computeRank(x, c_breed, c_height, c_weight, c_pop, c_personality=0):
     y = json.loads(x)
     return float(c_breed)*y['sim'] + float(c_pop)*y['pop'] + float(c_height)*y['height'] + float(c_weight)*y['weight'] + float(c_personality)*y['personality']
 
-def get_syn(word):
-        synonyms = []
-        for syn in wordnet.synsets(word):
-            for l in syn.lemmas():
-                synonyms.append(l.name())
-        
-        return set(synonyms)
+trait_dic = {}
+for i, x in enumerate(df["Traits"]):
+    for word in x.split(","):
+        word = word.strip()
+        if " " in word:
+            word = word[word.index(' ') + 1:]
+        syns = list(get_syn(word))
 
-def get_sim(breeds, trait_dic, breed):
-            ind = breeds.index(breed)
-            ranks = np.zeros(len(breeds))
-            for i in range(len(breeds)):
-                ranks[i] = len(set(trait_dic[ind]).intersection(set(trait_dic[i])))
-
-            return ranks
-
+        if i in trait_dic:
+            trait_dic[i] += syns
+        else:
+            trait_dic[i] = syns
 
 @app.route('/api/search', methods=['GET'])
 @cross_origin()
@@ -68,72 +52,14 @@ def ir():
     version = request.args.get('ver')
 
     # Prototype 2 is set to default, so if version is not specified, defaults to Prototype 2.
-    # TODO Prototype 2 has not been implemented yet
+
     if version != "1":
-
-        # bad code alert
-        
-        # df = pd.read_excel("data.xlsx") # CHANGE TO data.xlsx
-        names = list(df["Name"])
-        breeds = [re.sub(' ', '-', namez.lower().strip()) for namez in names]
-        
-        trait_dic = {}
-        for i, x in enumerate(df["Traits"]):
-            for word in x.split(","):
-                word = word.strip()
-                if " " in word:
-                    word = word[word.index(' ') + 1:]
-                syns = list(get_syn(word))
-
-                if i in trait_dic:
-                    trait_dic[i] += syns
-                else:
-                    trait_dic[i] = syns
-
-        
-        matrix = np.zeros([len(breeds), len(breeds)])
-        for i, x in enumerate(breeds):
-            matrix[i] += get_sim(breeds, trait_dic, breeds[i])
-        embedding = spectral_embedding(matrix)
-        try: 
-            pnt = embedding[breeds.index(name.lower())]
-        except ValueError:
-            return json.dumps([]), 200
-        
-        vals = []
-
-        for x in embedding:
-            vals += [np.linalg.norm(pnt - x)]
-        inds = np.argsort(vals)
-        to_return = {}
-        for x in inds:
-            to_return[re.sub(" ","-",breeds[x])] = 1 - vals[x]
-        
-        # bad code alert end
-        
-        
         breed = data[name][0]
         to_be_sorted = data[name][1:]
-        
-        
-        
-        # bad code alert
-        to_be_sorted2 = []
-        for x in to_be_sorted:
-            dic = json.loads(x)
-            dic["personality"] = to_return[dic["name"]]
-            
-            to_be_sorted2 += [dic]
-            
-            
-        to_be_sorted2 = [re.sub("'","\"",str(x)) for x in to_be_sorted2]
-
-        
-        # bad code alert end
-            
-        to_be_sorted2.sort(key=(lambda x: computeRank(
+        to_be_sorted = [re.sub("'", "\"", str(x)) for x in to_be_sorted]
+        to_be_sorted.sort(key=(lambda x: computeRank(
             x, c_breed, c_height, c_weight, c_pop, c_personality)), reverse=True)
-        return json.dumps([breed] + to_be_sorted2[:9]), 200
+        return json.dumps([breed] + to_be_sorted[:6]), 200
 
     ################################################################
     # Version 1 Legacy Code DO NOT TOUCH
@@ -199,6 +125,52 @@ def ir():
 
     ################################################################
 
+@app.route('/api/personalityQuiz', methods=['GET'])
+@cross_origin()
+def personalityQuiz():
+
+    # [plist] should be a string of adjectives separated by ', '
+    plist = request.args.get('plist')
+    name = 'custom'
+    trait_dic_p = trait_dic
+
+    i = len(trait_dic_p)
+    for word in plist.split(","):
+        word = word.strip()
+        if " " in word:
+            word = word[word.index(' ') + 1:]
+        syns = list(get_syn(word))
+        
+        if i in trait_dic_p:
+            trait_dic_p[i] += syns
+        else:
+            trait_dic_p[i] = syns
+    
+    names = list(df["Name"])
+    breeds = [re.sub(' ', '-', namez.lower().strip()) for namez in names]
+    breeds += ([name])
+
+    matrix = np.zeros([len(breeds), len(breeds)])
+    for i, x in enumerate(breeds):
+        matrix[i] += get_sim(breeds, trait_dic_p, breeds[i])
+    embedding = spectral_embedding(matrix)
+    pnt = embedding[breeds.index(name.lower())]
+    
+    vals = []
+
+    for x in embedding:
+        vals += [np.linalg.norm(pnt - x)]
+    inds = np.argsort(vals)
+    to_return = {}
+    for x in inds:
+        to_return[re.sub(" ","-",breeds[x])] = 1 - vals[x]
+    
+    ans = []
+
+    for key in to_return:
+        if key != name:
+            ans += [{'name': key, 'val': to_return[key]}]
+    return json.dumps(ans[:10]), 200
 
 if __name__ == '__main__':
     # app.run(debug=True, host='0.0.0.0')

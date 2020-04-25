@@ -25,8 +25,8 @@ class App extends React.Component {
         temp.map((value) => (
             tempLst.push(value.split("=")[1])
         ));
-        axios.get('http://localhost:5000/api/search?' + 'ver=' + this.props.ver + '&' + n )
-        // axios.get('/api/search?' + 'ver=' + this.props.ver + '&' + n )
+        // axios.get('http://localhost:5000/api/search?' + 'ver=' + this.props.ver + '&' + n )
+        axios.get('/api/search?' + 'ver=' + this.props.ver + '&' + n )
             .then((response) => {
                 console.log(response.data);
             if (response.data.length === 0) {
