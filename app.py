@@ -185,7 +185,7 @@ def personalityQuiz():
         if key != name:
             about = abouts[names_to_inds[key]]
             ans += [{'name': key, 'val': to_return[key], 'about': about, 'traits': df['Traits'][names_to_inds[key]]}]
-    return json.dumps(ans[:7]), 200
+    return json.dumps(ans[:6]), 200
 
 if __name__ == '__main__':
     # app.run(debug=True, host='0.0.0.0')

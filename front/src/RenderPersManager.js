@@ -22,7 +22,7 @@ class App extends React.Component {
         const q = window.location.hash;
         
         const n = q.substring(14, q.length);
-        const temp = n.split("&")[1].split("=")[1].split(",");
+        const temp = n.split("&")[1].split("=")[1].replace(/,/g, " · ");
         // setTimeout(function () {
             // axios.get('http://localhost:5000/api/personalityQuiz?' + n )
             axios.get('/api/personalityQuiz?' + n )
@@ -51,12 +51,13 @@ class App extends React.Component {
         rstList.map((value) => (
             jsons.push(value)
         ));
-        const fin = jsons.slice(1, jsons.length);
+        // const fin = jsons.slice(1, jsons.length);
         return (
             <>
             <Container>
-                {/* <p style={{color:'black', fontFamily: 'Anders', fontSize:'60px', backgroundColor: 'rgba(204, 204, 204, 0.5)'}}>&nbsp; {jsons[0].name} &nbsp;</p>
-                <Container style={{backgroundColor: 'rgba(204, 204, 204, 0.5)', marginBottom: '2em'}}>
+                <p style={{color:'black', fontFamily: 'Anders', fontSize:'60px', 
+                backgroundColor: 'rgba(204, 204, 204, 0.5)', padding: '0.5em'}}>&nbsp; {this.state.chars} &nbsp;</p>
+                {/* <Container style={{backgroundColor: 'rgba(204, 204, 204, 0.5)', marginBottom: '2em'}}>
                     <Row>
                         <Col>
                             <img src={require('./dogpics/' + jsons[0].name + '.jpg')} height='300px' style={{objectFit: 'cover'}} alt='' />
@@ -71,14 +72,14 @@ class App extends React.Component {
                     </Row>
                 </Container> */}
                 <MDBRow style={{display: 'flex', flexWrap: 'wrap'}}>
-                {fin.map((value, index) => (
+                {jsons.map((value, index) => (
                     <div style={{
                         lineHeight: '150px',
                         marginLeft: '2em',
                         flex: '1 0 auto',
                         overflow: 'auto'
                     }}>
-                        <RenderResult chars={this.state.chars} rank={index+1} name={value.name} sim={value.val} about={value.about} traits={value.traits} version={this.props.ver} tab2={true} />
+                        <RenderResult rank={index+1} name={value.name} sim={value.val} about={value.about} traits={value.traits} version={this.props.ver} tab2={true} />
                     </div>
                 ))}
                 </MDBRow>

@@ -3,6 +3,8 @@ import {Card, Button, Container, Row, Col, OverlayTrigger, Tooltip} from "react-
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css';
 import AboutWindow from './AboutWindow';
+import { Tag } from 'antd';
+import "antd/dist/antd.css";
 
 class App extends React.Component {
     constructor(props) {
@@ -54,6 +56,8 @@ class App extends React.Component {
     }
 
     render() {
+        // const tagColors = ["orange", "cyan", "lime", "gold", "geekblue", "magenta", "volcano", "purple"];
+        const tagColors = ["black", "#6F4016", "#416366", "#414966"];
         if (this.props.tab2) {
           return(
             <>
@@ -63,11 +67,12 @@ class App extends React.Component {
                 <Card.Body>
                 <Card.Title>{this.props.rank + ". " + this.formatName(this.props.name)}</Card.Title>
                   <Container>
-                    {/* <Row className="justify-content-md-center">
-                      <RadarChart captions={captions} data={data} size={250}/>
-                    </Row> */}
                     <Row className="justify-content-md-center">
-                      <div>{this.props.traits}</div>
+                      {this.props.traits.split(",").map((value)=> (
+                        <Tag color={tagColors[Math.floor(Math.random() * tagColors.length)]} 
+                        style={{fontWeight: 'bold', fontFamily: '"Lucida Console", Courier, monospace', marginTop: '0.5em', 
+                        padding: '0.1em', fontSize: '14px'}}>&nbsp;{value.trim()}&nbsp;</Tag>
+                      ))}
                     </Row>
                     <Row className="justify-content-md-center">
                       <Col sm={0}>

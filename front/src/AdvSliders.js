@@ -85,6 +85,7 @@ class App extends React.Component {
                             </Row>
                         </Col>
                       </Row>
+                      {this.props.version > 1 &&
                       <Row>
                         <Col className={classes.root} sm={{offset:1}}>
                             <Row>
@@ -96,7 +97,7 @@ class App extends React.Component {
                                 </Col>
                             </Row>
                         </Col>
-                    </Row>
+                    </Row>}
                 </Container>
                 </Row>
               }

@@ -134,6 +134,7 @@ class App extends React.Component {
                 </div>
                 </Row>
                 <AdvSliders 
+                  version={this.props.ver}
                   advanceSwitch={this.state.advanceSwitch}
                   breed={this.state.breed}
                   changeBreed={this.changeBreed}
@@ -150,7 +151,7 @@ class App extends React.Component {
                 {this.props.ver === 2 &&
                 
                 <Tab eventKey="personality" title={<p style={{fontWeight: 'bold', color: 'white', 
-                  fontFamily: 'Loki', fontSize:'16px', marginTop: '0.4em', marginBottom: '-0.1em'}}>Personality Match</p>}>
+                  fontFamily: 'Loki', fontSize:'16px', marginTop: '0.4em', marginBottom: '-0.1em'}}>Dognostic Test</p>}>
                     <Row className="justify-content-md-center" style={{marginBottom: '2em', marginTop: '2em'}}>
                     <Autocomplete
                       id="combo-box-demo"
