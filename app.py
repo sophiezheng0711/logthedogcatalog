@@ -21,9 +21,9 @@ def root():
     return app.send_static_file('index.html')
 
 
-def computeRank(x, c_breed, c_height, c_weight, c_pop, c_personality=0):
+def computeRank(x, version, c_breed, c_height, c_weight, c_pop, c_personality=0):
     y = json.loads(x)
-    return float(c_breed)*y['sim'] + float(c_pop)*y['pop'] + float(c_height)*y['height'] + float(c_weight)*y['weight'] + float(c_personality)*y['personality']
+    return float(c_breed)*y['sim'] + float(c_pop)*y['pop'] + float(c_height)*y['height'] + float(c_weight)*y['weight'] + float(c_personality)*(0 if version == "1" else y['personality'])
 
 
 
@@ -47,7 +47,7 @@ def ir():
         to_be_sorted = data[name][1:]
         to_be_sorted = [re.sub("'", "\"", str(x)) for x in to_be_sorted]
         to_be_sorted.sort(key=(lambda x: computeRank(
-            x, c_breed, c_height, c_weight, c_pop, c_personality)), reverse=True)
+            x, version, c_breed, c_height, c_weight, c_pop, c_personality)), reverse=True)
         return json.dumps([breed] + to_be_sorted[:6]), 200
 
     ################################################################
@@ -109,7 +109,7 @@ def ir():
 
     to_be_sorted = to_return[1:]
     to_be_sorted.sort(key=(lambda x: computeRank(
-        x, c_breed, c_height, c_weight, c_pop)), reverse=True)
+        x, version, c_breed, c_height, c_weight, c_pop)), reverse=True)
     return json.dumps([to_return[0]] + to_be_sorted[:9]), 200
 
     ################################################################
@@ -185,7 +185,7 @@ def personalityQuiz():
         if key != name:
             about = abouts[names_to_inds[key]]
             ans += [{'name': key, 'val': to_return[key], 'about': about, 'traits': df['Traits'][names_to_inds[key]]}]
-    return json.dumps(ans[:10]), 200
+    return json.dumps(ans[:7]), 200
 
 if __name__ == '__main__':
     # app.run(debug=True, host='0.0.0.0')
