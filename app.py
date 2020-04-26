@@ -150,7 +150,7 @@ def personalityQuiz():
         else:
             trait_dic_p[i] = syns
     
-    print(trait_dic_p[i])
+    # print(trait_dic_p[i])
 
     names = list(df["Name"])
     abouts = list(df['About'])
@@ -167,7 +167,7 @@ def personalityQuiz():
         matrix[j] += get_sim(breeds, trait_dic_p, breeds[j])
     # embedding = np.zeros([len(breeds), len(breeds)])
     embedding = spectral_embedding(matrix)
-    print(embedding.shape)
+    # print(embedding.shape)
     pnt = embedding[i]
     
     vals = []

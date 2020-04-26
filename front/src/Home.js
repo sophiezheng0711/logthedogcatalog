@@ -2,45 +2,12 @@ import React from 'react';
 import './App.css';
 import { Button, Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import items from './items';
-// import adjs from './adjs';
+import adjs from './adjs';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { Switch } from 'antd';
 import "antd/dist/antd.css";
-import { withStyles } from '@material-ui/core/styles';
-import Slider from '@material-ui/core/Slider';
-import ChipInput from 'material-ui-chip-input'
-
-
-const PrettoSlider = withStyles({
-  root: {
-    color: 'black',
-    height: 8,
-  },
-  thumb: {
-    height: 24,
-    width: 24,
-    backgroundColor: '#fff',
-    border: '2px solid currentColor',
-    marginTop: -8,
-    marginLeft: -12,
-    '&:focus, &:hover, &$active': {
-      boxShadow: 'inherit',
-    },
-  },
-  active: {},
-  valueLabel: {
-    left: 'calc(-50% + 4px)',
-  },
-  track: {
-    height: 8,
-    borderRadius: 4,
-  },
-  rail: {
-    height: 8,
-    borderRadius: 4,
-  },
-})(Slider);
+import AdvSliders from './AdvSliders'
 
 class App extends React.Component {
 
@@ -55,8 +22,6 @@ class App extends React.Component {
         this.changePop = this.changePop.bind(this);
         this.changePersonality = this.changePersonality.bind(this);
         this.personalitySearch = this.personalitySearch.bind(this);
-        this.handleAddChip = this.handleAddChip.bind(this);
-        this.handleDeleteChip = this.handleDeleteChip.bind(this);
         this.state = {
             name: null,
             advanceSwitch: false,
@@ -68,8 +33,7 @@ class App extends React.Component {
             pop: 0,
             personality: 0,
             tab: 'regular',
-            lstPer: ['cute'],
-            per: "",
+            valDict: [],
         };
         
       }
@@ -77,33 +41,18 @@ class App extends React.Component {
       search() {
         const n = this.state.name+'&breed='+this.state.breed+'&height='+this.state.height+'&weight='
         +this.state.weight+'&pop='+this.state.pop+'&personality='+this.state.personality;
-        // console.log(this.props.ver);
         window.location.replace(window.location.origin + "/#/search?" + encodeURI("ver=" + this.props.ver + "&name=" + n));
       }
 
       personalitySearch() {
         var temp = "";
-        this.state.lstPer.forEach((value) => {
-          temp += value + ',';
+        this.state.valDict.forEach((value) => {
+          temp += value.label + ',';
         });
         const n = '&plist=' + temp.substring(0, temp.length-1);
-        // console.log(n);
         window.location.replace(window.location.origin + "/#/personality?" + encodeURI("ver=" + this.props.ver + n));
       }
 
-      handleAddChip(chip) {
-        const temp = this.state.lstPer;
-        temp.push(chip);
-        this.setState({lstPer: temp});
-        // console.log(this.state.lstPer);
-      }
-
-      handleDeleteChip(_, index) {
-        const temp = this.state.lstPer;
-        temp.splice(index, 1);
-        this.setState({lstPer: temp});
-        // console.log(this.state.lstPer);
-      }
 
       onToggle(checked) {
         if (checked) {
@@ -142,7 +91,6 @@ class App extends React.Component {
       }
 
       render() {
-        const classes = this.props;
         return (
             <>
               <header className="App-header">
@@ -185,89 +133,48 @@ class App extends React.Component {
                 </Col>
                 </div>
                 </Row>
-                {this.state.advanceSwitch &&
-                  <Row className="justify-content-md-center">
-                    <Container style={{marginTop: '3em'}}>
-                      <Row>
-                          <Col className={classes.root}>
-                              <Row>
-                                  <Col sm={3}>
-                                      <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Breed</div>
-                                  </Col>
-                                  <Col>
-                                      <PrettoSlider defaultValue={this.state.breed} onChangeCommitted={this.changeBreed} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
-                                  </Col>
-                              </Row>
-                          </Col>
-                          <Col className={classes.root} sm={{offset:1}}>
-                              <Row>
-                                  <Col sm={3}>
-                                      <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Height</div>
-                                  </Col>
-                                  <Col>
-                                      <PrettoSlider defaultValue={this.state.height} onChangeCommitted={this.changeHeight} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
-                                  </Col>
-                              </Row>
-                          </Col>
-                      </Row>
-                      <Row>
-                          <Col className={classes.root}>
-                              <Row>
-                                  <Col sm={3}>
-                                      <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Weight</div>
-                                  </Col>
-                                  <Col>
-                                      <PrettoSlider defaultValue={this.state.weight} onChangeCommitted={this.changeWeight} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
-                                  </Col>
-                              </Row>
-                          </Col>
-                          <Col className={classes.root} sm={{offset:1}}>
-                              <Row>
-                                  <Col sm={3}>
-                                      <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Popularity</div>
-                                  </Col>
-                                  <Col sm={{span:7, offset: 2}}>
-                                      <PrettoSlider defaultValue={this.state.pop} onChangeCommitted={this.changePop} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
-                                  </Col>
-                              </Row>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col className={classes.root} sm={{offset:1}}>
-                              <Row>
-                                  <Col sm={{offset:-2}}>
-                                      <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Personality</div>
-                                  </Col>
-                                  <Col sm={{span:7, offset: -2}}>
-                                      <PrettoSlider defaultValue={this.state.personality} onChangeCommitted={this.changePersonality} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
-                                  </Col>
-                              </Row>
-                          </Col>
-                      </Row>
-                  </Container>
-                  </Row>
-                }
+                <AdvSliders 
+                  advanceSwitch={this.state.advanceSwitch}
+                  breed={this.state.breed}
+                  changeBreed={this.changeBreed}
+                  height={this.state.height}
+                  changeHeight={this.changeHeight}
+                  weight={this.state.weight}
+                  changeWeight={this.changeWeight}
+                  pop={this.state.pop}
+                  changePop={this.changePop}
+                  personality={this.state.personality}
+                  changePersonality={this.changePersonality}
+                />
                 </Tab>
                 {this.props.ver === 2 &&
                 
                 <Tab eventKey="personality" title={<p style={{fontWeight: 'bold', color: 'white', 
                   fontFamily: 'Loki', fontSize:'16px', marginTop: '0.4em', marginBottom: '-0.1em'}}>Personality Match</p>}>
                     <Row className="justify-content-md-center" style={{marginBottom: '2em', marginTop: '2em'}}>
-                      <ChipInput
-                        // {...params}
-                        value={this.state.lstPer}
-                        onAdd={(chip) => this.handleAddChip(chip)}
-                        onDelete={(chip, index) => this.handleDeleteChip(chip, index)}
-                        style={{width: 600, backgroundColor: 'rgba(204, 204, 204, 0.2)', paddingTop: '0.5em', paddingLeft: '1em'}}
-                        placeholder="     Your Personality! (e.g. cute, smart, confident)"
-                        defaultValue={this.state.lstPer}
-                        alwaysShowPlaceholder={true}
-                      />
+                    <Autocomplete
+                      id="combo-box-demo"
+                      multiple
+                      options={adjs}
+                      getOptionLabel={(option) => option.label}
+                      style={{ width: 600 }}
+                      onChange={(_, data) => {
+                        this.setState({valDict: data});
+                      }}
+                      renderInput={params => (
+                        <TextField
+                          {...params}
+                          name="multiple"
+                          label="Describe your personality in a few words!"
+                          variant="filled"
+                          fullWidth
+                        />
+                      )}
+                    />
                       &nbsp; &nbsp; &nbsp; &nbsp;
                       <Button onClick={this.personalitySearch} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
                       border: '2px solid black', borderRadius: '3px', color: 'black', height: '3.5em'}}>Search</Button>
                     </Row>
-                    
                 </Tab>
                 }
                 </Tabs>

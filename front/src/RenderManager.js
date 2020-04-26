@@ -25,20 +25,23 @@ class App extends React.Component {
         temp.map((value) => (
             tempLst.push(value.split("=")[1])
         ));
-        // axios.get('http://localhost:5000/api/search?' + 'ver=' + this.props.ver + '&' + n )
-        axios.get('/api/search?' + 'ver=' + this.props.ver + '&' + n )
-            .then((response) => {
-                console.log(response.data);
-            if (response.data.length === 0) {
-              window.location.replace(window.location.origin + "/#/notfound");
-            }
-            else {
-              this.setState({loading: false, result:response.data, params:tempLst});
-            }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        
+        setTimeout(function () {
+            // axios.get('http://localhost:5000/api/search?' + 'ver=' + this.props.ver + '&' + n )
+            axios.get('/api/search?' + 'ver=' + this.props.ver + '&' + n )
+                .then((response) => {
+                    console.log(response.data);
+                if (response.data.length === 0) {
+                window.location.replace(window.location.origin + "/#/notfound");
+                }
+                else {
+                this.setState({loading: false, result:response.data, params:tempLst});
+                }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }.bind(this), 1500);
     }
 
     render() {

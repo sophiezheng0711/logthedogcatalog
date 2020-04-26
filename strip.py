@@ -37,10 +37,10 @@ for x in df["Traits"]:
             traits.add(temp.lower())
             traits.add(word.lower())
 
-thing = "["
+thing = "export default ["
 for synset in traits:
-#    thing += "{ label: \"" + str(synset) +  "\" },\n"
-     thing += "\""+str(synset) + "\",\n"
+   thing += "{ label: \"" + str(synset) +  "\" },\n"
+    #  thing += "\""+str(synset) + "\",\n"
 
 thing += "]"
 print(thing)

@@ -23,24 +23,22 @@ class App extends React.Component {
         
         const n = q.substring(14, q.length);
         const temp = n.split("&")[1].split("=")[1].split(",");
-        // var tempLst = []
-        // temp.map((value) => (
-        //     tempLst.push(value.split("=")[1])
-        // ));
-        // axios.get('http://localhost:5000/api/personalityQuiz?' + n )
-        axios.get('/api/personalityQuiz?' + n )
-            .then((response) => {
-                console.log(response.data);
-            if (response.data.length === 0) {
-              window.location.replace(window.location.origin + "/#/notfound");
-            }
-            else {
-              this.setState({loading: false, result:response.data, chars:temp});
-            }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        // setTimeout(function () {
+            // axios.get('http://localhost:5000/api/personalityQuiz?' + n )
+            axios.get('/api/personalityQuiz?' + n )
+                .then((response) => {
+                    console.log(response.data);
+                if (response.data.length === 0) {
+                window.location.replace(window.location.origin + "/#/notfound");
+                }
+                else {
+                this.setState({loading: false, result:response.data, chars:temp});
+                }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        // }.bind(this), 1500);
     }
 
     render() {
