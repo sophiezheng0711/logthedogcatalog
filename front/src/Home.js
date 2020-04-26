@@ -7,7 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { Switch } from 'antd';
 import "antd/dist/antd.css";
-import AdvSliders from './AdvSliders'
+import AdvSliders from './AdvSliders';
+import HelpWindow from './HelpWindow';
 
 class App extends React.Component {
 
@@ -22,6 +23,8 @@ class App extends React.Component {
         this.changePop = this.changePop.bind(this);
         this.changePersonality = this.changePersonality.bind(this);
         this.personalitySearch = this.personalitySearch.bind(this);
+        this.openAbout = this.openAbout.bind(this);
+        this.closeAbout = this.closeAbout.bind(this);
         this.state = {
             name: null,
             advanceSwitch: false,
@@ -34,8 +37,18 @@ class App extends React.Component {
             personality: 0,
             tab: 'regular',
             valDict: [],
+            aboutShow: false,
+            tab1: true,
         };
         
+      }
+
+      openAbout() {
+        this.setState({aboutShow: true});
+      }
+  
+      closeAbout() {
+        this.setState({aboutShow: false});
       }
 
       search() {
@@ -93,6 +106,16 @@ class App extends React.Component {
       render() {
         return (
             <>
+              <HelpWindow show={this.state.aboutShow} close={this.closeAbout}
+              body={this.state.tab1 ? 
+              <><p>Love a particular breed from your friend's house and want something similar? We gotchu! Type in a breed name with the help
+              of our catalog, and hit search to explore more. If you are interested in dog breeds with similar height or weight, or even
+              personality, check out our Advanced Search function! You can rate the metrics from a scale of 1 to 10 (with 10 being most important)
+              to personalize your search even more. You could even get a list of popular dogs if popularity is all you seek for. :)</p>
+              <p>Not sure what breed you're looking for? Take our Dognostic Test! :)</p></> : 
+              <><p>You are here because you are lost in the fancy dog breed names written in hieroglyphics (or because you are bored). But 
+                that's ok! Tell us a bit about your personality, and we will match you to some doggos. :) Don't forget to search again for the
+                breeds you get after some dognosis!</p></>} />
               <header className="App-header">
               <Container>
                 <Row className="justify-content-md-center">
@@ -121,6 +144,15 @@ class App extends React.Component {
                   &nbsp; &nbsp; &nbsp; &nbsp;
                   <Button onClick={this.search} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
                   border: '2px solid black', borderRadius: '3px', color: 'black'}}>Search</Button>
+                  {this.props.ver > 1 &&
+                    <>
+                    <>&nbsp; &nbsp;</>
+                    <Button onClick={()=>{
+                      this.openAbout();
+                      this.setState({tab1:true})
+                    }} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
+                    border: '2px solid black', borderRadius: '3px', color: 'black'}}>Help</Button></>
+                  }
                 </Row>
                 <Row className="justify-content-md-center">
                   <div style={{backgroundColor: 'rgba(50, 50, 50, 0.3)', border: '2px solid black', borderRadius: '3px', display: 'flex', flexDirection: 'row'}}>
@@ -175,6 +207,15 @@ class App extends React.Component {
                       &nbsp; &nbsp; &nbsp; &nbsp;
                       <Button onClick={this.personalitySearch} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
                       border: '2px solid black', borderRadius: '3px', color: 'black', height: '3.5em'}}>Search</Button>
+                      {this.props.ver > 1 &&
+                        <>
+                        <>&nbsp; &nbsp;</>
+                        <Button onClick={()=>{
+                          this.openAbout();
+                          this.setState({tab1:false})
+                        }} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
+                        border: '2px solid black', borderRadius: '3px', color: 'black'}}>Help</Button></>
+                      }
                     </Row>
                 </Tab>
                 }
