@@ -24,19 +24,11 @@ function AboutPage() {
   );
 }
 
-// function ResultsPage() {
-//   return (
-//     <RenderResult/>
-//   );
-// }
-
 function NotFoundPage() {
   return (
     <NotFound />
   );
 }
-
-
 
 class App extends React.Component {
 

@@ -5,18 +5,60 @@ import 'react-svg-radar-chart/build/css/index.css';
 import AboutWindow from './AboutWindow';
 import { Tag } from 'antd';
 import "antd/dist/antd.css";
+import axios from 'axios';
+
+var ids = require('./breeIds.json');
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.formatName = this.formatName.bind(this);
         this.state = {
-          aboutShow: false
+          aboutShow: false,
+          alertShow: false,
         };
         this.openAbout = this.openAbout.bind(this);
         this.closeAbout = this.closeAbout.bind(this);
         this.linkSearch = this.linkSearch.bind(this);
         this.renderTooltip = this.renderTooltip.bind(this);
+        this.geoAlertClose = this.geoAlertClose.bind(this);
+        this.geoAlertShow = this.geoAlertShow.bind(this);
+        this.getLocation = this.getLocation.bind(this);
+        this.showPosition = this.showPosition.bind(this);
+    }
+
+    geoAlertShow() {
+      this.setState({alertShow: true});
+    }
+
+    geoAlertClose() {
+      this.setState({alertShow: false});
+    }
+
+    getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+      }
+      else {
+        this.geoAlertShow();
+      }
+    }
+    
+    showPosition(position) {
+      var lat = position.coords.latitude;
+      var long = position.coords.longitude;
+      var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + 
+      "&key=AIzaSyBRBE-ANhsIYlVK2AtlKccEIyVZW4MecEE";
+      axios.get(url)
+        .then((response) => {
+          var results = response.data.results;
+          var zip = results[0].address_components[6].short_name;
+          window.open("https://www.adoptapet.com/pet-search?clan_id=1&family_id="+ids[this.props.name]+
+          "&geo_range=50&location="+zip+"&page=1");
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 
     formatName(name) {
@@ -26,7 +68,6 @@ class App extends React.Component {
         for (i = 0; i < a.length; i++) {
             const first = a[i].charAt(0).toUpperCase();
             const last = a[i].charAt(a[i].length-1);
-            // console.log(a[i]);
             ans += (first + a[i].substring(1, a[i].length-1) + last) + " ";
         }
         return ans;
@@ -80,6 +121,12 @@ class App extends React.Component {
                         border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '1em', marginBottom: '2em'}}>Learn More</Button>
                       </Col>
                     </Row>
+                    {this.props.version>1 &&
+                    <Row className="justify-content-md-center">
+                      <Button onClick={this.getLocation} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
+                      border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '-2em', marginBottom: '1em'}}>
+                      Adopt Me</Button>
+                    </Row>}
                   </Container>
                 </Card.Body>
             </Card>
@@ -121,7 +168,7 @@ class App extends React.Component {
                     <Row>
                       <Col sm={0}>
                         <Button onClick={this.openAbout} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
-                        border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '1em', marginBottom: '2em'}}>Learn More</Button>
+                        border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '1em'}}>Learn More</Button>
                       </Col>
                       <Col sm={2}>
                       <OverlayTrigger
@@ -130,11 +177,17 @@ class App extends React.Component {
                         overlay={this.renderTooltip}
                       >
                         <Button onClick={this.linkSearch} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
-                        border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '1em', marginBottom: '2em'}}>Search Me</Button>
+                        border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '1em'}}>Search Me</Button>
                       </OverlayTrigger>
                         
                       </Col>
                     </Row>
+                    {this.props.version>1 &&
+                    <Row className="justify-content-md-center">
+                      <Button onClick={this.getLocation} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
+                      border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '-2em', marginBottom: '1em'}}>
+                      Adopt Me</Button>
+                    </Row>}
                   </Container>
                 </Card.Body>
             </Card>
