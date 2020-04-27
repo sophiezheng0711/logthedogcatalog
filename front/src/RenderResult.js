@@ -43,6 +43,7 @@ class App extends React.Component {
     }
     
     showPosition(position) {
+      this.props.loadingShow();
       var lat = position.coords.latitude;
       var long = position.coords.longitude;
       var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long + 
@@ -59,6 +60,7 @@ class App extends React.Component {
           // "&geo_range=50&location="+zip+"&page=1");
 
           // console.log(zip);
+          this.props.loadingHide();
           window.location.replace("https://www.adoptapet.com/pet-search?clan_id=1&family_id="+ids[this.props.name]+
           "&geo_range=50&location="+zip+"&page=1");
         })

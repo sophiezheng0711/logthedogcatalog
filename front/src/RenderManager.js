@@ -82,7 +82,8 @@ class App extends React.Component {
                         overflow: 'auto'
                     }}>
                         <RenderResult rank={index+1} name={value.name} similarity={value.sim} popularity={value.pop} about={value.about} height={value.height}
-                        weight={value.weight} params={this.state.params} personality={value.personality} version={this.props.ver} tab2={false} />
+                        weight={value.weight} params={this.state.params} personality={value.personality} version={this.props.ver} tab2={false} 
+                        loadingShow={() => this.setState({loading: true})} loadingHide={() => this.setState({loading: false})} />
                     </div>
                 ))}
                 </MDBRow>

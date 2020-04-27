@@ -79,7 +79,8 @@ class App extends React.Component {
                         flex: '1 0 auto',
                         overflow: 'auto'
                     }}>
-                        <RenderResult rank={index+1} name={value.name} sim={value.val} about={value.about} traits={value.traits} version={this.props.ver} tab2={true} />
+                        <RenderResult rank={index+1} name={value.name} sim={value.val} about={value.about} traits={value.traits} version={this.props.ver} tab2={true}
+                        loadingShow={() => this.setState({loading: true})} loadingHide={() => this.setState({loading: false})} />
                     </div>
                 ))}
                 </MDBRow>
