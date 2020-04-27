@@ -6,6 +6,7 @@ import AboutWindow from './AboutWindow';
 import { Tag } from 'antd';
 import "antd/dist/antd.css";
 import axios from 'axios';
+import HelpWindow from './HelpWindow';
 
 var ids = require('./breeIds.json');
 
@@ -37,10 +38,7 @@ class App extends React.Component {
 
     getLocation() {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition);
-      }
-      else {
-        this.geoAlertShow();
+        navigator.geolocation.getCurrentPosition(this.showPosition, this.geoAlertShow);
       }
     }
     
@@ -104,6 +102,7 @@ class App extends React.Component {
         if (this.props.tab2) {
           return(
             <>
+            <HelpWindow show={this.state.alertShow} close={this.geoAlertClose} body={<>Please enable your location accessibility so that you can enjoy this feature!</>} />
             <AboutWindow show={this.state.aboutShow} close={this.closeAbout} body={this.props.about} title={this.formatName(this.props.name)} name={this.props.name} />
             <Card border='dark' style={{ boxShadow:'3px 3px 3px 3px rgba(50,50,50,0.24)', width: '20rem', flex: '1', size: 'cover', color:'#1B4F72', fontFamily: 'Loki', marginBottom: '2em'}}>
                 <Card.Img variant="top" src={require('./dogpics/' + this.props.name + '.jpg')} height='300px' style={{objectFit: 'cover'}} />
@@ -126,7 +125,7 @@ class App extends React.Component {
                     {this.props.version>1 &&
                     <Row className="justify-content-md-center">
                       <Button onClick={this.getLocation} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
-                      border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '-2em', marginBottom: '1em'}}>
+                      border: '2px solid black', borderRadius: '3px', color: 'black', marginBottom: '1em'}}>
                       Adopt Me</Button>
                     </Row>}
                   </Container>
@@ -157,6 +156,7 @@ class App extends React.Component {
           };
         return (
             <>
+            <HelpWindow show={this.state.alertShow} close={this.geoAlertClose} body={<>Please enable your location accessibility so that you can enjoy this feature!</>} />
             <AboutWindow show={this.state.aboutShow} close={this.closeAbout} body={this.props.about} title={this.formatName(this.props.name)} name={this.props.name} />
             <Card border='dark' style={{ boxShadow:'3px 3px 3px 3px rgba(50,50,50,0.24)', width: '20rem', flex: '1', size: 'cover', color:'#1B4F72', fontFamily: 'Loki', marginBottom: '2em'}}>
                 <Card.Header> </Card.Header>
@@ -187,7 +187,7 @@ class App extends React.Component {
                     {this.props.version>1 &&
                     <Row className="justify-content-md-center">
                       <Button onClick={this.getLocation} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
-                      border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '-2em', marginBottom: '1em'}}>
+                      border: '2px solid black', borderRadius: '3px', color: 'black', marginBottom: '1em'}}>
                       Adopt Me</Button>
                     </Row>}
                   </Container>
