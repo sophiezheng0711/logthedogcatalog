@@ -53,7 +53,9 @@ class App extends React.Component {
         .then((response) => {
           var results = response.data.results;
           var zip = results[0].address_components[6].short_name;
-          window.open("https://www.adoptapet.com/pet-search?clan_id=1&family_id="+ids[this.props.name]+
+          // window.open("https://www.adoptapet.com/pet-search?clan_id=1&family_id="+ids[this.props.name]+
+          // "&geo_range=50&location="+zip+"&page=1");
+          window.location.replace("https://www.adoptapet.com/pet-search?clan_id=1&family_id="+ids[this.props.name]+
           "&geo_range=50&location="+zip+"&page=1");
         })
         .catch(function (error) {
