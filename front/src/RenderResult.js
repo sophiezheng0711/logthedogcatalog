@@ -50,9 +50,15 @@ class App extends React.Component {
       axios.get(url)
         .then((response) => {
           var results = response.data.results;
-          var zip = results[0].address_components[6].short_name;
+          const temp = results[0].address_components;
+          var zip = '';
+          temp.forEach((value) => {if (value.types[0] === "postal_code") {
+            zip = value.short_name;
+          }});
           // window.open("https://www.adoptapet.com/pet-search?clan_id=1&family_id="+ids[this.props.name]+
           // "&geo_range=50&location="+zip+"&page=1");
+
+          // console.log(zip);
           window.location.replace("https://www.adoptapet.com/pet-search?clan_id=1&family_id="+ids[this.props.name]+
           "&geo_range=50&location="+zip+"&page=1");
         })
