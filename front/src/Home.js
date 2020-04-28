@@ -124,6 +124,52 @@ class App extends React.Component {
                 <Row className="justify-content-md-center" style={{marginTop: '-2.5em'}}>
                   <p style={{color:'#2F2F2F', fontFamily: 'Loki', fontSize: '20px', fontWeight: 'bold'}}>Your personalized dog breed recommender</p>
                 </Row>
+
+                { this.props.ver < 2 && <><Row className="justify-content-md-center" style={{marginBottom: '2em', marginTop: '2em'}}>
+                  <Autocomplete
+                    id="combo-box-demo"
+                    options={items}
+                    getOptionLabel={(option) => option.label}
+                    style={{ width: 600 }}
+                    renderInput={(params) => <TextField {...params} label="Doggo" variant="filled" />}
+                    onInputChange={this.update}
+                    onKeyUp={(event) => {
+                      if (event.key === 'Enter')
+                          this.search()
+                  }}
+                  />
+                  &nbsp; &nbsp; &nbsp; &nbsp;
+                  <Button onClick={this.search} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
+                  border: '2px solid black', borderRadius: '3px', color: 'black'}}>Search</Button>
+                </Row>
+                <Row className="justify-content-md-center">
+                  <div style={{backgroundColor: 'rgba(50, 50, 50, 0.3)', border: '2px solid black', borderRadius: '3px', display: 'flex', flexDirection: 'row'}}>
+                <Col>
+                <Switch style={{backgroundColor: this.state.toggleBackColor}} 
+                defaultChecked={this.state.advanceSwitch} onChange={this.onToggle}/>
+                </Col>
+                <Col className="justify-content-md-center" style={{color: this.state.toggleTextColor, fontFamily: 'Anders', fontWeight: 'bold', fontSize: '25px', padding: '0.3em'}}>
+                Advanced
+                </Col>
+                </div>
+                </Row>
+                <AdvSliders 
+                  version={this.props.ver}
+                  advanceSwitch={this.state.advanceSwitch}
+                  breed={this.state.breed}
+                  changeBreed={this.changeBreed}
+                  height={this.state.height}
+                  changeHeight={this.changeHeight}
+                  weight={this.state.weight}
+                  changeWeight={this.changeWeight}
+                  pop={this.state.pop}
+                  changePop={this.changePop}
+                  personality={this.state.personality}
+                  changePersonality={this.changePersonality}
+                /></>}
+
+                {this.props.ver > 1 &&
+
                 <Tabs variant='pills' className='myClass' style={{backgroundColor:'rgba(50, 50, 50, 0.3)'}}
                 activeKey={this.state.tab} onSelect={(k) => this.setState({tab: k})}>
                   <Tab eventKey="regular" title={<p style={{fontWeight: 'bold', color: 'white',
@@ -180,7 +226,7 @@ class App extends React.Component {
                   changePersonality={this.changePersonality}
                 />
                 </Tab>
-                {this.props.ver === 2 &&
+                {this.props.ver > 1 &&
                 
                 <Tab eventKey="personality" title={<p style={{fontWeight: 'bold', color: 'white', 
                   fontFamily: 'Loki', fontSize:'16px', marginTop: '0.4em', marginBottom: '-0.1em'}}>Dognostic Test</p>}>
@@ -220,7 +266,7 @@ class App extends React.Component {
                 </Tab>
                 }
                 </Tabs>
-                
+                }
                 </Container>
               </header>
             </>
