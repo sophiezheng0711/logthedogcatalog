@@ -16,9 +16,10 @@ function AboutPage() {
         new apartment in California! You have a steady job, working 9-5, you come home, cook dinner for yourself, 
         and sit back on the couch watching television. There’s just one thing that's missing … a dog! But what breed 
         should you get? You know how big of a dog you’d want, how energetic you’d want it to be, in fact you just saw 
-        your neighbor Greg walking his beagle the other day. You think to yourself, “I like beagles but I wonder if 
-        there are other breeds just like them.” Log The Analog Dog is a personalized dog breed recommendation system 
-        for both dog enthusiasts and prospective owners! The search system allows you to search for similar breeds to an input example, perhaps a beagle, based on breed, height, weight, and popularity.
+        your neighbor Greg walking his beagle the other day. You think to yourself, “I like beagles, but I wonder if 
+        there are other breeds just like them.” Log The Dog Catalog is a personalized dog breed recommendation system 
+        for both dog enthusiasts and prospective owners! The search system allows you to search for similar breeds to an 
+        input example, perhaps a beagle, based on breed, height, weight, personality, and popularity.
        </p></>} />
     </Container>
   );
