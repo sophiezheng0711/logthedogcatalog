@@ -85,19 +85,6 @@ class App extends React.Component {
                             </Row>
                         </Col>
                       </Row>
-                      {this.props.version > 1 &&
-                      <Row>
-                        <Col className={classes.root} sm={{offset:1}}>
-                            <Row>
-                                <Col sm={{offset:-2}}>
-                                    <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Personality</div>
-                                </Col>
-                                <Col sm={{span:7, offset: -2}}>
-                                    <PrettoSlider defaultValue={this.props.personality} onChangeCommitted={this.props.changePersonality} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>}
                 </Container>
                 </Row>
               }
