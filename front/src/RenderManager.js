@@ -25,7 +25,7 @@ class App extends React.Component {
         temp.map((value) => (
             tempLst.push(value.split("=")[1])
         ));
-        
+        console.log(tempLst);
         setTimeout(function () {
             // axios.get('http://localhost:5000/api/search?' + n )
             axios.get('/api/search?' + n )
