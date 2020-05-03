@@ -122,14 +122,14 @@ class App extends React.Component {
                 <p style={{color:'black', fontFamily: 'Anders', fontSize:'70px', backgroundColor: 'rgba(204, 204, 204, 0.2)'}}>&nbsp; Log&#183;the&#183;Dog&#183;Catalog &nbsp;</p>
                 </Row>
                 <Row className="justify-content-md-center" style={{marginTop: '-1em'}}>
-                  <p style={{color:'#2F2F2F', fontFamily: 'Loki', fontSize: '20px', fontWeight: 'bold'}}>Your personalized dog breed recommender</p>
+                  <p style={{color:'#2F2F2F', fontFamily: 'Loki', fontSize: '20px', fontWeight: 'bold'}}>Your pawsonalized dog breed recommender</p>
                 </Row>
 
 
                 <Tabs variant='pills' className='myClass' style={{backgroundColor:'rgba(50, 50, 50, 0.3)'}}
                 activeKey={this.state.tab} onSelect={(k) => this.setState({tab: k})}>
                   <Tab eventKey="regular" title={<p style={{fontWeight: 'bold', color: 'white',
-                  fontFamily: 'Loki', fontSize:'16px', marginTop: '0.4em', marginBottom: '-0.1em'}}>Breed Match</p>}>
+                  fontFamily: 'Loki', fontSize:'16px', marginTop: '0.4em', marginBottom: '-0.1em'}}>Dognitive Search</p>}>
                 <Row className="justify-content-md-center" style={{marginBottom: '2em', marginTop: '2em'}}>
                   <Autocomplete
                     id="combo-box-demo"
