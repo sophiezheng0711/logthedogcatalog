@@ -10,6 +10,7 @@ import "antd/dist/antd.css";
 import AdvSliders from './AdvSliders';
 import HelpWindow from './HelpWindow';
 
+
 class App extends React.Component {
 
     constructor(props) {
@@ -25,6 +26,8 @@ class App extends React.Component {
         this.personalitySearch = this.personalitySearch.bind(this);
         this.openAbout = this.openAbout.bind(this);
         this.closeAbout = this.closeAbout.bind(this);
+        this.openAdvAbout = this.openAdvAbout.bind(this);
+        this.closeAdvAbout = this.closeAdvAbout.bind(this);
         this.state = {
             name: null,
             advanceSwitch: false,
@@ -39,6 +42,7 @@ class App extends React.Component {
             valDict: [],
             aboutShow: false,
             tab1: true,
+            advAboutShow: false,
         };
         
       }
@@ -49,6 +53,14 @@ class App extends React.Component {
   
       closeAbout() {
         this.setState({aboutShow: false});
+      }
+
+      openAdvAbout() {
+        this.setState({advAboutShow: true});
+      }
+  
+      closeAdvAbout() {
+        this.setState({advAboutShow: false});
       }
 
       search() {
@@ -69,7 +81,8 @@ class App extends React.Component {
 
       onToggle(checked) {
         if (checked) {
-          this.setState({advanceSwitch:checked, toggleBackColor: 'aqua', toggleTextColor: 'aqua'});
+          this.setState({advanceSwitch:checked, toggleBackColor: '#16C3DE', toggleTextColor: '#16C3DE'});
+          this.openAdvAbout();
         }
         else {
           this.setState({advanceSwitch:checked, toggleBackColor: 'black', toggleTextColor: 'black'});
@@ -157,7 +170,7 @@ class App extends React.Component {
                 <Row className="justify-content-md-center">
                   <div style={{backgroundColor: 'rgba(50, 50, 50, 0.3)', border: '2px solid black', borderRadius: '3px', display: 'flex', flexDirection: 'row'}}>
                 <Col>
-                <Switch style={{backgroundColor: this.state.toggleBackColor}} 
+                <Switch style={{backgroundColor: this.state.toggleBackColor, marginTop: '0.7em'}} 
                 defaultChecked={this.state.advanceSwitch} onChange={this.onToggle}/>
                 </Col>
                 <Col className="justify-content-md-center" style={{color: this.state.toggleTextColor, fontFamily: 'Anders', fontWeight: 'bold', fontSize: '25px', padding: '0.3em'}}>
@@ -177,6 +190,8 @@ class App extends React.Component {
                   changePop={this.changePop}
                   personality={this.state.personality}
                   changePersonality={this.changePersonality}
+                  show={this.state.advAboutShow}
+                  close={this.closeAdvAbout}
                 />
                 </Tab>
                 
