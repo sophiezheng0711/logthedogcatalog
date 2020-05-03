@@ -54,7 +54,7 @@ class App extends React.Component {
       search() {
         const n = this.state.name+'&breed='+this.state.breed+'&height='+this.state.height+'&weight='
         +this.state.weight+'&pop='+this.state.pop+'&personality='+this.state.personality;
-        window.location.replace(window.location.origin + "/#/search?" + encodeURI("&name=" + n));
+        window.location.replace(window.location.origin + "/#/search?" + encodeURI("name=" + n));
       }
 
       personalitySearch() {

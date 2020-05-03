@@ -11,9 +11,13 @@ class App extends React.Component {
         super(props);
         this.search = this.search.bind(this);
         this.state = {
-            params: [], // params in the order of name, breed, height, weight, pop, personality
             result: [],
             loading: true,
+            breed: '',
+            height: '',
+            weight: '',
+            pop: '',
+            personality: '',
         };
       }
 
@@ -21,10 +25,6 @@ class App extends React.Component {
         const q = window.location.hash;
         const n = q.substring(9, q.length);
         const temp = n.split("&");
-        var tempLst = []
-        temp.map((value) => (
-            tempLst.push(value.split("=")[1])
-        ));
         
         setTimeout(function () {
             // axios.get('http://localhost:5000/api/search?' + n )
@@ -35,7 +35,14 @@ class App extends React.Component {
                 window.location.replace(window.location.origin + "/#/notfound");
                 }
                 else {
-                this.setState({loading: false, result:response.data, params:tempLst});
+                this.setState({loading: false, result:response.data});
+                this.setState({
+                    breed: temp[1].split("=")[1],
+                    height: temp[2].split("=")[1],
+                    weight: temp[3].split("=")[1],
+                    pop: temp[4].split("=")[1],
+                    personality: temp[5].split("=")[1],
+                });
                 }
                 })
                 .catch(function (error) {
@@ -82,8 +89,10 @@ class App extends React.Component {
                         overflow: 'auto'
                     }}>
                         <RenderResult rank={index+1} name={value.name} similarity={value.sim} popularity={value.pop} about={value.about} height={value.height}
-                        weight={value.weight} params={this.state.params} personality={value.personality} tab2={false} 
-                        loadingShow={() => this.setState({loading: true})} loadingHide={() => this.setState({loading: false})} />
+                        weight={value.weight} personality={value.personality} tab2={false} 
+                        loadingShow={() => this.setState({loading: true})} loadingHide={() => this.setState({loading: false})} 
+                        cbreed={this.state.breed} cheight={this.state.height} cweight={this.state.weight} cpop={this.state.pop}
+                        cpers={this.state.personality} />
                     </div>
                 ))}
                 </MDBRow>
