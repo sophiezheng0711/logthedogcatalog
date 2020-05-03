@@ -149,7 +149,7 @@ class App extends React.Component {
                 weight: this.props.weight,
                 popularity: this.props.popularity,
               },
-              meta: { color: 'aqua' }
+              meta: { color: '#16C3DE' }
             }
           ];
 
@@ -172,7 +172,7 @@ class App extends React.Component {
                 <Card.Title>{this.props.rank + ". " + this.formatName(this.props.name)}</Card.Title>
                   <Container>
                     <Row className="justify-content-md-center">
-                      <RadarChart captions={captions} data={data} size={250}/>
+                      <RadarChart captions={captions} data={data} size={300} />
                     </Row>
                     <Row>
                       <Col sm={0}>
