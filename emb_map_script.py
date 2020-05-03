@@ -50,7 +50,7 @@ def ir(breed):
 
     pops = list(df["Popularity"])
     sim = df["Similar breeds"]
-    abouts = list(df['About'])
+    abouts = list(df['about'])
 
     sims = []
     for string in sim:
