@@ -24,6 +24,9 @@ def root():
 def computeRank(x, c_breed, c_height, c_weight, c_pop, c_personality=0):
     y = json.loads(x)
     denom = float(c_breed) + float(c_height) + float(c_weight) + float(c_pop) + float(c_personality)
+    if denom == 0:
+        c_breed = 10
+        denom = 10
     return float(c_breed)*y['sim']/denom + float(c_pop)*y['pop']/denom + float(c_height)*y['height']/denom + float(c_weight)*y['weight']/denom + float(c_personality)*y['personality']/denom
 
 
