@@ -30,22 +30,25 @@ function NotFoundPage() {
   );
 }
 
+function HomePage() {
+  return (
+    <Home />
+  );
+}
+
+function SearchPage() {
+  return (
+    <RenderResult />
+  );
+}
+
+function SearchPersPage() {
+  return (
+    <RenderResult2 />
+  );
+}
+
 class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {ver: 2};
-    this.switchToV1 = this.switchToV1.bind(this);
-    this.switchToV2 = this.switchToV2.bind(this);
-  }
-
-  switchToV1() {
-    this.setState({ver: 1});
-  }
-
-  switchToV2() {
-    this.setState({ver: 2});
-  }
 
   render() {
     return (
@@ -53,13 +56,13 @@ class App extends React.Component {
       <HashRouter hashHistory>
         <div className='App'>
           <Container fluid>
-            <Navbar switchToV1={this.switchToV1} switchToV2={this.switchToV2} version={this.state.ver} />
+            <Navbar />
           </Container>
-          <Route exact path='/' render={(props) => <Home {...props} ver={this.state.ver}/>} />
-          <Route path='/home' render={(props) => <Home {...props} ver={this.state.ver}/>} />
+          <Route exact path='/' component={HomePage} />
+          <Route path='/home' component={HomePage} />
           <Route path='/about' component={AboutPage} />
-          <Route path='/search' render={(props) => <RenderResult {...props} ver={this.state.ver}/>} />
-          <Route path='/personality' render={(props) => <RenderResult2 {...props} ver={this.state.ver}/>} />
+          <Route path='/search' component={SearchPage} />
+          <Route path='/personality' component={SearchPersPage} />
           <Route path='/notfound' component={NotFoundPage} />
         </div>
       </HashRouter>

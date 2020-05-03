@@ -14,8 +14,9 @@ class App extends React.Component {
                     <Nav.Link href="#home">Home</Nav.Link>
                     <Nav.Link href="#about">About</Nav.Link>
                     <NavDropdown title="Versions" id="basic-nav-dropdown" style={{fontFamily: 'Loki' , fontWeight:'bold'}} >
-                        <NavDropdown.Item onClick={this.props.switchToV2}>Version 2</NavDropdown.Item>
-                        <NavDropdown.Item onClick={this.props.switchToV1}>Version 1</NavDropdown.Item>
+                        {/* <NavDropdown.Item onClick={this.props.switchToV2}>Version 2</NavDropdown.Item>
+                        <NavDropdown.Item onClick={this.props.switchToV1}>Version 1</NavDropdown.Item> */}
+                        <Nav.Link href="https://logdogv1.herokuapp.com/#/">Version 1</Nav.Link>
                     </NavDropdown>
                     <NavDropdown title="Actions" id="basic-nav-dropdown" style={{fontFamily: 'Loki' , fontWeight:'bold'}} >
                         <NavDropdown.Item disabled={true} href="#home">Give Us A</NavDropdown.Item>
@@ -23,10 +24,6 @@ class App extends React.Component {
                         <NavDropdown.Divider />
                         <NavDropdown.Item disabled={true} href="#home">A+ and Hall of Fame</NavDropdown.Item>
                     </NavDropdown>
-                    </Nav>
-                    <Nav className="justify-content-end">
-                      <Nav.Item style={{color: '#1B4F72', fontWeight: 'bold', border: '2px solid #1B4F72', borderRadius: '3px', padding: '0.5em'}}>
-                        &nbsp;{"Version " + this.props.version}&nbsp;</Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

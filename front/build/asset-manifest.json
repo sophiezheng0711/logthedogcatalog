@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.9ab64aa7.chunk.css",
-    "main.js": "/static/js/main.64071194.chunk.js",
-    "main.js.map": "/static/js/main.64071194.chunk.js.map",
+    "main.js": "/static/js/main.7888b507.chunk.js",
+    "main.js.map": "/static/js/main.7888b507.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.95a77404.js",
     "runtime-main.js.map": "/static/js/runtime-main.95a77404.js.map",
-    "static/css/2.6d0195fb.chunk.css": "/static/css/2.6d0195fb.chunk.css",
-    "static/js/2.902041a5.chunk.js": "/static/js/2.902041a5.chunk.js",
-    "static/js/2.902041a5.chunk.js.map": "/static/js/2.902041a5.chunk.js.map",
+    "static/css/2.ccddf422.chunk.css": "/static/css/2.ccddf422.chunk.css",
+    "static/js/2.65cecaee.chunk.js": "/static/js/2.65cecaee.chunk.js",
+    "static/js/2.65cecaee.chunk.js.map": "/static/js/2.65cecaee.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.3137b3d8b29d1342c908a56f64643159.js": "/precache-manifest.3137b3d8b29d1342c908a56f64643159.js",
+    "precache-manifest.448d33721990edeba6bfd489c58c36b9.js": "/precache-manifest.448d33721990edeba6bfd489c58c36b9.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.6d0195fb.chunk.css.map": "/static/css/2.6d0195fb.chunk.css.map",
+    "static/css/2.ccddf422.chunk.css.map": "/static/css/2.ccddf422.chunk.css.map",
     "static/css/main.9ab64aa7.chunk.css.map": "/static/css/main.9ab64aa7.chunk.css.map",
-    "static/js/2.902041a5.chunk.js.LICENSE.txt": "/static/js/2.902041a5.chunk.js.LICENSE.txt",
+    "static/js/2.65cecaee.chunk.js.LICENSE.txt": "/static/js/2.65cecaee.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/Loki-Regular.otf 00-27-44-923.b8276354.otf",
     "static/media/affenpinscher.jpg": "/static/media/affenpinscher.71a984d6.jpg",
     "static/media/afghan-hound.jpg": "/static/media/afghan-hound.ac642c31.jpg",
@@ -77,7 +77,7 @@
     "static/media/broholmer.jpg": "/static/media/broholmer.e119c332.jpg",
     "static/media/brussels-griffon.jpg": "/static/media/brussels-griffon.7e4bf08f.jpg",
     "static/media/bull-terrier.jpg": "/static/media/bull-terrier.0577ac8d.jpg",
-    "static/media/bulldog.jpg": "/static/media/bulldog.e119c332.jpg",
+    "static/media/bulldog.jpg": "/static/media/bulldog.f2bf947c.jpg",
     "static/media/bullmastiff.jpg": "/static/media/bullmastiff.b5fc7a33.jpg",
     "static/media/cairn-terrier.jpg": "/static/media/cairn-terrier.4e6fea56.jpg",
     "static/media/canaan-dog.jpg": "/static/media/canaan-dog.5b8f4ca1.jpg",
@@ -296,9 +296,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.95a77404.js",
-    "static/css/2.6d0195fb.chunk.css",
-    "static/js/2.902041a5.chunk.js",
+    "static/css/2.ccddf422.chunk.css",
+    "static/js/2.65cecaee.chunk.js",
     "static/css/main.9ab64aa7.chunk.css",
-    "static/js/main.64071194.chunk.js"
+    "static/js/main.7888b507.chunk.js"
   ]
 }

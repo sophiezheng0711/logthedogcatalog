@@ -11,7 +11,7 @@ class App extends React.Component {
         super(props);
         this.search = this.search.bind(this);
         this.state = {
-            params: [], // params in the order of version, name, breed, height, weight, pop, personality
+            params: [], // params in the order of name, breed, height, weight, pop, personality
             result: [],
             loading: true,
         };
@@ -27,8 +27,8 @@ class App extends React.Component {
         ));
         
         setTimeout(function () {
-            // axios.get('http://localhost:5000/api/search?' + 'ver=' + this.props.ver + '&' + n )
-            axios.get('/api/search?' + 'ver=' + this.props.ver + '&' + n )
+            // axios.get('http://localhost:5000/api/search?' + n )
+            axios.get('/api/search?' + n )
                 .then((response) => {
                     console.log(response.data);
                 if (response.data.length === 0) {
@@ -82,7 +82,7 @@ class App extends React.Component {
                         overflow: 'auto'
                     }}>
                         <RenderResult rank={index+1} name={value.name} similarity={value.sim} popularity={value.pop} about={value.about} height={value.height}
-                        weight={value.weight} params={this.state.params} personality={value.personality} version={this.props.ver} tab2={false} 
+                        weight={value.weight} params={this.state.params} personality={value.personality} tab2={false} 
                         loadingShow={() => this.setState({loading: true})} loadingHide={() => this.setState({loading: false})} />
                     </div>
                 ))}

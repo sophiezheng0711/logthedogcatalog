@@ -92,7 +92,7 @@ class App extends React.Component {
     linkSearch() {
       const c = this.props.params;
       window.location.replace(window.location.origin + "/#/search?" + 
-      encodeURI("ver=" + this.props.version + "&name=" + this.props.name+'&breed='+c[2]+'&height='+c[3]+'&weight='+c[4]+'&pop='+c[5]+'&personality='+c[6]));
+      encodeURI("name=" + this.props.name+'&breed='+c[1]+'&height='+c[2]+'&weight='+c[3]+'&pop='+c[4]+'&personality='+c[5]));
       window.location.reload(true)
     }
 
@@ -130,12 +130,11 @@ class App extends React.Component {
                         border: '2px solid black', borderRadius: '3px', color: 'black', marginTop: '1em', marginBottom: '2em'}}>Learn More</Button>
                       </Col>
                     </Row>
-                    {this.props.version>1 &&
                     <Row className="justify-content-md-center">
                       <Button onClick={this.getLocation} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
                       border: '2px solid black', borderRadius: '3px', color: 'black', marginBottom: '1em'}}>
                       Adopt Me</Button>
-                    </Row>}
+                    </Row>
                   </Container>
                 </Card.Body>
             </Card>
@@ -145,7 +144,7 @@ class App extends React.Component {
             {
               data: {
                 breed: this.props.similarity,
-                personality: ((this.props.version>1)? this.props.similarity : 0),
+                personality: this.props.personality,
                 height: this.props.height,
                 weight: this.props.weight,
                 popularity: this.props.popularity,
@@ -192,12 +191,11 @@ class App extends React.Component {
                         
                       </Col>
                     </Row>
-                    {this.props.version>1 &&
                     <Row className="justify-content-md-center">
                       <Button onClick={this.getLocation} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
                       border: '2px solid black', borderRadius: '3px', color: 'black', marginBottom: '1em'}}>
                       Adopt Me</Button>
-                    </Row>}
+                    </Row>
                   </Container>
                 </Card.Body>
             </Card>
