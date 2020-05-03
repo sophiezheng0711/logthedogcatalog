@@ -13,12 +13,18 @@ class App extends React.Component {
                     <Nav className="mr-auto" style={{fontFamily: 'Loki' , fontWeight:'bold'}} >
                     <Nav.Link href="#home">Home</Nav.Link>
                     <Nav.Link href="#about">About</Nav.Link>
+                    
                     <NavDropdown title="Actions" id="basic-nav-dropdown" style={{fontFamily: 'Loki' , fontWeight:'bold'}} >
                         <NavDropdown.Item disabled={true} href="#home">Give Us A</NavDropdown.Item>
                         <NavDropdown.Item disabled={true} href="#home">Give Us A+</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item disabled={true} href="#home">A+ and Hall of Fame</NavDropdown.Item>
                     </NavDropdown>
+                    </Nav>
+                    <Nav className="justify-content-end">
+                      <Nav.Link href="https://logthedogcatalog.herokuapp.com/#/">Version Latest</Nav.Link>
+                      <Nav.Link href="https://logdogv2.herokuapp.com/#/">Version 2</Nav.Link>
+                      <Nav.Link href="https://logdogv1.herokuapp.com/#/">Version 1</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
