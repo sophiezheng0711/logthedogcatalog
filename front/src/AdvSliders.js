@@ -4,7 +4,6 @@ import Slider from '@material-ui/core/Slider';
 import { Row, Col} from 'react-bootstrap';
 import SliderPieChart from './SliderPieChart';
 import Paper from '@material-ui/core/Paper';
-import HelpWindow from './HelpWindow';
 
 const PrettoSlider = withStyles({
     root: {
@@ -41,15 +40,6 @@ class App extends React.Component {
         return (
             <>
             {this.props.advanceSwitch &&
-            <>
-            <HelpWindow show={this.props.show} close={this.props.close}
-            body={<><p>Welcome to Advanced Search! Here, you will be able to customize your dogs even more! We have five sliders, 
-                including breed, height, weight, popularity, and personality. Moving the sliders will change the weighting of the
-                corresponding metric in our calculations! You can visualize the composition of your dog in the graph to the right.
-            </p><p>For example, 50% breed and 50% weight means that you value both breed and weight to the same degree, and you don't
-                really care about the other metrics. Note that breed, height, weight, and personality are similarity metrics relative 
-                to the dog you are searching for, while popularity is an absolute ranking gathered from social media.</p>
-                <p>That's it! Happy searching!</p></>} />
             <Paper elevation={3} style={{marginTop: '2em', padding: '1em', backgroundColor: 'rgba(50, 50, 50, 0.3)'}}>
             
                 <Row>
@@ -100,7 +90,7 @@ class App extends React.Component {
                 pop={this.props.pop} personality={this.props.personality} /></Row>
                 </Col>
               </Row>
-            </Paper></>}
+            </Paper>}
             </>
         );
     }

@@ -5,11 +5,28 @@ import items from './items';
 import adjs from './adjs';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { Switch } from 'antd';
+import { Switch, notification } from 'antd';
 import "antd/dist/antd.css";
 import AdvSliders from './AdvSliders';
 import HelpWindow from './HelpWindow';
 
+const openNotification = () => {
+  notification.open({
+    message: 'Welcome to Advanced Search!',
+    description:
+    <><p>Here, you will be able to customize your dogs even more! We have five sliders, 
+      including breed, height, weight, popularity, and personality. Moving the sliders will change the weighting of the
+      corresponding metric in our calculations! You can visualize the composition of your dog in the graph to the right.
+  </p><p>For example, 50% breed and 50% weight means that you value both breed and weight to the same degree, and you don't
+      really care about the other metrics. Note that breed, height, weight, and personality are similarity metrics relative 
+      to the dog you are searching for, while popularity is an absolute ranking gathered from social media.</p>
+      <p>That's it! Happy searching!</p></>,
+    duration: 0,
+    onClick: () => {
+      console.log('Notification Clicked!');
+    },
+  });
+};
 
 class App extends React.Component {
 
@@ -26,8 +43,6 @@ class App extends React.Component {
         this.personalitySearch = this.personalitySearch.bind(this);
         this.openAbout = this.openAbout.bind(this);
         this.closeAbout = this.closeAbout.bind(this);
-        this.openAdvAbout = this.openAdvAbout.bind(this);
-        this.closeAdvAbout = this.closeAdvAbout.bind(this);
         this.state = {
             name: null,
             advanceSwitch: false,
@@ -42,7 +57,6 @@ class App extends React.Component {
             valDict: [],
             aboutShow: false,
             tab1: true,
-            advAboutShow: false,
         };
         
       }
@@ -55,18 +69,11 @@ class App extends React.Component {
         this.setState({aboutShow: false});
       }
 
-      openAdvAbout() {
-        this.setState({advAboutShow: true});
-      }
-  
-      closeAdvAbout() {
-        this.setState({advAboutShow: false});
-      }
-
       search() {
         const n = this.state.name+'&breed='+this.state.breed+'&height='+this.state.height+'&weight='
         +this.state.weight+'&pop='+this.state.pop+'&personality='+this.state.personality;
         window.location.replace(window.location.origin + "/#/search?" + encodeURI("name=" + n));
+        window.location.reload(true)
       }
 
       personalitySearch() {
@@ -82,7 +89,8 @@ class App extends React.Component {
       onToggle(checked) {
         if (checked) {
           this.setState({advanceSwitch:checked, toggleBackColor: '#16C3DE', toggleTextColor: '#16C3DE'});
-          this.openAdvAbout();
+          // this.openAdvAbout();
+          openNotification();
         }
         else {
           this.setState({advanceSwitch:checked, toggleBackColor: 'black', toggleTextColor: 'black'});
@@ -190,8 +198,6 @@ class App extends React.Component {
                   changePop={this.changePop}
                   personality={this.state.personality}
                   changePersonality={this.changePersonality}
-                  show={this.state.advAboutShow}
-                  close={this.closeAdvAbout}
                 />
                 </Tab>
                 
