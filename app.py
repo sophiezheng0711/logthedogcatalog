@@ -40,8 +40,10 @@ def ir():
     c_personality = request.args.get('personality')
 
     # Prototype 2 is set to default, so if version is not specified, defaults to Prototype 2.
-
-    breed = data[name][0]
+    try:
+        breed = data[name][0]
+    except ValueError:
+        return json.dumps([]), 200
     to_be_sorted = data[name][1:]
     to_be_sorted = [re.sub("'", "\"", str(x)) for x in to_be_sorted]
     to_be_sorted.sort(key=(lambda x: computeRank(

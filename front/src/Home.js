@@ -54,7 +54,7 @@ class App extends React.Component {
       search() {
         const n = this.state.name+'&breed='+this.state.breed+'&height='+this.state.height+'&weight='
         +this.state.weight+'&pop='+this.state.pop+'&personality='+this.state.personality;
-        window.location.replace(window.location.origin + "/#/search?" + encodeURI("&name=" + n));
+        window.location.replace(window.location.origin + "/#/search?" + encodeURI("name=" + n));
       }
 
       personalitySearch() {
@@ -121,7 +121,7 @@ class App extends React.Component {
                 <Row className="justify-content-md-center">
                 <p style={{color:'black', fontFamily: 'Anders', fontSize:'70px', backgroundColor: 'rgba(204, 204, 204, 0.2)'}}>&nbsp; Log&#183;the&#183;Dog&#183;Catalog &nbsp;</p>
                 </Row>
-                <Row className="justify-content-md-center" style={{marginTop: '-2.5em'}}>
+                <Row className="justify-content-md-center" style={{marginTop: '-1em'}}>
                   <p style={{color:'#2F2F2F', fontFamily: 'Loki', fontSize: '20px', fontWeight: 'bold'}}>Your personalized dog breed recommender</p>
                 </Row>
 

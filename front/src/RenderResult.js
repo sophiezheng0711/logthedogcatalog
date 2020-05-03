@@ -90,10 +90,9 @@ class App extends React.Component {
     }
 
     linkSearch() {
-      const c = this.props.params;
-      // console.log(c);
       window.location.replace(window.location.origin + "/#/search?" + 
-      encodeURI("name=" + this.props.name+'&breed='+c[2]+'&height='+c[3]+'&weight='+c[4]+'&pop='+c[5]+'&personality='+c[6]));
+      encodeURI("name=" + this.props.name+'&breed='+this.props.cbreed+'&height='+this.props.cheight+'&weight='+this.props.cweight
+      +'&pop='+this.props.cpop+'&personality='+this.props.cpers));
       window.location.reload(true)
     }
 
@@ -156,10 +155,10 @@ class App extends React.Component {
 
       const captions = {
             // columns
-            breed: 'Breed Sim',
-            personality: 'Personality Sim',
-            height: 'Height Sim',
-            weight: 'Weight Sim',
+            breed: 'Breed',
+            personality: 'Personality',
+            height: 'Height',
+            weight: 'Weight',
             popularity: 'Popularity'
           };
         return (
