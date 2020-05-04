@@ -62,9 +62,12 @@ def personalityQuiz():
 
     # [plist] should be a string of adjectives separated by ', '
     plist = request.args.get('plist')
+    if len(plist) == 0:
+        return json.dumps([]), 200
+    # make a "fake" dog with the custom traits
     name = 'custom'
 
-
+    # make the collection of traits corresponding to each breed from data
     trait_dic = {}
     for i, x in enumerate(df["Traits"]):
         for word in x.split(","):
@@ -77,10 +80,13 @@ def personalityQuiz():
                 trait_dic[i] += syns
             else:
                 trait_dic[i] = syns
-
+    # make a copy of the collection so that it is disgarded right after this call
+    # is terminated
     trait_dic_p = trait_dic
 
+    # [i] is the index of the "fake" dog since we appended it in the end
     i = len(trait_dic_p)
+    # add this "dog" to the collection of traits corresponding to each breed
     for word in plist.split(","):
         word = word.strip()
         if " " in word:
@@ -98,23 +104,25 @@ def personalityQuiz():
     weights_raw = list(df['Weight'])
     traits_raw = list(df['Traits'])
 
+    # add "fake" dog to the collection of names
     breeds = [re.sub(' ', '-', namez.lower().strip()) for namez in names]
     breeds += ([name])
 
+    # make inverse mapping from names to indices
     names_to_inds = {}
     for j in range(len(breeds)):
         names_to_inds[breeds[j]] = j
 
+    # perform spectral embedding on collection with "fake" dog
     matrix = np.zeros([len(breeds), len(breeds)])
     for j, x in enumerate(breeds):
         matrix[j] += get_sim(breeds, trait_dic_p, breeds[j])
-    # embedding = np.zeros([len(breeds), len(breeds)])
     embedding = spectral_embedding(matrix)
-    # print(embedding.shape)
     pnt = embedding[i]
     
     vals = []
 
+    # reverse the scores
     for x in embedding:
         vals += [np.linalg.norm(pnt - x)]
     inds = np.argsort(vals)
@@ -133,5 +141,4 @@ def personalityQuiz():
     return json.dumps(ans[:6]), 200
 
 if __name__ == '__main__':
-    # app.run(debug=True, host='0.0.0.0')
     app.run()
