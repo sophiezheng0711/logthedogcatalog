@@ -24,6 +24,7 @@ def root():
 def computeRank(x, c_breed, c_height, c_weight, c_pop, c_personality=0):
     y = json.loads(x)
     denom = float(c_breed) + float(c_height) + float(c_weight) + float(c_pop) + float(c_personality)
+    # if all parameters are set to 0, they are automatically set to default, which is c_breed=10, everything else 0
     if denom == 0:
         c_breed = 10
         denom = 10
@@ -43,7 +44,6 @@ def ir():
     c_pop = request.args.get('pop')
     c_personality = request.args.get('personality')
 
-    # Prototype 2 is set to default, so if version is not specified, defaults to Prototype 2.
     try:
         breed = data[name][0]
     except KeyError:
