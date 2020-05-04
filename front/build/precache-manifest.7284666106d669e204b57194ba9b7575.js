@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d35b9cb3239d323f7d49b95d1056b5b6",
+    "revision": "0bb00748d2488f09ad489410d0cd4277",
     "url": "/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/2.80eca1fd.chunk.css"
   },
   {
-    "revision": "2481f8f7775aa8aa21a7",
+    "revision": "faf06ef5e778b4fdadde",
     "url": "/static/css/main.be0eee21.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.d0d53147.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2481f8f7775aa8aa21a7",
-    "url": "/static/js/main.8e546a06.chunk.js"
+    "revision": "faf06ef5e778b4fdadde",
+    "url": "/static/js/main.8bc04c7e.chunk.js"
   },
   {
     "revision": "cd5cc0b019c8434d78aa",
@@ -568,8 +568,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/havanese.521a45fa.jpg"
   },
   {
-    "revision": "084c2419b89a59e9bc169a73cbda8656",
-    "url": "/static/media/hokkaido.084c2419.jpg"
+    "revision": "0a0212c64217847896a56f725b312c5b",
+    "url": "/static/media/hokkaido.0a0212c6.jpg"
   },
   {
     "revision": "890846543f31356a08029a9e8b44287d",
