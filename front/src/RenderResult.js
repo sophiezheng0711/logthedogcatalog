@@ -112,7 +112,7 @@ class App extends React.Component {
             <>
             <HelpWindow show={this.state.alertShow} close={this.geoAlertClose} body={<>Please enable your location accessibility so that you can enjoy this feature!</>} />
             <AboutWindow show={this.state.aboutShow} close={this.closeAbout} body={this.props.about} title={this.formatName(this.props.name)} 
-            name={this.props.name} />
+            name={this.props.name} shorts={this.props.shorts} />
             <Card border='dark' style={{ boxShadow:'3px 3px 3px 3px rgba(50,50,50,0.24)', width: '20rem', flex: '1', size: 'cover', color:'#1B4F72', fontFamily: 'Loki', marginBottom: '2em'}}>
                 <Card.Img variant="top" src={require('./dogpics/' + this.props.name + '.jpg')} height='300px' style={{objectFit: 'cover'}} />
                 <Card.Body>

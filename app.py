@@ -91,11 +91,12 @@ def personalityQuiz():
             trait_dic_p[i] += syns
         else:
             trait_dic_p[i] = syns
-    
-    # print(trait_dic_p[i])
 
     names = list(df["Name"])
     abouts = list(df['about'])
+    heights_raw = list(df['Height'])
+    weights_raw = list(df['Weight'])
+    traits_raw = list(df['Traits'])
 
     breeds = [re.sub(' ', '-', namez.lower().strip()) for namez in names]
     breeds += ([name])
@@ -126,7 +127,9 @@ def personalityQuiz():
     for key in to_return:
         if key != name:
             about = abouts[names_to_inds[key]]
-            ans += [{'name': key, 'val': to_return[key], 'about': about, 'traits': df['Traits'][names_to_inds[key]]}]
+            ans += [{'name': key, 'val': to_return[key], 'about': about, 
+            'traits': df['Traits'][names_to_inds[key]],
+            "shorts": json.dumps({"height": heights_raw[names_to_inds[key]], "weight": weights_raw[names_to_inds[key]], "traits": traits_raw[names_to_inds[key]]})}]
     return json.dumps(ans[:6]), 200
 
 if __name__ == '__main__':

@@ -80,7 +80,7 @@ class App extends React.Component {
                         overflow: 'auto'
                     }}>
                         <RenderResult rank={index+1} name={value.name} sim={value.val} about={value.about} traits={value.traits} tab2={true}
-                        loadingShow={() => this.setState({loading: true})} loadingHide={() => this.setState({loading: false})} />
+                        loadingShow={() => this.setState({loading: true})} loadingHide={() => this.setState({loading: false})} shorts={JSON.parse(value.shorts)} />
                     </div>
                 ))}
                 </MDBRow>
