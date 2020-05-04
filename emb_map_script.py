@@ -96,14 +96,17 @@ def ir(breed):
     for x in embedding:
         vals += [np.linalg.norm(pnt - x)]
     inds = np.argsort(vals)
+    to_return_v = {}
+    for i, x in enumerate(inds):
+        to_return_v[names[x]] = 1 - i / len(inds)
 
     vals_c = []
     for x in embedding_c:
         vals_c += [np.linalg.norm(pnt_c - x)]
     inds_c = np.argsort(vals_c)
     to_return_t = {}
-    for x in inds_c:
-        to_return_t[names[x]] = 1 - vals_c[x]
+    for i, x in enumerate(inds_c):
+        to_return_t[names[x]] =  1 - i / len(inds_c) #1 - vals_c[x]
 
     # for range calculations
     queryHeight = float(heights[inds[0]])
@@ -119,8 +122,9 @@ def ir(breed):
         weightSim = 1 - abs((queryWeight - weights[x])/(
             max(abs(queryWeight - max_weight), abs(queryWeight - min_weight))))
         weightSim = min(max(weightSim, 0), 1)
-
-        to_return += [json.dumps({"name": names[x], "sim": 1-vals[x],
+        
+        
+        to_return += [json.dumps({"name": names[x], "sim": to_return_v[names[x]], ##1-vals[x],
                                   "pop": pops[x], "about": abouts[x], "height": heightSim, "weight": weightSim, "personality": to_return_t[names[x]]})]
 
     # Write results to the static JSON file
