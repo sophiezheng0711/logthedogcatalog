@@ -111,7 +111,8 @@ class App extends React.Component {
           return(
             <>
             <HelpWindow show={this.state.alertShow} close={this.geoAlertClose} body={<>Please enable your location accessibility so that you can enjoy this feature!</>} />
-            <AboutWindow show={this.state.aboutShow} close={this.closeAbout} body={this.props.about} title={this.formatName(this.props.name)} name={this.props.name} />
+            <AboutWindow show={this.state.aboutShow} close={this.closeAbout} body={this.props.about} title={this.formatName(this.props.name)} 
+            name={this.props.name} shorts={this.props.shorts} />
             <Card border='dark' style={{ boxShadow:'3px 3px 3px 3px rgba(50,50,50,0.24)', width: '20rem', flex: '1', size: 'cover', color:'#1B4F72', fontFamily: 'Loki', marginBottom: '2em'}}>
                 <Card.Img variant="top" src={require('./dogpics/' + this.props.name + '.jpg')} height='300px' style={{objectFit: 'cover'}} />
                 <Card.Body>
@@ -131,9 +132,9 @@ class App extends React.Component {
                       </Col>
                     </Row>
                     <Row className="justify-content-md-center">
-                      <Button onClick={this.getLocation} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
-                      border: '2px solid black', borderRadius: '3px', color: 'black', marginBottom: '1em'}}>
-                      Adopt Me</Button>
+                      <Button onClick={this.getLocation} style={{backgroundColor:'transparent', 
+                      border: 'transparent'}}>
+                      <img src={require('./adoptme_button.png')} alt="button2" /></Button>
                     </Row>
                   </Container>
                 </Card.Body>
@@ -164,7 +165,7 @@ class App extends React.Component {
         return (
             <>
             <HelpWindow show={this.state.alertShow} close={this.geoAlertClose} body={<>Please enable your location accessibility so that you can enjoy this feature!</>} />
-            <AboutWindow show={this.state.aboutShow} close={this.closeAbout} body={this.props.about} title={this.formatName(this.props.name)} name={this.props.name} />
+            <AboutWindow show={this.state.aboutShow} close={this.closeAbout} body={this.props.about} title={this.formatName(this.props.name)} name={this.props.name}  shorts={this.props.shorts} />
             <Card border='dark' style={{ boxShadow:'3px 3px 3px 3px rgba(50,50,50,0.24)', width: '20rem', flex: '1', size: 'cover', color:'#1B4F72', fontFamily: 'Loki', marginBottom: '2em'}}>
                 <Card.Header> </Card.Header>
                 <Card.Img variant="top" src={require('./dogpics/' + this.props.name + '.jpg')} height='300px' style={{objectFit: 'cover'}} />
@@ -192,9 +193,9 @@ class App extends React.Component {
                       </Col>
                     </Row>
                     <Row className="justify-content-md-center">
-                      <Button onClick={this.getLocation} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
-                      border: '2px solid black', borderRadius: '3px', color: 'black', marginBottom: '1em'}}>
-                      Adopt Me</Button>
+                    <Button onClick={this.getLocation} style={{backgroundColor:'transparent', 
+                      border: 'transparent'}}>
+                      <img src={require('./adoptme_button.png')} alt="button" /></Button>
                     </Row>
                   </Container>
                 </Card.Body>

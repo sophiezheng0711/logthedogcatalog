@@ -24,6 +24,7 @@ def root():
 def computeRank(x, c_breed, c_height, c_weight, c_pop, c_personality=0):
     y = json.loads(x)
     denom = float(c_breed) + float(c_height) + float(c_weight) + float(c_pop) + float(c_personality)
+    # if all parameters are set to 0, they are automatically set to default, which is c_breed=10, everything else 0
     if denom == 0:
         c_breed = 10
         denom = 10
@@ -43,7 +44,6 @@ def ir():
     c_pop = request.args.get('pop')
     c_personality = request.args.get('personality')
 
-    # Prototype 2 is set to default, so if version is not specified, defaults to Prototype 2.
     try:
         breed = data[name][0]
     except KeyError:
@@ -62,9 +62,12 @@ def personalityQuiz():
 
     # [plist] should be a string of adjectives separated by ', '
     plist = request.args.get('plist')
+    if len(plist) == 0:
+        return json.dumps([]), 200
+    # make a "fake" dog with the custom traits
     name = 'custom'
 
-
+    # make the collection of traits corresponding to each breed from data
     trait_dic = {}
     for i, x in enumerate(df["Traits"]):
         for word in x.split(","):
@@ -77,10 +80,13 @@ def personalityQuiz():
                 trait_dic[i] += syns
             else:
                 trait_dic[i] = syns
-
+    # make a copy of the collection so that it is disgarded right after this call
+    # is terminated
     trait_dic_p = trait_dic
 
+    # [i] is the index of the "fake" dog since we appended it in the end
     i = len(trait_dic_p)
+    # add this "dog" to the collection of traits corresponding to each breed
     for word in plist.split(","):
         word = word.strip()
         if " " in word:
@@ -91,29 +97,32 @@ def personalityQuiz():
             trait_dic_p[i] += syns
         else:
             trait_dic_p[i] = syns
-    
-    # print(trait_dic_p[i])
 
     names = list(df["Name"])
     abouts = list(df['about'])
+    heights_raw = list(df['Height'])
+    weights_raw = list(df['Weight'])
+    traits_raw = list(df['Traits'])
 
+    # add "fake" dog to the collection of names
     breeds = [re.sub(' ', '-', namez.lower().strip()) for namez in names]
     breeds += ([name])
 
+    # make inverse mapping from names to indices
     names_to_inds = {}
     for j in range(len(breeds)):
         names_to_inds[breeds[j]] = j
 
+    # perform spectral embedding on collection with "fake" dog
     matrix = np.zeros([len(breeds), len(breeds)])
     for j, x in enumerate(breeds):
         matrix[j] += get_sim(breeds, trait_dic_p, breeds[j])
-    # embedding = np.zeros([len(breeds), len(breeds)])
     embedding = spectral_embedding(matrix)
-    # print(embedding.shape)
     pnt = embedding[i]
     
     vals = []
 
+    # reverse the scores
     for x in embedding:
         vals += [np.linalg.norm(pnt - x)]
     inds = np.argsort(vals)
@@ -126,9 +135,10 @@ def personalityQuiz():
     for key in to_return:
         if key != name:
             about = abouts[names_to_inds[key]]
-            ans += [{'name': key, 'val': to_return[key], 'about': about, 'traits': df['Traits'][names_to_inds[key]]}]
+            ans += [{'name': key, 'val': to_return[key], 'about': about, 
+            'traits': df['Traits'][names_to_inds[key]],
+            "shorts": json.dumps({"height": heights_raw[names_to_inds[key]], "weight": weights_raw[names_to_inds[key]], "traits": traits_raw[names_to_inds[key]]})}]
     return json.dumps(ans[:6]), 200
 
 if __name__ == '__main__':
-    # app.run(debug=True, host='0.0.0.0')
     app.run()

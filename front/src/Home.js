@@ -22,6 +22,7 @@ const openNotification = () => {
       to the dog you are searching for, while popularity is an absolute ranking gathered from social media.</p>
       <p>That's it! Happy searching!</p></>,
     duration: 0,
+    key: "advhelp",
     onClick: () => {
       console.log('Notification Clicked!');
     },
@@ -89,11 +90,11 @@ class App extends React.Component {
       onToggle(checked) {
         if (checked) {
           this.setState({advanceSwitch:checked, toggleBackColor: '#16C3DE', toggleTextColor: '#16C3DE'});
-          // this.openAdvAbout();
           openNotification();
         }
         else {
           this.setState({advanceSwitch:checked, toggleBackColor: 'black', toggleTextColor: 'black'});
+          notification.close("advhelp");
         }
       }
 

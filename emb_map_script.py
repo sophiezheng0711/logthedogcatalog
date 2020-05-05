@@ -51,6 +51,9 @@ def ir(breed):
     pops = list(df["Popularity"])
     sim = df["Similar breeds"]
     abouts = list(df['about'])
+    heights_raw = list(df['Height'])
+    weights_raw = list(df['Weight'])
+    traits_raw = list(df['Traits'])
 
     sims = []
     for string in sim:
@@ -125,7 +128,9 @@ def ir(breed):
         
         
         to_return += [json.dumps({"name": names[x], "sim": to_return_v[names[x]], ##1-vals[x],
-                                  "pop": pops[x], "about": abouts[x], "height": heightSim, "weight": weightSim, "personality": to_return_t[names[x]]})]
+                                  "pop": pops[x], "about": abouts[x], "height": heightSim, 
+                                  "weight": weightSim, "personality": to_return_t[names[x]],
+                                  "shorts": json.dumps({"height": heights_raw[x], "weight": weights_raw[x], "traits": traits_raw[x]})})]
 
     # Write results to the static JSON file
     data[name] = to_return
