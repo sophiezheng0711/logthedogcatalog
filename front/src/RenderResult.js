@@ -132,9 +132,9 @@ class App extends React.Component {
                       </Col>
                     </Row>
                     <Row className="justify-content-md-center">
-                      <Button onClick={this.getLocation} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
-                      border: '2px solid black', borderRadius: '3px', color: 'black', marginBottom: '1em'}}>
-                      Adopt Me</Button>
+                      <Button onClick={this.getLocation} style={{backgroundColor:'transparent', 
+                      border: 'transparent'}}>
+                      <img src={require('./adoptme_button.png')} alt="button2" /></Button>
                     </Row>
                   </Container>
                 </Card.Body>
@@ -193,9 +193,9 @@ class App extends React.Component {
                       </Col>
                     </Row>
                     <Row className="justify-content-md-center">
-                      <Button onClick={this.getLocation} style={{fontFamily: 'Loki', fontWeight:'bold', backgroundColor:'rgba(50, 50, 50, 0.3)', 
-                      border: '2px solid black', borderRadius: '3px', color: 'black', marginBottom: '1em'}}>
-                      Adopt Me</Button>
+                    <Button onClick={this.getLocation} style={{backgroundColor:'transparent', 
+                      border: 'transparent'}}>
+                      <img src={require('./adoptme_button.png')} alt="button" /></Button>
                     </Row>
                   </Container>
                 </Card.Body>

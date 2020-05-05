@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "681dc0d05087c3e8473e05e0d03999f4",
+    "revision": "8b881aa27d445b8499e5002b2f207532",
     "url": "/index.html"
   },
   {
-    "revision": "2e32068fd37828277020",
+    "revision": "546f92d99b85df5b11d4",
     "url": "/static/css/2.80eca1fd.chunk.css"
   },
   {
-    "revision": "59b963d49825a659a519",
+    "revision": "93859c7c42fb1ed02075",
     "url": "/static/css/main.be0eee21.chunk.css"
   },
   {
-    "revision": "2e32068fd37828277020",
-    "url": "/static/js/2.d0d53147.chunk.js"
+    "revision": "546f92d99b85df5b11d4",
+    "url": "/static/js/2.769c4df3.chunk.js"
   },
   {
     "revision": "d89427f0a5e7446eacdb7b0fb446dc0a",
-    "url": "/static/js/2.d0d53147.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.769c4df3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "59b963d49825a659a519",
-    "url": "/static/js/main.1f10709d.chunk.js"
+    "revision": "93859c7c42fb1ed02075",
+    "url": "/static/js/main.7d58401e.chunk.js"
   },
   {
     "revision": "cd5cc0b019c8434d78aa",
@@ -38,6 +38,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "b82763545ef120f1b6fc2cf35821c4c7",
     "url": "/static/media/Loki-Regular.otf 00-27-44-923.b8276354.otf"
+  },
+  {
+    "revision": "aa5b1d32723e3cec1cde6cb8cd2875d6",
+    "url": "/static/media/adoptme_button.aa5b1d32.png"
   },
   {
     "revision": "71a984d6fa60dac298c10a4470d73e51",
