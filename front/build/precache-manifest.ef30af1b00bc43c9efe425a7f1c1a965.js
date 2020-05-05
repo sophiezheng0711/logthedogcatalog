@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8b881aa27d445b8499e5002b2f207532",
+    "revision": "70e96f9a41a6f955d5553fbff9655d39",
     "url": "/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/2.80eca1fd.chunk.css"
   },
   {
-    "revision": "93859c7c42fb1ed02075",
+    "revision": "4b02a024474870bd57b2",
     "url": "/static/css/main.be0eee21.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.769c4df3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "93859c7c42fb1ed02075",
-    "url": "/static/js/main.7d58401e.chunk.js"
+    "revision": "4b02a024474870bd57b2",
+    "url": "/static/js/main.c1a9ee60.chunk.js"
   },
   {
     "revision": "cd5cc0b019c8434d78aa",
@@ -268,8 +268,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/braque-du-bourbonnais.36c7972f.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/braque-francais-pyrenean.e119c332.jpg"
+    "revision": "3eaeac9dca9b6d2fcb099e51bbea361e",
+    "url": "/static/media/braque-francais-pyrenean.3eaeac9d.jpg"
   },
   {
     "revision": "19a01bc07459d543c5cc75b2b8b9b8fe",
@@ -324,8 +324,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/catahoula-leopard-dog.c14c608a.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/caucasian-shepherd-dog.e119c332.jpg"
+    "revision": "596178e3238542e02a6290a600c948a4",
+    "url": "/static/media/caucasian-shepherd-dog.596178e3.jpg"
   },
   {
     "revision": "be92f47bd96206bf3f1905e3f0e081b4",
@@ -384,8 +384,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/coton-de-tulear.5c7d55a0.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/croatian-sheepdog.e119c332.jpg"
+    "revision": "596178e3238542e02a6290a600c948a4",
+    "url": "/static/media/croatian-sheepdog.596178e3.jpg"
   },
   {
     "revision": "f23650d9cf380c0bbea7a3a6eb7d29d2",
@@ -612,8 +612,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/italian-greyhound.3d6bcaef.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/jagdterrier.e119c332.jpg"
+    "revision": "c8b07d8a31779643efe3b4240d7c7691",
+    "url": "/static/media/jagdterrier.c8b07d8a.jpg"
   },
   {
     "revision": "5b9d8b459bbefded6b8a43a2e9c0f035",
@@ -628,8 +628,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/jindo.24f61085.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/kai-ken.e119c332.jpg"
+    "revision": "765e24436efe0298bf880779ace4450b",
+    "url": "/static/media/kai-ken.765e2443.jpg"
   },
   {
     "revision": "17b6180740ae21b4114b7f34dd34fac5",
@@ -664,8 +664,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/labrador-retriever.1f9026f8.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/lagotto-romagnolo.e119c332.jpg"
+    "revision": "2fe36073af87bee97f63fffb26999ccf",
+    "url": "/static/media/lagotto-romagnolo.2fe36073.jpg"
   },
   {
     "revision": "0f62008d20ca6705b977ba1c6ad0687d",
@@ -688,8 +688,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/lhasa-apso.af3fbdad.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/lwchen.e119c332.jpg"
+    "revision": "593c27d6fde030ebe8ed403913b5299c",
+    "url": "/static/media/lwchen.593c27d6.jpg"
   },
   {
     "revision": "2ca380bd3311bcc2dd7e5f3c134dcb76",
@@ -708,8 +708,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/mastiff.610c96ed.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/miniature-american-shepherd.e119c332.jpg"
+    "revision": "b5b9c07e929165ce8b76b0ddaffe459e",
+    "url": "/static/media/miniature-american-shepherd.b5b9c07e.jpg"
   },
   {
     "revision": "0577ac8d06133c16089e2d8cdb61ccb6",
@@ -728,8 +728,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/mountain-cur.4578829c.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/mudi.e119c332.jpg"
+    "revision": "9e95ba7e617c804d27515d245a4aa35d",
+    "url": "/static/media/mudi.9e95ba7e.jpg"
   },
   {
     "revision": "a0fc81f2eb519cd934af3a2519a4033e",
@@ -748,8 +748,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/norfolk-terrier.e0e30b34.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/norrbottenspets.e119c332.jpg"
+    "revision": "ac61970f49393ee7c3c99b1eb53e5e9d",
+    "url": "/static/media/norrbottenspets.ac61970f.jpg"
   },
   {
     "revision": "e6313c2965cb9e3ae80eff6488a4a78b",
@@ -760,8 +760,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/norwegian-elkhound.03f12456.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/norwegian-lundehund.e119c332.jpg"
+    "revision": "e3e2cc9d61bf5cd13109925370d81340",
+    "url": "/static/media/norwegian-lundehund.e3e2cc9d.jpg"
   },
   {
     "revision": "8cbb7ed9bcf06bc05dfd50d1d79f70a6",
@@ -844,12 +844,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/porcelaine.e119c332.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/portuguese-podengo-pequeno.e119c332.jpg"
+    "revision": "419fb0dd521458a50ad11460c5064dca",
+    "url": "/static/media/portuguese-podengo-pequeno.419fb0dd.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/portuguese-podengo.e119c332.jpg"
+    "revision": "419fb0dd521458a50ad11460c5064dca",
+    "url": "/static/media/portuguese-podengo.419fb0dd.jpg"
   },
   {
     "revision": "4cd1fafe21ae112c91042c3e7a554818",
@@ -864,8 +864,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/portuguese-water-dog.d3435e46.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/pudelpointer.e119c332.jpg"
+    "revision": "95ad795ece1ea334047512685587543f",
+    "url": "/static/media/pudelpointer.95ad795e.jpg"
   },
   {
     "revision": "0f83ee1f188c687729957318849ae60d",
@@ -888,8 +888,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/pyrenean-shepherd.596178e3.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/rafeiro-do-alentejo.e119c332.jpg"
+    "revision": "dd1b11568f7df66be2c7109c14ecf7fd",
+    "url": "/static/media/rafeiro-do-alentejo.dd1b1156.jpg"
   },
   {
     "revision": "b9dbb8103037d1af2b474a3b3f05f603",
@@ -936,8 +936,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/samoyed.721cae6e.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/schapendoes.e119c332.jpg"
+    "revision": "ec3a7a76610d377008b9724ae5b770cf",
+    "url": "/static/media/schapendoes.ec3a7a76.jpg"
   },
   {
     "revision": "b045947c3817fda3933bd8ee417d3a4e",
@@ -972,8 +972,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/shih-tzu.fa59352b.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/shikoku.e119c332.jpg"
+    "revision": "704827bfe633305c9df7e2bda88dcc82",
+    "url": "/static/media/shikoku.704827bf.jpg"
   },
   {
     "revision": "bb552ec3d0407b22062d6436c444fb78",
@@ -1032,8 +1032,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/stabyhoun.e119c332.jpg"
   },
   {
-    "revision": "0577ac8d06133c16089e2d8cdb61ccb6",
-    "url": "/static/media/staffordshire-bull-terrier.0577ac8d.jpg"
+    "revision": "5f8da0dd4e35f2ef2ef20d718ad5b27a",
+    "url": "/static/media/staffordshire-bull-terrier.5f8da0dd.jpg"
   },
   {
     "revision": "58e2679a001294d1d7ad050ec299e092",
@@ -1056,8 +1056,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/taiwan-dog.e119c332.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/teddy-roosevelt-terrier.e119c332.jpg"
+    "revision": "d098146cb934cacd55a323aa67a9b033",
+    "url": "/static/media/teddy-roosevelt-terrier.d098146c.jpg"
   },
   {
     "revision": "dcf655d3a5980a01468a18c2da1e1b2d",
@@ -1076,12 +1076,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/tibetan-terrier.55d4dccb.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/tornjak.e119c332.jpg"
+    "revision": "676fd7db4a6fd1ac2ecc83765e5faa3b",
+    "url": "/static/media/tornjak.676fd7db.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/tosa.e119c332.jpg"
+    "revision": "50f4f1c52b061c0ece18d307d95b1953",
+    "url": "/static/media/tosa.50f4f1c5.jpg"
   },
   {
     "revision": "69e609c22360cd9c37ae306beaecb500",
@@ -1092,8 +1092,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/transylvanian-hound.aa0166c2.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/treeing-tennessee-brindle.e119c332.jpg"
+    "revision": "ef8509e238e6239f33cbcaad85ebc8a2",
+    "url": "/static/media/treeing-tennessee-brindle.ef8509e2.jpg"
   },
   {
     "revision": "dd93e334f4fb1e5c5cbbf3d5fd6c0d00",
@@ -1116,8 +1116,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/welsh-terrier.426f1b56.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/west-highland-white-terrier.e119c332.jpg"
+    "revision": "3e806d35a461c81b2ccca723f075e598",
+    "url": "/static/media/west-highland-white-terrier.3e806d35.jpg"
   },
   {
     "revision": "e119c3327245ff06b4cc82365c948b48",
@@ -1140,12 +1140,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/wirehaired-vizsla.f179e4ec.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/working-kelpie.e119c332.jpg"
+    "revision": "229f262b8a4e0165fa4ad173b3318cb4",
+    "url": "/static/media/working-kelpie.229f262b.jpg"
   },
   {
-    "revision": "e119c3327245ff06b4cc82365c948b48",
-    "url": "/static/media/xoloitzcuintli.e119c332.jpg"
+    "revision": "3d6bcaefe3d676e19bd9f5c97944d080",
+    "url": "/static/media/xoloitzcuintli.3d6bcaef.jpg"
   },
   {
     "revision": "a7e237fd31dbdd98a0b9ad3f81fe5d73",
