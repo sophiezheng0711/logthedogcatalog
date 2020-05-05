@@ -5,10 +5,29 @@ import items from './items';
 import adjs from './adjs';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { Switch } from 'antd';
+import { Switch, notification } from 'antd';
 import "antd/dist/antd.css";
 import AdvSliders from './AdvSliders';
 import HelpWindow from './HelpWindow';
+
+const openNotification = () => {
+  notification.open({
+    message: 'Welcome to Advanced Search!',
+    description:
+    <><p>Here, you will be able to customize your dogs even more! We have five sliders, 
+      including breed, height, weight, popularity, and personality. Moving the sliders will change the weighting of the
+      corresponding metric in our calculations! You can visualize the composition of your dog in the graph to the right.
+  </p><p>For example, 50% breed and 50% weight means that you value both breed and weight to the same degree, and you don't
+      really care about the other metrics. Note that breed, height, weight, and personality are similarity metrics relative 
+      to the dog you are searching for, while popularity is an absolute ranking gathered from social media.</p>
+      <p>That's it! Happy searching!</p></>,
+    duration: 0,
+    key: "advhelp",
+    onClick: () => {
+      console.log('Notification Clicked!');
+    },
+  });
+};
 
 class App extends React.Component {
 
@@ -55,6 +74,7 @@ class App extends React.Component {
         const n = this.state.name+'&breed='+this.state.breed+'&height='+this.state.height+'&weight='
         +this.state.weight+'&pop='+this.state.pop+'&personality='+this.state.personality;
         window.location.replace(window.location.origin + "/#/search?" + encodeURI("name=" + n));
+        window.location.reload(true)
       }
 
       personalitySearch() {
@@ -69,10 +89,12 @@ class App extends React.Component {
 
       onToggle(checked) {
         if (checked) {
-          this.setState({advanceSwitch:checked, toggleBackColor: 'aqua', toggleTextColor: 'aqua'});
+          this.setState({advanceSwitch:checked, toggleBackColor: '#16C3DE', toggleTextColor: '#16C3DE'});
+          openNotification();
         }
         else {
           this.setState({advanceSwitch:checked, toggleBackColor: 'black', toggleTextColor: 'black'});
+          notification.close("advhelp");
         }
       }
 
@@ -122,14 +144,14 @@ class App extends React.Component {
                 <p style={{color:'black', fontFamily: 'Anders', fontSize:'70px', backgroundColor: 'rgba(204, 204, 204, 0.2)'}}>&nbsp; Log&#183;the&#183;Dog&#183;Catalog &nbsp;</p>
                 </Row>
                 <Row className="justify-content-md-center" style={{marginTop: '-1em'}}>
-                  <p style={{color:'#2F2F2F', fontFamily: 'Loki', fontSize: '20px', fontWeight: 'bold'}}>Your personalized dog breed recommender</p>
+                  <p style={{color:'#2F2F2F', fontFamily: 'Loki', fontSize: '20px', fontWeight: 'bold'}}>Your pawsonalized dog breed recommender</p>
                 </Row>
 
 
                 <Tabs variant='pills' className='myClass' style={{backgroundColor:'rgba(50, 50, 50, 0.3)'}}
                 activeKey={this.state.tab} onSelect={(k) => this.setState({tab: k})}>
                   <Tab eventKey="regular" title={<p style={{fontWeight: 'bold', color: 'white',
-                  fontFamily: 'Loki', fontSize:'16px', marginTop: '0.4em', marginBottom: '-0.1em'}}>Breed Match</p>}>
+                  fontFamily: 'Loki', fontSize:'16px', marginTop: '0.4em', marginBottom: '-0.1em'}}>Dognitive Search</p>}>
                 <Row className="justify-content-md-center" style={{marginBottom: '2em', marginTop: '2em'}}>
                   <Autocomplete
                     id="combo-box-demo"
@@ -157,7 +179,7 @@ class App extends React.Component {
                 <Row className="justify-content-md-center">
                   <div style={{backgroundColor: 'rgba(50, 50, 50, 0.3)', border: '2px solid black', borderRadius: '3px', display: 'flex', flexDirection: 'row'}}>
                 <Col>
-                <Switch style={{backgroundColor: this.state.toggleBackColor}} 
+                <Switch style={{backgroundColor: this.state.toggleBackColor, marginTop: '0.7em'}} 
                 defaultChecked={this.state.advanceSwitch} onChange={this.onToggle}/>
                 </Col>
                 <Col className="justify-content-md-center" style={{color: this.state.toggleTextColor, fontFamily: 'Anders', fontWeight: 'bold', fontSize: '25px', padding: '0.3em'}}>

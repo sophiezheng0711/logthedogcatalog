@@ -92,7 +92,7 @@ class App extends React.Component {
                         weight={value.weight} personality={value.personality} tab2={false} 
                         loadingShow={() => this.setState({loading: true})} loadingHide={() => this.setState({loading: false})}
                         cbreed={this.state.breed} cheight={this.state.height} cweight={this.state.weight} cpop={this.state.pop}
-                        cpers={this.state.personality} />
+                        cpers={this.state.personality} shorts={JSON.parse(value.shorts)} />
                     </div>
                 ))}
                 </MDBRow>
