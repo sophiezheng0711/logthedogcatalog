@@ -218,7 +218,7 @@ class App extends React.Component {
                         <TextField
                           {...params}
                           name="multiple"
-                          label="Describe your personality in a few words!"
+                          label="Describe your ideal dog personality! (i.e. smart, confident)"
                           variant="filled"
                           fullWidth
                         />
