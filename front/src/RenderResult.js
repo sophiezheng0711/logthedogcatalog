@@ -160,7 +160,7 @@ class App extends React.Component {
             personality: 'Personality',
             height: 'Height',
             weight: 'Weight',
-            popularity: 'Popularity'
+            popularity: 'Popularity',
           };
         return (
             <>

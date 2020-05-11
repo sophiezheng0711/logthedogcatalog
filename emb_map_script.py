@@ -7,6 +7,7 @@ from nltk.corpus import wordnet
 from scipy import stats
 import nltk
 import os
+from cos_sim import get_description_sim
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 nltk.data.path.append(dir_path)
@@ -111,6 +112,12 @@ def ir(breed):
     for i, x in enumerate(inds_c):
         to_return_t[names[x]] =  1 - i / len(inds_c) #1 - vals_c[x]
 
+    # cosine sim calculations for description similarity
+    idx_map, results = get_description_sim(df['about'][names.index(name)])
+    topdes = []
+    for _, idx in results[:5]:
+        topdes.append(names[idx])
+
     # for range calculations
     queryHeight = float(heights[inds[0]])
     queryWeight = float(weights[inds[0]])
@@ -130,7 +137,8 @@ def ir(breed):
         to_return += [json.dumps({"name": names[x], "sim": to_return_v[names[x]], ##1-vals[x],
                                   "pop": pops[x], "about": abouts[x], "height": heightSim, 
                                   "weight": weightSim, "personality": to_return_t[names[x]],
-                                  "shorts": json.dumps({"height": heights_raw[x], "weight": weights_raw[x], "traits": traits_raw[x]})})]
+                                  "shorts": json.dumps({"height": heights_raw[x], "weight": weights_raw[x], "traits": traits_raw[x]}),
+                                  "descriptionsim": (idx_map[x] if x in idx_map else 0), "topdes":json.dumps(topdes)})]
 
     # Write results to the static JSON file
     data[name] = to_return

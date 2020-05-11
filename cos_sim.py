@@ -1,6 +1,9 @@
-from emb_map_script import get_syn, df, get_sim
 import numpy as np
 import math
+import re
+import pandas as pd
+
+df = pd.read_excel("data.xlsx")
 
 """Assumes that query is tokenized and processed before calling any of these methods"""
 def build_inverted_index(msgs):
@@ -19,37 +22,6 @@ def build_inverted_index(msgs):
         for t in ans[i]:
             ans2[i].append((t, ans[i][t]))
     return ans2
-
-def boolean_search(query_word, not_word, inverted_index):
-    query_word = query_word.lower()
-    not_word = not_word.lower()
-    qwl = []
-    nwl = []
-    M = []
-    if query_word not in inverted_index:
-        return []
-    for t in inverted_index[query_word]:
-        qwl.append(t[0])
-    if not_word not in inverted_index:
-        return qwl
-    for t in inverted_index[not_word]:
-        nwl.append(t[0])
-    qptr = 0
-    nptr = 0
-    while qptr < len(qwl) and nptr < len(nwl):
-        if qwl[qptr] == nwl[nptr]:
-            qptr += 1
-            nptr += 1
-            continue
-        if qwl[qptr] < nwl[nptr]:
-            M.append(qwl[qptr])
-            qptr += 1
-        else:
-            nptr += 1
-    while qptr < len(qwl):
-        M.append(qwl[qptr])
-        qptr += 1
-    return M
 
 def compute_idf(inv_idx, n_docs, min_df=10, max_df_ratio=0.95):
     ans = {}
@@ -103,37 +75,36 @@ def index_search(query, index, idf, doc_norms):
     ans.sort(key=lambda x: x[0], reverse=True)
     return ans
 
-if __name__ == "__main__":
+def get_description_sim(query):
     msgs = []
-    for i, x in enumerate(df["Traits"]):
-        for word in x.split(","):
-            word = word.strip()
-            if " " in word:
-                word = word[word.index(' ') + 1:]
-            syns = list(get_syn(word))
-
-            if i < len(msgs):
-                msgs[i]['toks'] += syns
-            else:
-                msgs.append({'toks': []})
-                msgs[i]['toks'] = syns
+    for _, x in enumerate(df["about"]):
+        msgs.append({'toks' : list(filter(None, re.sub(r'[^[a-z]]*', ' ', x.lower()).split(" ")))})
 
     inv_idx = build_inverted_index(msgs)
     idf = compute_idf(inv_idx, len(msgs), min_df=10, max_df_ratio=0.1)
     inv_idx = {key: val for key, val in inv_idx.items() if key in idf}
     doc_norms = compute_doc_norms(inv_idx, idf, len(msgs))
     idx_to_name = df['Name']
-    qs = "smart,confident,aristocratic"
-    q = []
-    for word in qs.split(","):
-        word = word.strip()
-        if " " in word:
-            word = word[word.index(' ') + 1:]
-        syns = list(get_syn(word))
-        q += syns
-    results = index_search(q, inv_idx, idf, doc_norms)
+
+    qs = query
+    qsp = qs.lower()
+    qsp = re.sub(r'[^[a-z]]*', ' ', qsp)
+    qspl = list(filter(None, qsp.split(" ")))
+    results = index_search(qspl, inv_idx, idf, doc_norms)
+    idx_map = {}
+    for score, idx in results:
+        idx_map[idx_to_name[idx]] = max(min(1,score),0)
+    return idx_map, results
+
+if __name__ == "__main__":
+    idx_to_name = df['Name']
+
+    qs = "Samoyeds, the smiling sledge dogs, were bred for hard work in the world’s coldest locales. In the Siberian town of Oymyakon, for instance, temperatures of minus-60 degrees are common. The Sammy’s famous white coat is thick enough to protect against such brutal conditions."
+
+    idx_map, results = get_description_sim(qs)
+    print(idx_map)
     print("#" * len(qs))
     print(qs)
     print("#" * len(qs))
     for score, idx in results[:10]:
-        print("["+ str(score) +"] " + idx_to_name[idx] + ": " + df['Traits'][idx])
+        print("["+ str(score) +"] " + idx_to_name[idx] + ": " + df['about'][idx])

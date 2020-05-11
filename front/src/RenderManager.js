@@ -4,12 +4,15 @@ import RenderResult from "./RenderResult";
 import axios from 'axios';
 import Loader from './Loader';
 import { MDBRow } from "mdbreact";
+import { Tag } from 'antd';
+import "antd/dist/antd.css";
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.search = this.search.bind(this);
+        this.formatName = this.formatName.bind(this);
         this.state = {
             // params: [], // params in the order of name, breed, height, weight, pop, personality
             result: [],
@@ -21,6 +24,18 @@ class App extends React.Component {
             personality: '',
         };
       }
+
+      formatName(name) {
+        const a = name.split("-");
+        var i;
+        var ans = "";
+        for (i = 0; i < a.length; i++) {
+            const first = a[i].charAt(0).toUpperCase();
+            const last = a[i].charAt(a[i].length-1);
+            ans += (first + a[i].substring(1, a[i].length-1) + last) + " ";
+        }
+        return ans;
+    }
 
       search() {
         const q = window.location.hash;
@@ -62,6 +77,7 @@ class App extends React.Component {
             jsons.push(JSON.parse(value))
         ));
         const fin = jsons.slice(1, jsons.length);
+        const tagColors = ["black", "#6F4016", "#416366", "#414966"];
         return (
             <>
             <Container>
@@ -76,7 +92,19 @@ class App extends React.Component {
                             alignItems: 'center',
                             justifyContent: 'center',
                         }}>
+                            <Container>
                             <p>{jsons[0].about}</p>
+                            <p style={{fontSize: '18px'}}>Similar Breeds by Description:</p>
+                            <p>
+                            {JSON.parse(fin[0].topdes).slice(1, fin[0].topdes.length).map((value, index)=> (
+                                <Tag color={tagColors[Math.floor(Math.random() * tagColors.length)]} 
+                                style={{fontWeight: 'bold', fontFamily: '"Lucida Console", Courier, monospace', marginTop: '0.5em', 
+                                padding: '0.1em', fontSize: '14px'}}>&nbsp;{(index+1) + ". " + this.formatName(value.trim())}&nbsp;</Tag>
+                            ))}
+                            </p>
+                            {/* <p style={{fontFamily: 'Anders', fontSize: '25px'}}>About</p> */}
+                            
+                            </Container>
                         </Col>
                     </Row>
                 </Container>
@@ -93,6 +121,7 @@ class App extends React.Component {
                         loadingShow={() => this.setState({loading: true})} loadingHide={() => this.setState({loading: false})}
                         cbreed={this.state.breed} cheight={this.state.height} cweight={this.state.weight} cpop={this.state.pop}
                         cpers={this.state.personality} shorts={JSON.parse(value.shorts)} />
+                        {/* descriptionSim={value.descriptionsim} topdes={JSON.parse(value.topdes)} /> */}
                     </div>
                 ))}
                 </MDBRow>
