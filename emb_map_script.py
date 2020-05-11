@@ -115,7 +115,7 @@ def ir(breed):
     # cosine sim calculations for description similarity
     idx_map, results = get_description_sim(df['about'][names.index(name)])
     topdes = []
-    for _, idx in results[:5]:
+    for _, idx in results[:6]:
         topdes.append(names[idx])
 
     # for range calculations

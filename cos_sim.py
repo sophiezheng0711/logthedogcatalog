@@ -2,6 +2,7 @@ import numpy as np
 import math
 import re
 import pandas as pd
+from scipy import stats
 
 df = pd.read_excel("data.xlsx")
 
@@ -77,14 +78,14 @@ def index_search(query, index, idf, doc_norms):
 
 def get_description_sim(query):
     msgs = []
-    for _, x in enumerate(df["about"]):
-        msgs.append({'toks' : list(filter(None, re.sub(r'[^[a-z]]*', ' ', x.lower()).split(" ")))})
+    for i, x in enumerate(df["about"]):
+        msgs.append({'toks' : list(filter(None, re.sub(r'[^[a-z]]*', ' ', (x + df["Excercise"][i]+df["Training"][i]+df["Apperance"][i]+df["Health"][i]).lower()).split(" ")))})
 
     inv_idx = build_inverted_index(msgs)
     idf = compute_idf(inv_idx, len(msgs), min_df=10, max_df_ratio=0.1)
     inv_idx = {key: val for key, val in inv_idx.items() if key in idf}
     doc_norms = compute_doc_norms(inv_idx, idf, len(msgs))
-    idx_to_name = df['Name']
+    # idx_to_name = df['Name']
 
     qs = query
     qsp = qs.lower()
@@ -92,14 +93,16 @@ def get_description_sim(query):
     qspl = list(filter(None, qsp.split(" ")))
     results = index_search(qspl, inv_idx, idf, doc_norms)
     idx_map = {}
+    lstscores = [score for score,_ in results]
     for score, idx in results:
-        idx_map[idx_to_name[idx]] = max(min(1,score),0)
+        idx_map[idx] = stats.percentileofscore(lstscores, score, 'rank') / 100
     return idx_map, results
 
 if __name__ == "__main__":
     idx_to_name = df['Name']
 
-    qs = "Samoyeds, the smiling sledge dogs, were bred for hard work in the world’s coldest locales. In the Siberian town of Oymyakon, for instance, temperatures of minus-60 degrees are common. The Sammy’s famous white coat is thick enough to protect against such brutal conditions."
+    dogid = 205
+    qs = df['about'][dogid] + df['Excercise'][dogid] + df['Training'][dogid] + df['Apperance'][dogid] + df['Health'][dogid]
 
     idx_map, results = get_description_sim(qs)
     print(idx_map)
@@ -107,4 +110,4 @@ if __name__ == "__main__":
     print(qs)
     print("#" * len(qs))
     for score, idx in results[:10]:
-        print("["+ str(score) +"] " + idx_to_name[idx] + ": " + df['about'][idx])
+        print("["+ str(idx_map[idx] if idx in idx_map else 0) +"] " + idx_to_name[idx] + ": " + df['about'][idx])

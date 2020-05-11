@@ -120,8 +120,8 @@ class App extends React.Component {
                         weight={value.weight} personality={value.personality} tab2={false} 
                         loadingShow={() => this.setState({loading: true})} loadingHide={() => this.setState({loading: false})}
                         cbreed={this.state.breed} cheight={this.state.height} cweight={this.state.weight} cpop={this.state.pop}
-                        cpers={this.state.personality} shorts={JSON.parse(value.shorts)} />
-                        {/* descriptionSim={value.descriptionsim} topdes={JSON.parse(value.topdes)} /> */}
+                        cpers={this.state.personality} shorts={JSON.parse(value.shorts)}
+                        descriptionSim={value.descriptionsim} />
                     </div>
                 ))}
                 </MDBRow>

@@ -149,6 +149,7 @@ class App extends React.Component {
                 height: this.props.height,
                 weight: this.props.weight,
                 popularity: this.props.popularity,
+                overall: this.props.descriptionSim,
               },
               meta: { color: '#16C3DE' }
             }
@@ -161,6 +162,7 @@ class App extends React.Component {
             height: 'Height',
             weight: 'Weight',
             popularity: 'Popularity',
+            overall: 'Overall',
           };
         return (
             <>
