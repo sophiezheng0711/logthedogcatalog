@@ -94,7 +94,7 @@ class App extends React.Component {
                         }}>
                             <Container>
                             <p>{jsons[0].about}</p>
-                            <p style={{fontSize: '18px'}}>Similar Breeds by Description:</p>
+                            <p style={{fontSize: '18px'}}>Most Similar Breeds Overall:</p>
                             <p>
                             {JSON.parse(fin[0].topdes).slice(1, fin[0].topdes.length).map((value, index)=> (
                                 <Tag color={tagColors[Math.floor(Math.random() * tagColors.length)]} 
