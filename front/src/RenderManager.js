@@ -4,8 +4,6 @@ import RenderResult from "./RenderResult";
 import axios from 'axios';
 import Loader from './Loader';
 import { MDBRow } from "mdbreact";
-import { Tag } from 'antd';
-import "antd/dist/antd.css";
 
 class App extends React.Component {
 
@@ -92,9 +90,9 @@ class App extends React.Component {
                             alignItems: 'center',
                             justifyContent: 'center',
                         }}>
-                            <Container>
+                            {/* <Container> */}
                             <p>{jsons[0].about}</p>
-                            <p style={{fontSize: '18px'}}>Most Similar Breeds Overall:</p>
+                            {/* <p style={{fontSize: '18px'}}>Most Similar Breeds Overall:</p>
                             <p>
                             {JSON.parse(fin[0].topdes).slice(1, fin[0].topdes.length).map((value, index)=> (
                                 <Tag color={tagColors[Math.floor(Math.random() * tagColors.length)]} 
@@ -102,9 +100,8 @@ class App extends React.Component {
                                 padding: '0.1em', fontSize: '14px'}}>&nbsp;{(index+1) + ". " + this.formatName(value.trim())}&nbsp;</Tag>
                             ))}
                             </p>
-                            {/* <p style={{fontFamily: 'Anders', fontSize: '25px'}}>About</p> */}
                             
-                            </Container>
+                            </Container> */}
                         </Col>
                     </Row>
                 </Container>
