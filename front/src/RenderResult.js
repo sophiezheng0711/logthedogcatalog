@@ -162,7 +162,7 @@ class App extends React.Component {
             height: 'Height',
             weight: 'Weight',
             popularity: 'Popularity',
-            overall: 'Overall',
+            overall: 'Behavior',
           };
         return (
             <>
