@@ -21,14 +21,14 @@ def root():
     return app.send_static_file('index.html')
 
 
-def computeRank(x, c_breed, c_height, c_weight, c_pop, c_personality=0):
+def computeRank(x, c_breed, c_height, c_weight, c_pop, c_personality, c_behavior):
     y = json.loads(x)
-    denom = float(c_breed) + float(c_height) + float(c_weight) + float(c_pop) + float(c_personality)
+    denom = float(c_breed) + float(c_height) + float(c_weight) + float(c_pop) + float(c_personality) + float(c_behavior)
     # if all parameters are set to 0, they are automatically set to default, which is c_breed=10, everything else 0
     if denom == 0:
         c_breed = 10
         denom = 10
-    return float(c_breed)*y['sim']/denom + float(c_pop)*y['pop']/denom + float(c_height)*y['height']/denom + float(c_weight)*y['weight']/denom + float(c_personality)*y['personality']/denom
+    return float(c_breed)*y['sim']/denom + float(c_pop)*y['pop']/denom + float(c_height)*y['height']/denom + float(c_weight)*y['weight']/denom + float(c_personality)*y['personality']/denom + float(c_behavior)*y['descriptionsim']/denom
 
 
 
@@ -43,6 +43,7 @@ def ir():
     c_weight = request.args.get('weight')
     c_pop = request.args.get('pop')
     c_personality = request.args.get('personality')
+    c_behavior = request.args.get('behavior')
 
     try:
         breed = data[name][0]
@@ -51,7 +52,7 @@ def ir():
     to_be_sorted = data[name][1:]
     to_be_sorted = [re.sub("'", "\"", str(x)) for x in to_be_sorted]
     to_be_sorted.sort(key=(lambda x: computeRank(
-        x, c_breed, c_height, c_weight, c_pop, c_personality)), reverse=True)
+        x, c_breed, c_height, c_weight, c_pop, c_personality, c_behavior)), reverse=True)
     return json.dumps([breed] + to_be_sorted[:6]), 200
 
     ################################################################

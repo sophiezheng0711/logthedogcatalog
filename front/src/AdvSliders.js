@@ -84,10 +84,18 @@ class App extends React.Component {
                         <PrettoSlider defaultValue={this.props.personality} onChangeCommitted={this.props.changePersonality} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
                     </Col>
                 </Row>
+                <Row>
+                    <Col sm={3}>
+                        <div style={{color: 'black', fontFamily: 'Anders', fontWeight: 'bold'}}>Behavior</div>
+                    </Col>
+                    <Col sm={{span:7, offset: 2}}>
+                        <PrettoSlider defaultValue={this.props.behavior} onChangeCommitted={this.props.changeBehavior} step={1} min={0} max={10} valueLabelDisplay="auto" aria-label="1" />
+                    </Col>
+                </Row>
                 </Col>
                 <Col>
                 <Row className="justify-content-md-center"><SliderPieChart breed={this.props.breed} height={this.props.height} weight={this.props.weight}
-                pop={this.props.pop} personality={this.props.personality} /></Row>
+                pop={this.props.pop} personality={this.props.personality} behavior={this.props.behavior} /></Row>
                 </Col>
               </Row>
             </Paper>}

@@ -41,6 +41,7 @@ class App extends React.Component {
         this.changeWeight = this.changeWeight.bind(this);
         this.changePop = this.changePop.bind(this);
         this.changePersonality = this.changePersonality.bind(this);
+        this.changeBehavior = this.changeBehavior.bind(this);
         this.personalitySearch = this.personalitySearch.bind(this);
         this.openAbout = this.openAbout.bind(this);
         this.closeAbout = this.closeAbout.bind(this);
@@ -54,6 +55,7 @@ class App extends React.Component {
             weight: 0,
             pop: 0,
             personality: 0,
+            behavior: 0,
             tab: 'regular',
             valDict: [],
             aboutShow: false,
@@ -72,7 +74,7 @@ class App extends React.Component {
 
       search() {
         const n = this.state.name+'&breed='+this.state.breed+'&height='+this.state.height+'&weight='
-        +this.state.weight+'&pop='+this.state.pop+'&personality='+this.state.personality;
+        +this.state.weight+'&pop='+this.state.pop+'&personality='+this.state.personality+"&behavior="+this.state.behavior;
         window.location.replace(window.location.origin + "/#/search?" + encodeURI("name=" + n));
         window.location.reload(true)
       }
@@ -84,6 +86,7 @@ class App extends React.Component {
         });
         const n = '&plist=' + temp.substring(0, temp.length-1);
         window.location.replace(window.location.origin + "/#/personality?" + encodeURI(n));
+        window.location.reload(true)
       }
 
 
@@ -123,6 +126,10 @@ class App extends React.Component {
 
       changePersonality(_,value) {
         this.setState({personality: value});
+      }
+
+      changeBehavior(_,value) {
+        this.setState({behavior: value});
       }
 
       render() {
@@ -199,6 +206,8 @@ class App extends React.Component {
                   changePop={this.changePop}
                   personality={this.state.personality}
                   changePersonality={this.changePersonality}
+                  behavior={this.state.behavior}
+                  changeBehavior={this.changeBehavior}
                 />
                 </Tab>
                 

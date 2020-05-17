@@ -75,7 +75,7 @@ class App extends React.Component {
             jsons.push(JSON.parse(value))
         ));
         const fin = jsons.slice(1, jsons.length);
-        const tagColors = ["black", "#6F4016", "#416366", "#414966"];
+        // const tagColors = ["black", "#6F4016", "#416366", "#414966"];
         return (
             <>
             <Container>

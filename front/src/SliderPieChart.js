@@ -8,13 +8,13 @@ class App extends React.Component {
 
         this.state = {
         
-          series: [this.props.breed, this.props.height, this.props.weight, this.props.pop, this.props.personality],
+          series: [this.props.breed, this.props.height, this.props.weight, this.props.pop, this.props.personality, this.props.behavior],
           options: {
             chart: {
               width: 380,
               type: 'donut',
             },
-            labels: ["Breed", "Height", "Weight", "Popularity", "Personality"],
+            labels: ["Breed", "Height", "Weight", "Popularity", "Personality", "Behavior"],
             theme: {
                 palette: 'palette4'
             },
@@ -58,7 +58,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.interval = setInterval(() => this.updateSeries([this.props.breed, this.props.height, this.props.weight, this.props.pop, this.props.personality]));
+        this.interval = setInterval(() => this.updateSeries([this.props.breed, this.props.height, this.props.weight, this.props.pop, this.props.personality, this.props.behavior]));
       }
       componentWillUnmount() {
         clearInterval(this.interval);
