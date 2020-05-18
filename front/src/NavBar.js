@@ -23,6 +23,7 @@ class App extends React.Component {
                     </Nav>
                     <Nav className="justify-content-end">
                       <Nav.Link href="https://logthedogcatalog.herokuapp.com/#/">Version Latest</Nav.Link>
+                      <Nav.Link href="https://logdogv3.herokuapp.com/#/">Version 3</Nav.Link>
                       <Nav.Link href="https://logdogv2.herokuapp.com/#/">Version 2</Nav.Link>
                       <Nav.Link href="https://logdogv1.herokuapp.com/#/">Version 1</Nav.Link>
                     </Nav>
